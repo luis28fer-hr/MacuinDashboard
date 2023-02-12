@@ -1,0 +1,148 @@
+.modal {
+    display: none; /* invisible por defecto*/
+    position: fixed; /* no tiene espacio en la pantalla */
+    z-index: 1;
+    padding-top: 2rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(21,55,78,.3);
+  }
+
+  .modal-content {
+    position: relative;
+    background-color: #949494;
+    margin: auto;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    width: 35%;
+    box-shadow: 0 0 6px 3px rgba(13, 36, 51, 0.3);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #F7F9F9;
+    color: rgb(0, 0, 0);
+  }
+  .modal-header h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .modal-content i{
+    font-size: 1.5rem;
+    color: #949494;
+  }
+
+  .modal-content i:hover{
+    font-size: 1.5rem;
+    color: #5499C7;
+  }
+
+  .modal-body {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+  }
+  .modal-body div{
+    margin-bottom: .5rem;
+  }
+  .modal-body div p{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .modal-body div p span{
+    color: #ff0000;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .modal-body div input{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    width: 100%;
+    padding: .3rem .5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  .modal-body div input:focus{
+    color: #5499C7;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    padding: .3rem .5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  .modal-body div .error{
+    font-family: 'Montserrat', sans-serif;
+    color: #ff0000;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: -.5px;
+
+  }
+
+  .modal-footer {
+    padding: .8rem;
+    background-color: #F0F3F4;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .modal-footer a{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #FFFFFF;
+    padding: .5rem 2rem;
+    border-radius: 8px;
+  }
+  .modal-footer ._cancel{
+    background-color: #A6ACAF;
+  }
+  .modal-footer ._cancel:hover{
+    background-color: #BDC3C7;
+  }
+  .modal-footer ._save{
+    background-color: #52BE80;
+  }
+  .modal-footer ._save:hover{
+    background-color: #27AE60;
+  }
+  .modal-footer ._salir{
+    padding: .5rem 4rem;
+    background-color: #E74C3C;
+  }
+  .modal-footer ._salir:hover{
+    background-color: #A93226;
+  }
