@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
+
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     text-decoration: none;
+     font-family: 'Montserrat', sans-serif;
+     scroll-behavior: smooth;
+     list-style: none;
+}
+
+header{
+    position:fixed;
+    background-color: #FFFFFF;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, .2);
+
+}
+
+
+.nav_header{
+    height: 28vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: .5rem;
+}
+
+.nav_header .settings i{
+    font-size: 1.5em;
+    color: #9f9f9f;
+}
+.nav_header .settings i:hover{
+    font-size: 1.5em;
+    color: #5499C7;
+    cursor: pointer;
+}
+
+.nav_header .foto_perfil{
+    margin: 0 auto;
+    margin-top: .5rem;
+    border-radius: 100%;
+    width: 6rem;
+    height: 6rem;
+    overflow: hidden;
+
+}
+.nav_header .foto_perfil img{
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+}
+.nav_header .nombre_usuario{
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size:.9rem;
+}
+
+.nav_body{
+    height: 65vh;
+    padding: .5rem 0 1rem 0;
+}
+
+.nav_body ul li{
+    background-color: #FFFFFF;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    padding-left: .5rem;
+    transition: all 0.3s ease;
+}
+.nav_body ul li:hover{
+    background-color: #e8daef7b;
+    transform: translateX(5px);
+    cursor: pointer;
+
+}
+.nav_body ul li a{
+    color: #9f9f9f;
+    padding: .5em;
+    text-align: center;
+    font-size: .9rem;
+}
+
+.nav_body ul li a i{
+    width: 2rem;
+    margin-right: .5rem;
+}
+
+
+.nav_body ul .link__activo{
+    background-color: #F2F3F4;
+}
+.nav_body ul .link__activo div{
+    position:absolute;
+    width: .4rem;
+    height: 2.5rem;
+    margin-left: -.5rem;
+    background-color: #5499C7;
+}
+
+
+.nav_body ul li .__activo{
+    color:  #5499C7;
+    font-weight: 600;
+}
+.nav_footer{
+    height: 7vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.nav_footer ul li{
+    width: 100rem;
+    padding: .5rem;
+}
+.nav_footer a{
+    color: #F90000;
+    font-size: medium;
+    font-weight: 600;
+    margin-left: .5rem;
+}
+.nav_footer a i{
+    color: #F90000;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.nav_footer li:hover{
+    background-color: #F5B7B1;
+    cursor: pointer;
+}
+
+
+
+
+body{
+    background-color: #F2F3F4;;
+}
+
+main{
+    margin-left: 20%;
+    padding: 1rem;
+}

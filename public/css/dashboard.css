@@ -1,0 +1,88 @@
+main h1{
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .grid-container .grid-item{
+    background-color: rgba(255, 255, 255, 1);
+    width: 15rem;
+    height: 10rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .grid-container .grid-item:hover{
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    transform: translateY(3px);
+  }
+  .grid-container .grid-item i{
+    font-size: 4.5rem;
+    margin: .3rem;
+    color: #5499C7;
+  }
+  .grid-container .grid-item span{
+    font-size: .8rem;
+    color: #9f9f9f;
+    font-weight: 500;
+  }
+
+  .calendar-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+  .calendar-grid .grid-item-calendar{
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  .calendar-grid .grid-item{
+    background-color: rgb(255, 255, 255);
+    margin: 0.5rem;
+    width: 31rem;
+    height: 25rem;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow:auto;
+  }
+  .calendar-grid .grid-item span{
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .calendar-grid .grid-item{
+    font-size: .9rem;
+    font-weight: 600;
+  }
+  .calendar-grid .grid-item ul{
+    background-color: #5499C7;
+    padding: .8rem;
+    border-radius: 0 2rem 2rem 3rem;
+    margin-bottom: .5rem;
+  }
+  .calendar-grid .grid-item ul li{
+    font-size: .8rem;
+    font-weight: 500;
+    margin-left: 1rem;
+
+  }
