@@ -15,7 +15,8 @@
         </div>
         <div class="derecha">
             <h1>Inicio de Sesión</h1>
-            <form action="">
+            <form action="{{route('Dashboard')}}" method="POST">
+                @csrf
                 <div>
                     <p>Correo:</p>
                     <input type="text">
@@ -26,7 +27,7 @@
                     <input type="text">
                     <span>Este campo es obligatorio</span>
                 </div>
-                <button>Ingresar</button>
+                <button type="submit">Ingresar</button>
             </form>
         </div>
     </div>
