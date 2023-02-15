@@ -15,8 +15,8 @@
         </div>
         <div class="nav_body">
             <ul>
-                <li class="{{request()->routeIs('Principal')? 'link__activo':''}} {{request()->routeIs('Dashboard')? 'link__activo':''}}">
-                    <div></div><a href="{{route('Principal')}}" class="{{request()->routeIs('Principal')? '__activo':''}}{{request()->routeIs('Dashboard')? '__activo':''}}"><i class="fa-solid fa-house"></i>Dashboard</a>
+                <li class="{{request()->routeIs('Principal')? 'link__activo':''}}">
+                    <div></div><a href="{{route('Principal')}}" class="{{request()->routeIs('Principal')? '__activo':''}}"><i class="fa-solid fa-house"></i>Dashboard</a>
                 </li>
                 <li class="{{request()->routeIs('Auxiliares')? 'link__activo':''}}">
                     <div></div><a href="{{route('Auxiliares')}}" class="{{request()->routeIs('Auxiliares')? '__activo':''}}"><i class="fa-solid fa-user-tie"></i>Auxiliares</a>

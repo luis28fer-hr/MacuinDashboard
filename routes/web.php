@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 /* Rutas login */
 
 Route::get('/', [loginController::class, 'index'])->name('login');
+Route::post('login', [loginController::class, 'validar'])->name('validar');
+Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 
-Route::post('dashboard', [dashboardController::class, 'index'])->name('Dashboard');
-Route::get('dashboard', [dashboardController::class, 'Dashboard'])->name('Principal');
+Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
 
 Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares');
