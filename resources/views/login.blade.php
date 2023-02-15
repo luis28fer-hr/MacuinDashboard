@@ -11,7 +11,7 @@
     <div class="fondo"></div>
     <div class="contenedor">
         <div class="izquierda">
-            Macuin Dashboard
+            <img src="{!! asset('img/logo.png') !!}" alt="Macuin Dashboard">
         </div>
         <div class="derecha">
             <h1>Inicio de Sesión</h1>

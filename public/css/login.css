@@ -46,11 +46,16 @@ body{
     width: 37%;
     height: 100%;
     background-color: rgba(84, 153, 199, .5);
-    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.contenedor .izquierda img{
+    width: 80%;
+    max-width: 85%;
+}
+
 .contenedor .derecha{
     position: relative;
     width: 63%;
@@ -131,3 +136,4 @@ body{
     border-color: rgba(84, 153, 199, .9);
     transform: translateY(2px);
 }
+
