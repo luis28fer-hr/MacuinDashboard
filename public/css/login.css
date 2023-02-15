@@ -80,6 +80,7 @@ body{
 }
 .contenedor .derecha form div{
     margin-bottom: 1.2rem;
+    width: 70%;
 }
 .contenedor .derecha form div p{
     font-size: 1.1rem;

@@ -12,11 +12,4 @@ class dashboardController extends Controller
 
         return view('Administrador/Dashboard');
     }
-
-    public function Dashboard()
-    {
-
-        return view('Administrador/Dashboard');
-    }
-
 }

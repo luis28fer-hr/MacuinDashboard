@@ -15,17 +15,17 @@
         </div>
         <div class="derecha">
             <h1>Inicio de Sesión</h1>
-            <form action="{{route('Dashboard')}}" method="POST">
+            <form action="{{route('validar')}}" method="POST">
                 @csrf
                 <div>
                     <p>Correo:</p>
-                    <input type="text">
-                    <span>Este campo es obligatorio</span>
+                    <input type="text" name="email" value="{{old('email')}}">
+                    <span> {{$errors->first('email')}}</span>
                 </div>
                 <div>
                     <p>Contraseña:</p>
-                    <input type="text">
-                    <span>Este campo es obligatorio</span>
+                    <input type="password" name="password">
+                    <span>{{$errors->first('password')}}</span>
                 </div>
                 <button type="submit">Ingresar</button>
             </form>

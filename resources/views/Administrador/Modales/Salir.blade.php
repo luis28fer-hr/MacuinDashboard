@@ -14,7 +14,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="" class="_salir">Salir</a>
+                                    <a href="{{route('logOut')}}" class="_salir">Salir</a>
                                 </div>
                             </div>
 
