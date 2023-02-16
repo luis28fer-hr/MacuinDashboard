@@ -8,6 +8,7 @@
     <title>MD |  @yield('titulo', 'Inicio')</title>
     <link href="{{ URL::asset('css/navbar.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('css/dashboard.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('css/auxiliares.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('css/modal.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://kit.fontawesome.com/67609a736e.css" crossorigin="anonymous">
 
