@@ -5,7 +5,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h2>Nuevo Auxiliar</h2>
-            <i class="fa-solid fa-xmark close"></i>
+            <i class="fa-solid fa-xmark close_NewAux"></i>
         </div>
         <div class="modal-body">
             <div>

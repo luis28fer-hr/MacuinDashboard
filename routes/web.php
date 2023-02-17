@@ -19,4 +19,4 @@ Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
 
-Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares');
+Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares')->middleware('auth');
