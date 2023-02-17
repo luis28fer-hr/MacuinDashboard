@@ -9,10 +9,35 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     color: #FFFFFF;
-    padding: .4rem 2rem;
+    padding: .5rem 2rem;
     border-radius: 8px;
     background-color: #27AE60;
+    transition: all 0.3s ease;
 }
+.auxiliares-options a:hover{
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+.auxiliares-options .filtros{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.auxiliares-options .filtros div{
+    margin-right: .5rem;
+    background-color: #ffffff;
+    padding: .5rem;
+    border-radius: 5px;
+}
+.auxiliares-options .filtros div input, select{
+    border: none;
+    font-size: 1rem;
+    padding-right: .5rem;
+}
+.auxiliares-options .filtros div input,select:focus{
+    outline: none;
+}
+
 
 .auxiliares {
     padding: 1rem;
@@ -20,7 +45,7 @@
 
 .auxiliares-container{
     display: grid;
-    grid-template-columns: 16rem 16rem 16rem 16rem ;
+    grid-template-columns: repeat(4, 16rem);
     align-items: flex-start;
     justify-content: center;
     padding: .4rem 0;
@@ -37,6 +62,7 @@
     background-color: #ffffff;
     border-radius: 1px;
     transition: all 0.3s ease;
+    border-radius: 5px;
 }
 
 .auxiliares-name{
@@ -65,8 +91,10 @@
 }
 
 .auxiliares-bar{
-    padding-top: .3rem;
-    color: #9f9f9f;
+    padding-top: 1.0rem;
+    font-weight: 600;
+    padding-bottom: .4rem;
+    color: #00a2ff;
 }
 
 .auxiliares-btns{
