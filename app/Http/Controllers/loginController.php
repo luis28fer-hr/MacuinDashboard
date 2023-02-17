@@ -21,16 +21,19 @@ class loginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            /* Proceso de modificar datos */
+
+
+            return redirect()->intended('dashboard')->with('activa_sesion','login');
 
         }
 
-         return redirect('/');
+         return redirect('/')->with('error_sesion','login');
     }
 
     public function logOut()
     {
-
+        Auth::logout();
         return redirect('/');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\administradorController;
 use App\Http\Controllers\auxiliaresController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\loginController;
@@ -18,5 +19,7 @@ Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 
 Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
+Route::post('perfil', [administradorController::class, 'updatePerfil'])->name('perfil');
+
 
 Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares')->middleware('auth');
