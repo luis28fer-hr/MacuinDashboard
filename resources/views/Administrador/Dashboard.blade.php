@@ -4,6 +4,23 @@
 
 @section('contenido_Administrador')
 
+@if (session()->has('activa_sesion'))
+{!!"<script> Swal.fire({
+    icon: 'success',
+    title: '¡Bienvenido!',
+    text: 'Administrador!',
+    })</script> "!!}
+@endif
+
+@if (session()->has('perfil_actualizado'))
+{!!"<script> Swal.fire({
+    icon: 'success',
+    title: '¡Tus datos se han actualizado!',
+    text: 'Administrador',
+    })</script> "!!}
+@endif
+
+
 <main>
     <h1>Dashboard</h1>
     <hr>

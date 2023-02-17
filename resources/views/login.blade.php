@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Macuin Dashboard</title>
     <link href="{{ URL::asset('css/login.css') }}" rel="stylesheet" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    @if (session()->has('error_sesion'))
+    {!!"<script> Swal.fire({
+        icon: 'error',
+        title: 'Usuario no encontrado',
+        text: 'Revise sus credenciales!',
+        })</script> "!!}
+    @endif
+
     <div class="fondo"></div>
     <div class="contenedor">
         <div class="izquierda">
