@@ -1,11 +1,11 @@
-<!-- Modal para añadir un nuevo auxiliar -->
-<div id="myModal_NewAux" class="modal">
+<!-- Modal para actualizar un auxiliar -->
+<div id="myModal_EditAux" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Nuevo Auxiliar</h2>
-            <i class="fa-solid fa-xmark close_NewAux"></i>
+            <h2>Editar Auxiliar</h2>
+            <i class="fa-solid fa-xmark close_EditAux"></i>
         </div>
         <div class="modal-body">
             <div>
@@ -45,11 +45,11 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="" class="_cancel close_NewAux">Cancelar</a>
+            <a href="" class="_cancel close_EditAux">Cancelar</a>
             <span>&nbsp&nbsp</span>
-            <a href="" class="_save">Añadir</a>
+            <a href="" class="_edit">Actualizar</a>
         </div>
     </div>
 
 </div>
-<!-- Fin de modal para añadir un nuevo auxiliar -->
+<!-- Fin de modal para actualizar un auxiliar -->

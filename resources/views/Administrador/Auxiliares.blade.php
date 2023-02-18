@@ -43,8 +43,10 @@
                     <p class="">60 %</p>
                 </div>
                 <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a id="myBtn_EditAux" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                    @include('Administrador/Modales/EditarAuxiliar')
+                    <a id="myBtn_DeleteAux"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                    @include('Administrador/Modales/EliminarAuxiliar')
                 </div>
             </div>
             <div class="auxiliares-card">

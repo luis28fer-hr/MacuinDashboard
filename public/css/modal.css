@@ -58,6 +58,7 @@
   .modal-content i:hover{
     font-size: 1.5rem;
     color: #5499C7;
+    cursor: pointer;
   }
 
   .modal-body {
@@ -138,6 +139,12 @@
   }
   .modal-footer ._save:hover{
     background-color: #27AE60;
+  }
+  .modal-footer ._edit{
+    background-color: #fbca33;
+  }
+  .modal-footer ._edit:hover{
+    background-color: #fbca33;
   }
   .modal-footer ._salir{
     padding: .5rem 4rem;
