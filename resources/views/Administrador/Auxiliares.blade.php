@@ -44,7 +44,9 @@
                 </div>
                 <div class="auxiliares-btns">
                     <a id="myBtn_EditAux" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+
                     @include('Administrador/Modales/EditarAuxiliar')
+
                     <a id="myBtn_DeleteAux"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
                     @include('Administrador/Modales/EliminarAuxiliar')
                 </div>
