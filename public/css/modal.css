@@ -64,6 +64,11 @@
   .modal-body {
     background-color: rgb(255, 255, 255);
     padding: 1rem;
+    text-align: start;
+  }
+
+  .modal-body .center{
+    text-align: center;
   }
   .modal-body div{
     margin-bottom: .5rem;

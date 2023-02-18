@@ -4,11 +4,11 @@
                             <!-- Modal content -->
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h2>¿Estas seguro deseas eliminar este auxiliar?</h2>
+                                    <h2>¿Estas seguro de eliminar este auxiliar?</h2>
                                     <i class="fa-solid fa-xmark close_DeleteAux"></i>
                                 </div>
                                 <div class="modal-body">
-                                    <div>
+                                    <div class="center">
                                         <p><span>Nombre Apellidop Apellidom</span></p>
                                     </div>
                                 </div>
