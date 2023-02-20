@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\loginValidar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class loginController extends Controller
 {
@@ -21,10 +22,8 @@ class loginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            /* Proceso de modificar datos */
-
-
-            return redirect()->intended('dashboard')->with('activa_sesion','login');
+          /*   return Auth::user()->name; */
+            return redirect('dashboard')->with('activa_sesion', 'login');
 
         }
 
