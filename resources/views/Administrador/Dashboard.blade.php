@@ -4,6 +4,7 @@
 
 @section('contenido_Administrador')
 
+
 @if (session()->has('activa_sesion'))
 {!!"<script> Swal.fire({
     icon: 'success',
@@ -28,17 +29,17 @@
         <div class="grid-item">
             <i class="fa-solid fa-user-tie"></i>
             Auxiliares
-            <span>Cantidad: </span>
+            <span>Cantidad: {{$contAux}}</span>
         </div>
         <div class="grid-item">
             <i class="fa-solid fa-users"></i>
             Clientes
-            <span>Cantidad: </span>
+            <span>Cantidad: {{$contCli}}</span>
         </div>
         <div class="grid-item">
             <i class="fa-solid fa-building"></i>
             Departamentos
-            <span>Cantidad: </span>
+            <span>Cantidad: {{$contDep}}</span>
         </div>
         <div class="grid-item">
             <i class="fa-solid fa-ticket"></i>

@@ -1,4 +1,4 @@
-<form action="{{route('perfil')}}" method="POST">
+<form action="{{route('perfil')}}" method="POST" enctype="multipart/form-data">
 @csrf
 
     <!-- Modal para editar perfil -->
@@ -13,27 +13,27 @@
             <div class="modal-body">
                 <div>
                     <p><span>*</span> Nombre:</p>
-                    <input type="text" name="name" placeholder="Ej: Arturo" value="{{old('name')}}">
+                    <input type="text" name="name" placeholder="Ej: Arturo" value="{{Auth::user()->name}}">
                     <span class="error">{{$errors->first('name')}}</span>
                 </div>
                 <div>
                     <p><span>*</span> Apellido Paterno:</p>
-                    <input type="text" name="apellido_p" placeholder="Ej: Villegas" value="{{old('apellido_p')}}">
+                    <input type="text" name="apellido_p" placeholder="Ej: Villegas" value="{{Auth::user()->apellido_p}}">
                     <span class="error">{{$errors->first('apellido_p')}}</span>
                 </div>
                 <div>
                     <p><span>*</span> Apellido Materno:</p>
-                    <input type="text" name="apellido_m" placeholder="Ej: Vazquez" value="{{old('apellido_m')}}">
+                    <input type="text" name="apellido_m" placeholder="Ej: Vazquez" value="{{Auth::user()->apellido_m}}">
                     <span class="error">{{$errors->first('apellido_m')}}</span>
                 </div>
                 <div>
                     <p><span>*</span> Numero de telefono:</p>
-                    <input type="text" name="numTel" placeholder="ej: 448123649" value="{{old('numTel')}}">
+                    <input type="text" name="numTel" placeholder="ej: 448123649" value="{{Auth::user()->num_telefono}}">
                     <span class="error">{{$errors->first('numTel')}}</span>
                 </div>
                 <div>
                     <p><span>*</span> Foto de perfil:</p>
-                    <input type="file" name="fotoPerfil" placeholder="Nombre">
+                    <input type="file" name="fotoPerfil" accept="image/*">
                     <span class="error">{{$errors->first('fotoPerfil')}}</span>
                 </div>
             </div>

@@ -7,10 +7,10 @@
 
             </div>
             <div class="foto_perfil">
-                <img src="https://www.redusers.com/noticias/wp-content/uploads/2017/07/Vic-Gundotra.jpg" alt="">
+                <img src="{{Auth::user()->url_foto}}" alt="foto de perfil">
             </div>
             <div class="nombre_usuario">
-                <p>Ricardo Colin Maldonado</p>
+                <p>{{Auth::user()->name}} {{Auth::user()->apellido_p}} {{Auth::user()->apellido_m}}</p>
             </div>
         </div>
         <div class="nav_body">
@@ -24,8 +24,8 @@
                 <li>
                     <div></div><a href="" ><i class="fa-solid fa-users"></i>Clientes</a>
                 </li>
-                <li>
-                    <div></div><a href=""><i class="fa-solid fa-building"></i>Departamentos</a>
+                <li class="{{request()->routeIs('Departamentos')? 'link__activo':''}}">
+                    <div></div><a href="{{route('Departamentos')}}" class="{{request()->routeIs('Departamentos')? '__activo':''}}"><i class="fa-solid fa-building"></i>Departamentos</a>
                 </li>
                 <li>
                     <div></div><a href=""><i class="fa-solid fa-ticket"></i>Tickets</a>

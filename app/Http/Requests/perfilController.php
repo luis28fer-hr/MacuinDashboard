@@ -28,7 +28,7 @@ class perfilController extends FormRequest
             'apellido_p' => ['required', 'string', 'max:20'],
             'apellido_m' => ['required', 'string', 'max:20'],
             'numTel' => ['required',  'numeric', 'digits_between:10,10'],
-/*             'fotoPerfil' => ['required', 'mimes:png,jpg'],
- */        ];
+            'fotoPerfil' => ['required', 'image'],
+        ];
     }
 }
