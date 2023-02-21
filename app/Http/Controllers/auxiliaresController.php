@@ -16,7 +16,12 @@ class auxiliaresController extends Controller
 
     public function newAuxiliares(auxiliares $request)
     {
-        return redirect('Auxiliares')->with('Nuevo_auxiliar','perfil');
+        return redirect('auxiliares')->with('Nuevo_auxiliar','auxiliares');
+    }
+
+    public function editAuxiliares(auxiliares $request)
+    {
+        return redirect('auxiliares')->with('Editar_auxiliar','auxiliares');
     }
 
 
