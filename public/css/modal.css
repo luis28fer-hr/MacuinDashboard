@@ -1,7 +1,6 @@
 .modal {
     display: none; /* invisible por defecto*/
     position: fixed; /* no tiene espacio en la pantalla */
-    z-index: 1;
     padding-top: 2rem;
     left: 0;
     top: 0;
@@ -9,6 +8,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(21,55,78,.3);
+    z-index: 100;
   }
 
   .modal-content {

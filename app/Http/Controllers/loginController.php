@@ -22,9 +22,16 @@ class loginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-          /*   return Auth::user()->name; */
-            return redirect('dashboard')->with('activa_sesion', 'login');
+            $id_activo = Auth::user()->id;
 
+            $admin_activo=DB::table('administradores')->where('usuario_id', $id_activo)->first();
+
+            if($admin_activo!=null){
+                return redirect('dashboard')->with('activa_sesion', 'login');
+            }
+            else{
+                return 'Usted no es administrador, su interfaz esta en desarrollo';
+            }
         }
 
          return redirect('/')->with('error_sesion','login');

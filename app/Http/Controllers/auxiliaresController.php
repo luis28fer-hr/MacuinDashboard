@@ -13,5 +13,4 @@ class auxiliaresController extends Controller
         return view('Administrador/Auxiliares');
     }
 
-
 }
