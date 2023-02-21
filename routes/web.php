@@ -24,5 +24,7 @@ Route::post('perfil', [administradorController::class, 'updatePerfil'])->name('p
 
 
 Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares')->middleware('auth');
+Route::post('newAuxiliar', [auxiliaresController::class, 'newAuxiliares'])->name('newauxiliares')->middleware('auth');
+
 
 Route::get('departamentos', [departamentosController::class, 'index'])->name('Departamentos')->middleware('auth');
