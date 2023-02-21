@@ -4,6 +4,22 @@
 
 @section('contenido_Administrador')
 
+@if (session()->has('Nuevo_auxiliar'))
+{!!"<script> Swal.fire({
+    icon: 'success',
+    title: '¡Tus datos se han agregado!',
+    text: 'Administrador',
+    })</script> "!!}
+@endif
+
+@if (session()->has('Editar_auxiliar'))
+{!!"<script> Swal.fire({
+    icon: 'success',
+    title: '¡Tus datos se han actualizado!',
+    text: 'Administrador',
+    })</script> "!!}
+@endif
+
 <main>
     <h1>Auxiliares</h1>
     <div class="auxiliares-options">
