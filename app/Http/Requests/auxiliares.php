@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class auxiliares extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'name' => ['required', 'string', 'max:20'],
+            'apellido_p' => ['required', 'string', 'max:20'],
+            'apellido_m' => ['required', 'string', 'max:20'],
+            'numCel' => ['required',  'numeric', 'digits_between:10,10'],
+            'fotoPerfil' => ['required', 'image'],
+            'email' => ['required', 'string', 'max:20'],
+            'pass' => ['required', 'string', 'max:12'],
+        ];
+    }
+}
