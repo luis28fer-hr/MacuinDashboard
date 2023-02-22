@@ -27,9 +27,16 @@ class loginController extends Controller
             $admin_activo=DB::table('administradores')->where('usuario_id', $id_activo)->first();
 
             if($admin_activo!=null){
+
                 return redirect('dashboard')->with('activa_sesion', 'login');
             }
             else{
+                /* Verifica si es auxiliar */
+
+
+                /* Verifica si es cliente */
+
+                Auth::logout();
                 return 'Usted no es administrador, su interfaz esta en desarrollo';
             }
         }
