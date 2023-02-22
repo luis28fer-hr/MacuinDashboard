@@ -13,9 +13,11 @@ class auxiliaresController extends Controller
 {
 
     public function index()
-    {      
-
-        return view('Administrador/Auxiliares');
+    {
+        $consulAuxiliares=DB::select('select u.* from users as u, 
+        auxiliares as a where a.usuario_id = u.id');        
+      
+        return view('Administrador/Auxiliares',compact('consulAuxiliares'));
     }
 
 

@@ -41,19 +41,21 @@
     <hr>
 
     <section class="auxiliares">
+
         <div class="auxiliares-container">
+            @foreach($consulAuxiliares as $consul)
             <div class="auxiliares-card">
                 <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
+                    <img src="{{$consul->url_foto}}" alt="FotodePerfil">
                 </div>
                 <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
+                    <p>{{$consul->name}} {{$consul->apellido_p}} {{$consul->apellido_m}}</p>
                 </div>
                 <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
+                    <p>ID: {{$consul->id}}</p>
+                    <p>{{$consul->email}}</p>
+                    <p>Tel: {{$consul->num_telefono}}</p>
+                    <p>--------------------</p>
                 </div>
                 <div class="auxiliares-bar">
                     <p class="">60 %</p>
@@ -67,160 +69,7 @@
                     @include('Administrador/Modales/EliminarAuxiliar')
                 </div>
             </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
-            <div class="auxiliares-card">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Img Perfil">
-                </div>
-                <div class="auxiliares-name">
-                    <p>Angelique Boyer Diaz</p>
-                </div>
-                <div  class="auxiliares-data">
-                    <p>ID: 708626</p>
-                    <p>boyer@macuin.com</p>
-                    <p>Matutino</p>
-                    <p>5579813307</p>
-                </div>
-                <div class="auxiliares-bar">
-                    <p>60 %</p>
-
-                </div>
-                <div class="auxiliares-btns">
-                    <a href="" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                    <a href="" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
