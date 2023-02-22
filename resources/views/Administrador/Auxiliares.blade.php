@@ -45,7 +45,7 @@
         <div class="auxiliares-container">
             @foreach($consulAuxiliares as $consul)
             <div class="auxiliares-card">
-                <div>
+                <div class="img-container">
                     <img src="{{$consul->url_foto}}" alt="FotodePerfil">
                 </div>
                 <div class="auxiliares-name">
