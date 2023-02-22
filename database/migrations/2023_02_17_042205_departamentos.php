@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id('id_departamento');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('url_foto');
             $table->timestamps();
         });
     }

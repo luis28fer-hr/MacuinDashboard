@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class administradorController extends Controller
 {
@@ -15,9 +16,9 @@ class administradorController extends Controller
         $img =$request->file('fotoPerfil')->store('public/img');
         $url = Storage::url($img);
 
-        $id = 1;
+        $idActivo = Auth::user()->id;
 
-        DB::table('users')->where('id', $id)->update([
+        DB::table('users')->where('id', $idActivo)->update([
             "name"=>$request->input('name'),
             "apellido_p"=>$request->input('apellido_p'),
             "apellido_m"=>$request->input('apellido_m'),
