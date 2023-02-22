@@ -37,7 +37,6 @@
                 <li>
                     <a id="myBtn_logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a>
                     @include('Administrador/Modales/Salir')
-
                 </li>
             </ul>
         </div>
