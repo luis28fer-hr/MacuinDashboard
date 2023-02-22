@@ -3,7 +3,7 @@
     
     <!-- Modal para añadir un nuevo auxiliar -->
     <div id="myModal_NewAux" class="modal">
-
+ 
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -32,7 +32,7 @@
                     <input type="file" name="fotoPerfil" accept="image/*">
                     <span class="error">{{$errors->first('fotoPerfil')}}</span>
                 </div>
-                <div>
+                <div> 
                     <p><span>*</span> Celular:</p>
                     <input type="text" name="numCel" placeholder="ej: 448123649" value="{{old('numCel')}}">
                     <span class="error">{{$errors->first('numCel')}}</span>
