@@ -27,6 +27,8 @@
 
     <script src="https://kit.fontawesome.com/67609a736e.js" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('js/modal.js') }}"></script>
+    <script src="{{ URL::asset('js/modalDepartamento.js') }}"></script>
+
 </body>
 
 </html>

@@ -9,6 +9,8 @@
         <div class="departamento-options">
             <a id="myBtn_NewDep"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
 
+            @include('Administrador/Modales/NuevoDepartamento')
+
             <div class="filtros">
                 <div>
                     <input type="text" placeholder="Buscar por Nombre"><i class="fa-solid fa-magnifying-glass"></i>
@@ -33,9 +35,12 @@
                         <p class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     <div class="departamento-btns">
-                        <a id="myBtn_EditAux" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                        <a id="myBtn_EditDep" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                        @include('Administrador/Modales/EditarDepartamento')
                         <a class="cantidad">90</a>
-                        <a id="myBtn_DeleteAux"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                        <a id="myBtn_DeleteDep"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                        @include('Administrador/Modales/EliminarDepartamento')
+
                     </div>
                 </div>
 
@@ -52,9 +57,12 @@
                         <p class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     <div class="departamento-btns">
-                        <a id="myBtn_EditAux" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                        <a id="myBtn_EditDep" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                        @include('Administrador/Modales/EditarDepartamento')
+
                         <a class="cantidad">90</a>
-                        <a id="myBtn_DeleteAux"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                        <a id="myBtn_DeleteDep"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
+                        @include('Administrador/Modales/EliminarDepartamento')
                     </div>
                 </div>
 

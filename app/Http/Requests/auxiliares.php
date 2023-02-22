@@ -29,7 +29,7 @@ class auxiliares extends FormRequest
             'apellido_m' => ['required', 'string', 'max:20'],
             'numCel' => ['required',  'numeric', 'digits_between:10,10'],
             'fotoPerfil' => ['required', 'image'],
-            'email' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'email'],
             'pass' => ['required', 'string', 'max:12'],
         ];
     }
