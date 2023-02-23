@@ -1,14 +1,14 @@
 <form action="{{route('editauxiliares')}}" method="POST" enctype="multipart/form-data">
-    @csrf 
+    @csrf
 
 <!-- Modal para actualizar un auxiliar -->
-<div id="myModal_EditAux" class="modal">
+<div id="myModal_EditAux-{{$consul->id}}" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Editar Auxiliar</h2>
-            <i class="fa-solid fa-xmark close_EditAux"></i>
+            <h2>Editar Auxiliar {{$consul->id}}</h2>
+            <i class="fa-solid fa-xmark"  onclick="modalEditarOcultar({{ $consul->id }})" ></i>
         </div>
         <div class="modal-body">
             <div>
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="" class="_cancel close_EditAux">Cancelar</a>
+            <a class="_cancel close_EditAux" onclick="modalEditarOcultar({{ $consul->id }})">Cancelar</a>
             <span>&nbsp&nbsp</span>
             <button type="submit" class="_save">Actualizar</button>
         </div>
