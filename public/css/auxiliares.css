@@ -38,6 +38,9 @@
     outline: none;
 }
 
+.auxiliares-options .filtros button{
+    margin: none;
+}
 
 .auxiliares {
     padding: 1rem;

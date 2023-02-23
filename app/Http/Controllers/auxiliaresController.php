@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\auxiliares;
+use App\Http\Requests\searchAuxiliares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +78,19 @@ class auxiliaresController extends Controller
         DB::table('users')->where('id', $id)->delete();
 
         return redirect('auxiliares')->with('Eliminar_auxiliar','auxiliares');
+    }
+
+    public function searchAuxiliares(searchAuxiliares $request)
+    {
+        $name = $request->input('searchName');
+
+        $consulAuxiliares = DB::table('users')->where('name','LIKE','%'.$name.'%')->orWhere('apellido_p', 'LIKE','%'.$name.'%')->orWhere('apellido_m', 'LIKE','%'.$name.'%')->get();
+
+        // foreach($consulAuxiliares as $auxiliares){
+        //     $auxiliares-$aux = DB::table('auxiliares')->where('usuario_id', $auxiliares->id)->first();
+        // }
+
+        return view('Administrador/Auxiliares',compact('consulAuxiliares'));
     }
 
 }
