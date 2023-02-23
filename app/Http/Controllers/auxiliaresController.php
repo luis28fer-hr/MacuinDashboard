@@ -53,9 +53,30 @@ class auxiliaresController extends Controller
         return redirect('auxiliares')->with('Nuevo_auxiliar','auxiliares');
     }
 
-    public function editAuxiliares(auxiliares $request)
+    public function editAuxiliares(auxiliares $request, $id)
     {
+        $img =$request->file('fotoPerfil')->store('public/img');
+        $url = Storage::url($img);
+
+        DB::table('users')->where('id',$id)->update([
+            "name"=>$request->input('name'),
+            "apellido_p"=>$request->input('apellido_p'),
+            "apellido_m"=>$request->input('apellido_m'),
+            "num_telefono"=>$request->input('numCel'),
+            "email"=>$request->input('email'),
+            "password"=>"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+            "url_foto"=> $url,
+            "updated_at"=>Carbon::now()
+        ]);
+
         return redirect('auxiliares')->with('Editar_auxiliar','auxiliares');
+    }
+
+    public function deleteAuxiliares($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+
+        return redirect('auxiliares')->with('Eliminar_auxiliar','auxiliares');
     }
 
 }
