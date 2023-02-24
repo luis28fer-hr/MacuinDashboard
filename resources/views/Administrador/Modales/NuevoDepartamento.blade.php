@@ -1,5 +1,5 @@
-<form action="{{route('newdepartamento')}}" method="POST" enctype="multipart/form-data">
-    @csrf 
+<form action="{{route('Departamentos.agregar')}}" method="POST" enctype="multipart/form-data">
+    @csrf
     <!-- Modal para añadir un nuevo auxiliar -->
     <div id="myModal_NewDep" class="modal">
 
@@ -10,14 +10,14 @@
                 <i class="fa-solid fa-xmark close_NewDep"></i>
             </div>
             <div class="modal-body">
-                <div> 
+                <div>
                     <p><span>*</span> Nombre departamento:</p>
                     <input type="text" name="name" placeholder="Eje: contabilidad" value="{{old('name')}}">
                     <span class="error">{{$errors->first('name')}}</span>
                 </div>
                 <div>
                     <p><span>*</span> Descripcion:</p>
-                    <textarea type="text" name="descripcion" placeholder="Ej: Area de administracion sobre ventas y ..." 
+                    <textarea type="text" name="descripcion" placeholder="Ej: Area de administracion sobre ventas y ..."
                         value="{{old('descripcion')}}"></textarea>
                     <span class="error">{{$errors->first('descripcion')}}</span>
                 </div>

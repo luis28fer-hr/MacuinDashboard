@@ -1,4 +1,4 @@
-<form action="{{route('editdepartamento')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('Departamentos.editar')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <!-- Modal para añadir un nuevo auxiliar -->
     <div id="myModal_EditDep-{{ $consul->id_departamento }}" class="modal">

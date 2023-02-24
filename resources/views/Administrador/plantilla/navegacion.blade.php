@@ -18,14 +18,14 @@
                 <li class="{{request()->routeIs('Principal')? 'link__activo':''}}">
                     <div></div><a href="{{route('Principal')}}" class="{{request()->routeIs('Principal')? '__activo':''}}"><i class="fa-solid fa-house"></i>Dashboard</a>
                 </li>
-                <li class="{{request()->routeIs('Auxiliares')? 'link__activo':''}}">
-                    <div></div><a href="{{route('Auxiliares')}}" class="{{request()->routeIs('Auxiliares')? '__activo':''}}"><i class="fa-solid fa-user-tie"></i>Auxiliares</a>
+                <li class="{{request()->routeIs('Auxiliares*')? 'link__activo':''}}">
+                    <div></div><a href="{{route('Auxiliares')}}" class="{{request()->routeIs('Auxiliares*')? '__activo':''}}"><i class="fa-solid fa-user-tie"></i>Auxiliares</a>
                 </li>
                 <li>
                     <div></div><a href="" ><i class="fa-solid fa-users"></i>Clientes</a>
                 </li>
-                <li class="{{request()->routeIs('Departamentos')? 'link__activo':''}}">
-                    <div></div><a href="{{route('Departamentos')}}" class="{{request()->routeIs('Departamentos')? '__activo':''}}"><i class="fa-solid fa-building"></i>Departamentos</a>
+                <li class="{{request()->routeIs('Departamentos*')? 'link__activo':''}}">
+                    <div></div><a href="{{route('Departamentos')}}" class="{{request()->routeIs('Departamentos*')? '__activo':''}}"><i class="fa-solid fa-building"></i>Departamentos</a>
                 </li>
                 <li>
                     <div></div><a href=""><i class="fa-solid fa-ticket"></i>Tickets</a>
