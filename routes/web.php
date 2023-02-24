@@ -22,10 +22,12 @@ Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
 Route::post('perfil', [administradorController::class, 'updatePerfil'])->name('perfil')->middleware('auth');
 
-
+/* Rutas auxiliares jefe */
 Route::get('auxiliares', [auxiliaresController::class, 'index'])->name('Auxiliares')->middleware('auth');
 Route::post('newAuxiliar', [auxiliaresController::class, 'newAuxiliares'])->name('newauxiliares')->middleware('auth');
-Route::post('editAuxiliar', [auxiliaresController::class, 'editAuxiliares'])->name('editauxiliares')->middleware('auth');
+Route::put('editAuxiliar/{id}', [auxiliaresController::class, 'editAuxiliares'])->name('editauxiliares')->middleware('auth');
+Route::delete('deleteAuxiliar/{id}', [auxiliaresController::class, 'deleteAuxiliares'])->name('deleteauxiliares')->middleware('auth');
+Route::get('searchAuxiliares', [auxiliaresController::class, 'searchAuxiliares'])->name('searchauxiliares')->middleware('auth');
 
 
 Route::get('departamentos', [departamentosController::class, 'index'])->name('Departamentos')->middleware('auth');

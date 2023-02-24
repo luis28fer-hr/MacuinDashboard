@@ -168,6 +168,10 @@
     border-radius: 8px;
   }
 
+  .modal-footer button:hover{
+    cursor: pointer;
+  }
+
   .modal-footer ._cancel{
     background-color: #A6ACAF;
   }

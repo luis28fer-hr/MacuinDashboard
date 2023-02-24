@@ -14,8 +14,16 @@
 
     @if (session()->has('Editar_auxiliar'))
         {!! "<script> Swal.fire({
-            icon: 'success',
+            icon: 'info',
             title: '¡Tus datos se han actualizado!',
+            text: 'Administrador',
+            })</script> " !!}
+    @endif
+
+    @if (session()->has('Eliminar_auxiliar'))
+        {!! "<script> Swal.fire({
+            icon: 'warning',
+            title: '¡Tus datos se han elimiado!',
             text: 'Administrador',
             })</script> " !!}
     @endif
@@ -33,9 +41,11 @@
                     </select>
 
                 </div>
+                <form action="{{route('searchauxiliares')}}">
                 <div>
-                    <input type="text" placeholder="Buscar por Nombre"><i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar por Nombre" name="searchName"><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
+                </form>
             </div>
         </div>
         <hr>
