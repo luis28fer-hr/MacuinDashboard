@@ -88,6 +88,8 @@
                         @include('Administrador/Modales/EditarAuxiliar')
                         @include('Administrador/Modales/EliminarAuxiliar')
                     </div>
+
+
                 @endforeach
             </div>
         </section>
