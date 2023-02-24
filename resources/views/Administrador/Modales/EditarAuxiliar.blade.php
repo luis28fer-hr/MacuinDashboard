@@ -1,4 +1,4 @@
-<form action="{{route('editauxiliares', $consul->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('Auxiliares.editar', $consul->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     {!! method_field('PUT')!!}
 <!-- Modal para actualizar un auxiliar -->

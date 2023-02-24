@@ -1,4 +1,4 @@
-<form action="{{route('deleteauxiliares', $consul->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('Auxiliares.eliminar', $consul->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('delete')
     <!-- Modal para eliminar un Auxiliar -->
