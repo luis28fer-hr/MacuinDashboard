@@ -29,7 +29,9 @@ Route::put('auxiliares/editar/{id}', [auxiliaresController::class, 'editAuxiliar
 Route::delete('auxiliares/eliminar/{id}', [auxiliaresController::class, 'deleteAuxiliares'])->name('Auxiliares.eliminar')->middleware('auth');
 Route::get('auxiliares/buscar', [auxiliaresController::class, 'searchAuxiliares'])->name('Auxiliares.buscar')->middleware('auth');
 
-
+/* Rutas departamentos jefe */
 Route::get('departamentos', [departamentosController::class, 'index'])->name('Departamentos')->middleware('auth');
 Route::post('departamentos/agregar', [departamentosController::class, 'newDepartamento'])->name('Departamentos.agregar')->middleware('auth');
-Route::post('departamentos/editar', [departamentosController::class, 'editDepartamento'])->name('Departamentos.editar')->middleware('auth');
+Route::put('departamentos/editar/{id}', [departamentosController::class, 'editDepartamento'])->name('Departamentos.editar')->middleware('auth');
+Route::delete('departamentos/eliminar/{id}', [departamentosController::class, 'deleteDepartamento'])->name('Departamentos.eliminar')->middleware('auth');
+Route::get('departamentos/buscar', [departamentosController::class, 'searchDepartamento'])->name('Departamentos.buscar')->middleware('auth');

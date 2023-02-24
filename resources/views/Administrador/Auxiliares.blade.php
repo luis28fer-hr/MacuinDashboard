@@ -30,19 +30,19 @@
 
     @if (session()->has('error_email'))
         {!! "<script> Swal.fire({
-                icon: 'warning',
+                icon: 'error',
                 title: '¡Por favor use otro correo!',
                 text: 'Administrador',
                 })</script> " !!}
     @endif
 
-    @if (session()->has('nocoincide'))
+    @if (session()->has('nocoincide_auxiliar'))
     {!! "<script> Swal.fire({
             icon: 'warning',
             title: '¡No existe auxiliar!',
             text: 'Administrador',
             })</script> " !!}
-@endif
+    @endif
 
     <main>
         <h1>Auxiliares</h1>
