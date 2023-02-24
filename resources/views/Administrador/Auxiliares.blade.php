@@ -28,6 +28,14 @@
             })</script> " !!}
     @endif
 
+    @if (session()->has('error_email'))
+    {!! "<script> Swal.fire({
+        icon: 'warning',
+        title: '¡Por favor use otro correo!',
+        text: 'Administrador',
+        })</script> " !!}
+    @endif
+
     <main>
         <h1>Auxiliares</h1>
         <div class="auxiliares-options">
