@@ -14,7 +14,17 @@ class departamentosController extends Controller
 
     public function index(){
 
-        $consulDepartamentos=DB::table('departamentos')->get();    
+        $consulDepartamentos=DB::table('departamentos')->get();
+
+
+        foreach($consulDepartamentos as $departamento){
+
+            $cantidadCliente = DB::table('clientes')->where('departamento_id', $departamento->id_departamento);
+            $countCantidad = $cantidadCliente->count();
+
+            $departamento->cantidad = $countCantidad;
+        }
+
         return view('Administrador/Departamentos',compact('consulDepartamentos'));
     }
 
@@ -58,12 +68,24 @@ class departamentosController extends Controller
     public function searchDepartamento(searchDepartamentos $request){
         $name = $request->input('searchDepartamento');
 
-        $consulDepartamentos = DB::table('departamentos')->where('nombre', 'LIKE', '%' . $name . '%')->get();
 
-        if($consulDepartamentos==null){
-            return redirect('departamentos')->with('nocoincide_departamento', 'departamentos');
-        }else{
+        $consulDepartamentos = DB::select('select * from departamentos WHERE nombre like ?', ['%'.$name.'%']);
+
+
+        if($consulDepartamentos!=null){
+
+            foreach($consulDepartamentos as $departamento){
+
+                $cantidadCliente = DB::table('clientes')->where('departamento_id', $departamento->id_departamento);
+                $countCantidad = $cantidadCliente->count();
+
+                $departamento->cantidad = $countCantidad;
+            }
             return view('Administrador/Departamentos', compact('consulDepartamentos'));
+
+        }else{
+
+            return redirect('departamentos')->with('nocoincide_departamento', 'departamentos');
         }
 
     }
