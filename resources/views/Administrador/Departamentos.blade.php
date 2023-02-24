@@ -41,7 +41,7 @@
                 @foreach($consulDepartamentos as $consul)
                 <div class="departamento-card">
                     <div class="img-container">
-                        <img src="storage/img/undraw_empty_cart_co35.png" alt="Img Perfil">
+                        <img src="{{$consul->url_foto }}" alt="Img Perfil">
                     </div>
                     <div class="departamento-name">
                         <p>{{$consul->nombre}}</p>
@@ -52,13 +52,13 @@
                         <p class="descripcion">{{$consul->descripcion}}</p>
                     </div>
                     <div class="departamento-btns">
-                        <a id="myBtn_EditDep" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                        @include('Administrador/Modales/EditarDepartamento')
+                        <a onclick="modalEditarMostrarDepar({{ $consul->id_departamento }})" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
                         <a class="cantidad">90</a>
-                        <a id="myBtn_DeleteDep"class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                        @include('Administrador/Modales/EliminarDepartamento')
-
+                        <a onclick="modaEliminarMostrarDepar({{ $consul->id_departamento }})" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
+                    @include('Administrador/Modales/EditarDepartamento')
+                    @include('Administrador/Modales/EliminarDepartamento')
+
                 </div>
                 @endforeach
             </div>

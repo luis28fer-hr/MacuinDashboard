@@ -6,34 +6,34 @@
 
     @if (session()->has('Nuevo_auxiliar'))
         {!! "<script> Swal.fire({
-            icon: 'success',
-            title: '¡Tus datos se han agregado!',
-            text: 'Administrador',
-            })</script> " !!}
+                    icon: 'success',
+                    title: '¡Tus datos se han agregado!',
+                    text: 'Administrador',
+                    })</script> " !!}
     @endif
 
     @if (session()->has('Editar_auxiliar'))
         {!! "<script> Swal.fire({
-            icon: 'info',
-            title: '¡Tus datos se han actualizado!',
-            text: 'Administrador',
-            })</script> " !!}
+                    icon: 'info',
+                    title: '¡Tus datos se han actualizado!',
+                    text: 'Administrador',
+                    })</script> " !!}
     @endif
 
     @if (session()->has('Eliminar_auxiliar'))
         {!! "<script> Swal.fire({
-            icon: 'warning',
-            title: '¡Tus datos se han elimiado!',
-            text: 'Administrador',
-            })</script> " !!}
+                    icon: 'warning',
+                    title: '¡Tus datos se han elimiado!',
+                    text: 'Administrador',
+                    })</script> " !!}
     @endif
 
     @if (session()->has('error_email'))
-    {!! "<script> Swal.fire({
-        icon: 'warning',
-        title: '¡Por favor use otro correo!',
-        text: 'Administrador',
-        })</script> " !!}
+        {!! "<script> Swal.fire({
+                icon: 'warning',
+                title: '¡Por favor use otro correo!',
+                text: 'Administrador',
+                })</script> " !!}
     @endif
 
     <main>
@@ -49,10 +49,11 @@
                     </select>
 
                 </div>
-                <form action="{{route('searchauxiliares')}}">
-                <div>
-                    <input type="text" placeholder="Buscar por Nombre" name="searchName"><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
+                <form action="{{ route('searchauxiliares') }}">
+                    <div>
+                        <input type="text" placeholder="Buscar por Nombre" name="searchName"><button type="submit"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -79,13 +80,13 @@
                             <p class="">60 %</p>
                         </div>
                         <div class="auxiliares-btns">
-                            <a onclick="modalEditarMostrar({{ $consul->id }})" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-
-                            @include('Administrador/Modales/EditarAuxiliar')
-
-                            <a onclick="modalEliminarMostrar({{ $consul->id }})" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                            @include('Administrador/Modales/EliminarAuxiliar')
+                            <a onclick="modalEditarMostrar({{ $consul->id }})" class="btn-edit"><i
+                                    class="fa-solid fa-pen"></i></a>
+                            <a onclick="modalEliminarMostrar({{ $consul->id }})" class="btn-delete"><i
+                                    class="fa-solid fa-trash-can"></i></a>
                         </div>
+                        @include('Administrador/Modales/EditarAuxiliar')
+                        @include('Administrador/Modales/EliminarAuxiliar')
                     </div>
                 @endforeach
             </div>
