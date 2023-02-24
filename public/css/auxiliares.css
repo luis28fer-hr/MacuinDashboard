@@ -69,7 +69,13 @@
     border-radius: 5px;
 }
 
-
+.btn_buscar{
+    border: none;
+    background-color: #FFFFFF;
+}
+.btn_buscar i{
+    font-size: .9rem;
+}
 .auxiliares-name{
     height: 10%;
     display: flex;
