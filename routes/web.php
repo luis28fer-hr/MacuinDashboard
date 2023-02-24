@@ -31,3 +31,5 @@ Route::get('searchAuxiliares', [auxiliaresController::class, 'searchAuxiliares']
 
 
 Route::get('departamentos', [departamentosController::class, 'index'])->name('Departamentos')->middleware('auth');
+Route::post('newDepartamento', [departamentosController::class, 'newDepartamento'])->name('newdepartamento')->middleware('auth');
+Route::post('editDepartamento', [departamentosController::class, 'editDepartamento'])->name('editdepartamento')->middleware('auth');
