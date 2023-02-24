@@ -24,43 +24,39 @@ window.onclick = function (event) {
     }
 }
 
-//EDITAR DEPARTAMENTO
-
-var EditDep = document.getElementById("myModal_EditDep");
-var btnEditDep = document.getElementById("myBtn_EditDep");
-var spanEditDep = document.getElementsByClassName("close_EditDep")[0];
 
 
-btnEditDep.onclick = function () {
-    EditDep.style.display = "block";
-}
-spanEditDep.onclick = function () {
-    EditDep.style.display = "none";
-}
-window.onclick = function (event) {
-    if (event.target == EditDep) {
-        EditDep.style.display = "none";
-    }
+// PARA MOSTRAR EL MODAL DE EDITAR DEPARTAMENTO
+function modalEditarMostrarDepar(id) {
+
+    var modal_editDep = document.getElementById("myModal_EditDep-" + id);
+    modal_editDep.style.display = "block";
+
 }
 
-//ELIMINAR DEPARTAMENTO
+//PARA OCULTAR EL MODAL DE EDITAR AUXILIAR
+function modalEditarOcultarDepar(id) {
 
-var DeleteDep = document.getElementById("myModal_DeleteDep");
-var btnDeleteDep = document.getElementById("myBtn_DeleteDep");
-var spanDeleteDep = document.getElementsByClassName("close_DeleteDep")[0];
+    var modal_editDep = document.getElementById("myModal_EditDep-" + id);
+    modal_editDep.style.display = "none";
 
-
-btnDeleteDep.onclick = function () {
-    DeleteDep.style.display = "block";
-}
-spanDeleteDep.onclick = function () {
-    DeleteDep.style.display = "none";
-}
-window.onclick = function (event) {
-    if (event.target == DeleteDep) {
-        DeleteDep.style.display = "none";
-    }
 }
 
+
+// PARA MOSTRAR EL MODAL DE EDITAR DEPARTAMENTO
+function modaEliminarMostrarDepar(id) {
+
+    var modal_EliminarDep = document.getElementById("myModal_DeleteDep-" + id);
+    modal_EliminarDep.style.display = "block";
+
+}
+
+//PARA OCULTAR EL MODAL DE EDITAR AUXILIAR
+function modalEliminarOculatrDepar(id) {
+
+    var modal_EliminarDep = document.getElementById("myModal_DeleteDep-" + id);
+    modal_EliminarDep.style.display = "none";
+
+}
 
 

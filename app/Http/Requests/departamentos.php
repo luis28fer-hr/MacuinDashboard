@@ -25,7 +25,7 @@ class departamentos extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:20'],
-            'descripcion' => ['required', 'string', 'max:50'],
+            'descripcion' => ['required', 'string', 'max:100'],
             'fotoPerfil' => ['required', 'image']
         ];
     }
