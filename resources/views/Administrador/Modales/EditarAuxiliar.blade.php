@@ -42,11 +42,6 @@
                 <input type="text" name="email" placeholder="aaaa@gmail.com" value="{{ $consul->email }}">
                 <span class="error">{{$errors->first('email')}}</span>
             </div>
-            <div>
-                <p><span>*</span> Contraseña:</p>
-                <input type="password" name="pass" placeholder="********" value="password">
-                <span class="error">{{$errors->first('pass')}}</span>
-            </div>
         </div>
         <div class="modal-footer">
             <a class="_cancel close_EditAux" onclick="modalEditarOcultar({{ $consul->id }})">Cancelar</a>

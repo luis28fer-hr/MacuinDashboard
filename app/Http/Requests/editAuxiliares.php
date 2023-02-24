@@ -30,7 +30,6 @@ class editAuxiliares extends FormRequest
             'numCel' => ['required',  'numeric', 'digits_between:10,10'],
             'fotoPerfil' => ['required', 'image'],
             'email' => ['required', 'email'],
-            'pass' => ['required', 'string', 'max:12'],
         ];
     }
 }

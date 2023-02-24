@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\auxiliares;
+use App\Http\Requests\editAuxiliares;
 use App\Http\Requests\searchAuxiliares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -64,7 +65,7 @@ class auxiliaresController extends Controller
         }
     }
 
-    public function editAuxiliares(auxiliares $request, $id)
+    public function editAuxiliares(editAuxiliares $request, $id)
     {
         $img = $request->file('fotoPerfil')->store('public/img');
         $url = Storage::url($img);
@@ -75,7 +76,6 @@ class auxiliaresController extends Controller
             "apellido_m" => $request->input('apellido_m'),
             "num_telefono" => $request->input('numCel'),
             "email" => $request->input('email'),
-            "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
             "url_foto" => $url,
             "updated_at" => Carbon::now()
         ]);

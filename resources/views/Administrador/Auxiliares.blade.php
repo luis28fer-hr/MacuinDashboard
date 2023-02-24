@@ -60,7 +60,7 @@
                 <form action="{{ route('Auxiliares.buscar') }}">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchName">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn_buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
             </div>
