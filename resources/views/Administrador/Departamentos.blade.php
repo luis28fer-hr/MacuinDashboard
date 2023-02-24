@@ -4,21 +4,37 @@
 
 @section('contenido_Administrador')
 
-@if (session()->has('Nuevo_departamento'))
-{!!"<script> Swal.fire({
-    icon: 'success',
-    title: '¡Tus datos se han agregado!',
-    text: 'Administrador',
-    })</script> "!!}
-@endif
+    @if (session()->has('Nuevo_departamento'))
+    {!!"<script> Swal.fire({
+        icon: 'success',
+        title: '¡Tus datos se han agregado!',
+        text: 'Administrador',
+        })</script> "!!}
+    @endif
 
-@if (session()->has('Editar_departamento'))
-{!!"<script> Swal.fire({
-    icon: 'success',
-    title: '¡Tus datos se han actualizado!',
-    text: 'Administrador',
-    })</script> "!!}
-@endif
+    @if (session()->has('Editar_departamento'))
+    {!!"<script> Swal.fire({
+        icon: 'info',
+        title: '¡Tus datos se han actualizado!',
+        text: 'Administrador',
+        })</script> "!!}
+    @endif
+
+    @if (session()->has('Eliminar_departamento'))
+    {!! "<script> Swal.fire({
+                icon: 'warning',
+                title: '¡Tus datos se han elimiado!',
+                text: 'Administrador',
+                })</script> " !!}
+    @endif
+
+    @if (session()->has('nocoincide_departamento'))
+    {!! "<script> Swal.fire({
+        icon: 'info',
+        title: '¡No existe departamento!',
+        text: 'Administrador',
+        })</script> " !!}
+    @endif
 
     <main>
         <h1>Departamentos</h1>
@@ -28,9 +44,12 @@
             @include('Administrador/Modales/NuevoDepartamento')
 
             <div class="filtros">
-                <div>
-                    <input type="text" placeholder="Buscar por Nombre"><i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form action="{{ route('Departamentos.buscar') }}">
+                    <div>
+                        <input type="text" placeholder="Buscar por Nombre" name="searchDepartamento">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
         <hr>

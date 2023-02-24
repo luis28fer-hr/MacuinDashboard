@@ -94,8 +94,6 @@ class auxiliaresController extends Controller
     {
         $name = $request->input('searchName');
 
-        //$consulAuxiliares = DB::table('users')->where('name', 'LIKE', '%' . $name . '%')->orWhere('apellido_p', 'LIKE', '%' . $name . '%')->orWhere('apellido_m', 'LIKE', '%' . $name . '%')->get();
-
         $consulAuxiliares = DB::select('select u.* from users as u, auxiliares as a WHERE (name  like ? or apellido_p like ? or apellido_m like ?) and u.id = a.usuario_id', ['%'.$name.'%', '%'.$name.'%', '%'.$name.'%']);
 
         if($consulAuxiliares!=null){
@@ -103,7 +101,7 @@ class auxiliaresController extends Controller
             return view('Administrador/Auxiliares', compact('consulAuxiliares'));
         }else{
 
-            return redirect('auxiliares')->with('nocoincide', 'auxiliares');
+            return redirect('auxiliares')->with('nocoincide_auxiliar', 'auxiliares');
         }
 
     }

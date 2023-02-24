@@ -30,19 +30,19 @@
 
     @if (session()->has('error_email'))
         {!! "<script> Swal.fire({
-                icon: 'warning',
+                icon: 'error',
                 title: '¡Por favor use otro correo!',
                 text: 'Administrador',
                 })</script> " !!}
     @endif
 
-    @if (session()->has('nocoincide'))
+    @if (session()->has('nocoincide_auxiliar'))
     {!! "<script> Swal.fire({
             icon: 'warning',
             title: '¡No existe auxiliar!',
             text: 'Administrador',
             })</script> " !!}
-@endif
+    @endif
 
     <main>
         <h1>Auxiliares</h1>
@@ -60,7 +60,6 @@
                 <form action="{{ route('Auxiliares.buscar') }}">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchName">
-                        <button class="btn_buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
             </div>
