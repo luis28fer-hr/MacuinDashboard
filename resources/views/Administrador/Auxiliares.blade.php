@@ -36,6 +36,14 @@
                 })</script> " !!}
     @endif
 
+    @if (session()->has('nocoincide'))
+    {!! "<script> Swal.fire({
+            icon: 'warning',
+            title: '¡No existe auxiliar!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
+
     <main>
         <h1>Auxiliares</h1>
         <div class="auxiliares-options">
