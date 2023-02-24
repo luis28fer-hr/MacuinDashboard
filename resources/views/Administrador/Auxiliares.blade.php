@@ -72,13 +72,13 @@
                         </div>
                         <div class="auxiliares-btns">
                             <a onclick="modalEditarMostrar({{ $consul->id }})" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-
-                            @include('Administrador/Modales/EditarAuxiliar')
-
                             <a onclick="modalEliminarMostrar({{ $consul->id }})" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
-                            @include('Administrador/Modales/EliminarAuxiliar')
                         </div>
+                        @include('Administrador/Modales/EditarAuxiliar')
+                        @include('Administrador/Modales/EliminarAuxiliar')
                     </div>
+
+
                 @endforeach
             </div>
         </section>
