@@ -47,7 +47,7 @@
                 <form action="{{ route('Departamentos.buscar') }}">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchDepartamento">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn_buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
             </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="departamento-btns">
                         <a onclick="modalEditarMostrarDepar({{ $consul->id_departamento }})" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-                        <a class="cantidad">90</a>
+                        <a class="cantidad">{{$consul->cantidad}}</a>
                         <a onclick="modaEliminarMostrarDepar({{ $consul->id_departamento }})" class="btn-delete"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                     @include('Administrador/Modales/EditarDepartamento')
