@@ -13,8 +13,8 @@ class departamentosController extends Controller
 
     public function index()
     {
-
-        return view('Administrador/Departamentos');
+        $consulDepartamentos=DB::table('departamentos')->get();    
+        return view('Administrador/Departamentos',compact('consulDepartamentos'));
     }
 
     public function newDepartamento(departamentos $request ){
