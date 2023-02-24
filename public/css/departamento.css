@@ -38,9 +38,16 @@
     outline: none;
 }
 
+.departamento-options .filtros div button{
+    border: none;
+    background-color: transparent;
+    transition: all 0.3s;
+}
 
-
-
+.departamento-options .filtros div button:hover{
+    cursor: pointer;
+    scale: 1.3;
+}
 
 .departamento {
     padding: 1rem;
