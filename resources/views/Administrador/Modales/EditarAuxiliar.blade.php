@@ -44,7 +44,7 @@
             </div>
             <div>
                 <p><span>*</span> Contraseña:</p>
-                <input type="text" name="pass" placeholder="********" value="{{ $consul->password }}">
+                <input type="password" name="pass" placeholder="********" value="password">
                 <span class="error">{{$errors->first('pass')}}</span>
             </div>
         </div>
