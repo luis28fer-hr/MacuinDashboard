@@ -108,6 +108,19 @@
     resize: none;
   }
 
+  .modal-body div select{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    width: 100%;
+    padding: .3rem .5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+    resize: none;
+  }
+
   .modal-body div input:focus{
     color: #5499C7;
     outline: none;
@@ -133,6 +146,20 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
+
+  .modal-body div select:focus{
+    color: #5499C7;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    padding: .3rem .5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+
   .modal-body div .error{
     font-family: 'Montserrat', sans-serif;
     color: #ff0000;
