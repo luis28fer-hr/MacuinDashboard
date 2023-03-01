@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\administradorController;
 use App\Http\Controllers\auxiliaresController;
+use App\Http\Controllers\clientesController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\departamentosController;
 use App\Http\Controllers\loginController;
@@ -35,3 +36,6 @@ Route::post('departamentos/agregar', [departamentosController::class, 'newDepart
 Route::put('departamentos/editar/{id}', [departamentosController::class, 'editDepartamento'])->name('Departamentos.editar')->middleware('auth');
 Route::delete('departamentos/eliminar/{id}', [departamentosController::class, 'deleteDepartamento'])->name('Departamentos.eliminar')->middleware('auth');
 Route::get('departamentos/buscar', [departamentosController::class, 'searchDepartamento'])->name('Departamentos.buscar')->middleware('auth');
+
+/* Rutas clientes jefe */
+Route::get('clientes', [clientesController::class, 'index'])->name('Clientes')->middleware('auth');
