@@ -27,8 +27,8 @@
                 <li class="{{request()->routeIs('Departamentos*')? 'link__activo':''}}">
                     <div></div><a href="{{route('Departamentos')}}" class="{{request()->routeIs('Departamentos*')? '__activo':''}}"><i class="fa-solid fa-building"></i>Departamentos</a>
                 </li>
-                <li>
-                    <div></div><a href=""><i class="fa-solid fa-ticket"></i>Tickets</a>
+                <li class="{{request()->routeIs('Tickets*')? 'link__activo':''}}">
+                    <div></div><a href="{{route('Tickets')}}" class="{{request()->routeIs('Tickets*')? '__activo':''}}"><i class="fa-solid fa-ticket"></i>Tickets</a>
                 </li>
             </ul>
         </div>

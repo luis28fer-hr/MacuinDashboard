@@ -8,7 +8,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>¿Estas seguro de eliminar este cliente?</h2>
-                <i onclick="modalEliminarOcultar({{ $consul->id }})" class="fa-solid fa-xmark"></i>
+                <i onclick="modalEliminarOcultarClie({{ $consul->id }})" class="fa-solid fa-xmark"></i>
             </div>
             <div class="modal-body">
                 <div class="center">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a onclick="modalEliminarOcultar({{ $consul->id }})" class="_cancel close_DeleteCli">Cancelar</a>
+                <a onclick="modalEliminarOcultarClie({{ $consul->id }})" class="_cancel close_DeleteCli">Cancelar</a>
                 <span>&nbsp&nbsp</span>
                 <button type="submit" class="_salir">Eliminar</button>
             </div>

@@ -55,7 +55,6 @@
                         <option value="" selected>Carga de trabajo</option>
                         <option value="">10%</option>
                     </select>
-
                 </div>
                 <form action="{{ route('Auxiliares.buscar') }}">
                     <div>
