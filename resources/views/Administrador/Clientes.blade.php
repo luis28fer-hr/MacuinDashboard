@@ -42,7 +42,7 @@
             <a id="myBtn_NewCli"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
             @include('Administrador/Modales/NuevoCliente')
             <div class="filtros">
-                <form action="{{ route('Auxiliares.buscar') }}">
+                <form action="">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchName">
                         <button class="btn_buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -73,9 +73,9 @@
                             <p class="">{{ $consul->departamento->nombre }}</p>
                         </div>
                         <div class="clientes-btns">
-                            <a onclick="modalEditarMostrar({{ $consul->id }})" class="btn-edit"><i
+                            <a onclick="modalEditarMostrarClie({{ $consul->id }})" class="btn-edit"><i
                                     class="fa-solid fa-pen"></i></a>
-                            <a onclick="modalEliminarMostrar({{ $consul->id }})" class="btn-delete"><i
+                            <a onclick="modalEliminarMostrarClie({{ $consul->id }})" class="btn-delete"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                         @include('Administrador/Modales/EditarCliente')

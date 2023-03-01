@@ -19,7 +19,7 @@ window.onclick = function (event) {
 
 
 // PARA MOSTRAR EL MODAL DE EDITAR CLIENTE
-function modalEditarMostrar(id) {
+function modalEditarMostrarClie(id) {
 
     var modal_editCli = document.getElementById("myModal_EditCli-" + id);
     modal_editCli.style.display = "block";
@@ -27,7 +27,7 @@ function modalEditarMostrar(id) {
 }
 
 //PARA OCULTAR EL MODAL DE EDITAR CLIENTE
-function modalEditarOcultar(id) {
+function modalEditarOcultarClie(id) {
 
     var modal_editCli = document.getElementById("myModal_EditCli-" + id);
     modal_editCli.style.display = "none";
@@ -35,7 +35,7 @@ function modalEditarOcultar(id) {
 }
 
 //PARA MOSTRAR EL MODAL DE ELIMINAR CLIENTE
-function modalEliminarMostrar(id) {
+function modalEliminarMostrarClie(id) {
 
     var modal_deleteCli = document.getElementById("myModal_DeleteCli-" + id);
     modal_deleteCli.style.display = "block";
@@ -43,7 +43,7 @@ function modalEliminarMostrar(id) {
 }
 
 //PARA OCULTAR EL MODAL DE ELIMIANR CLIENTE
-function modalEliminarOcultar(id) {
+function modalEliminarOcultarClie(id) {
 
     var modal_deleteCli = document.getElementById("myModal_DeleteCli-" + id);
     modal_deleteCli.style.display = "none";

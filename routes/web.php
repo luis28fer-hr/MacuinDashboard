@@ -6,6 +6,7 @@ use App\Http\Controllers\clientesController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\departamentosController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ticketsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -39,3 +40,6 @@ Route::get('departamentos/buscar', [departamentosController::class, 'searchDepar
 
 /* Rutas clientes jefe */
 Route::get('clientes', [clientesController::class, 'index'])->name('Clientes')->middleware('auth');
+
+/* Ruta tickets Jefe */
+Route::get('tickets', [ticketsController::class, 'index'])->name('Tickets')->middleware('auth');
