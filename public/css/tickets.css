@@ -92,6 +92,7 @@
     border-radius: 5px;
 }
 
+
 .tickets-detalles{
     height: 82%;
     padding: .5rem;
@@ -185,3 +186,231 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.auxiliares-container-tickets{
+    display: grid;
+    grid-template-columns: repeat(4, 13rem);
+    align-items: flex-start;
+    justify-content: center;
+    padding: .4rem 0;
+}
+
+.auxiliares-card-tickets{
+    position: relative;
+    text-align: center;
+    width: 98%;
+    height: 14.5rem;
+    margin: 0 0 2.5vh 1.5vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #EAF2F8;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+}
+
+.auxiliares-card-tickets:hover{
+    box-shadow: 0px 0px 3px 4px rgba(46, 204, 113 , 0.6);
+    transform: translateY(3px);
+}
+
+
+.auxiliares-card-tickets .auxiliares-name-tickets{
+    margin-top: -.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size:.7rem;
+}
+
+.auxiliares-card-tickets .auxiliares-data-tickets{
+    margin-top: -.5rem;
+    color: #9f9f9f;
+    font-size:.9rem;
+}
+
+.auxiliares-card-tickets .img-container-tickets{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auxiliares-card-tickets .img-container-tickets img{
+    border-radius: 100%;
+    width: 55%;
+    height: 97%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.auxiliares-card-tickets .auxiliares-bar-tickets{
+    margin-top: -.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #00a2ff;
+}
+
+.auxiliares-card-tickets .auxiliares-btns-tickets{
+    margin-top: -.5rem;
+    background-color: #d4e6f1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: .3rem;
+}
+
+.auxiliares-card-tickets .auxiliares-btns-tickets a{
+    width: 3rem;
+    padding: .4rem .0rem;
+    border-radius: 8px;
+    background-color:#ffffff;
+}
+.auxiliares-card-tickets .auxiliares-btns-tickets a i{
+    font-size: 1.4rem;
+    color: #27AE60;
+}
+.auxiliares-card-tickets .auxiliares-btns-tickets a i:hover{
+    font-size: 1.4rem;
+    color: #27AE60;
+}
+
+
+
+#myModal_MensajeAux .modal-footer-tickets {
+    padding: .8rem;
+    background-color: #F0F3F4;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+#myModal_MensajeAux .modal-footer-tickets textarea{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    width: 88%;
+    padding: .1rem .3rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+    resize: none;
+  }
+  #myModal_MensajeAux .modal-footer-tickets textarea{
+    color: #5499C7;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 88%;
+    padding: .1rem .3rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  #myModal_MensajeAux .modal-footer-tickets button{
+    font-family: 'Montserrat', sans-serif;
+    width: 12%;
+    padding: .1rem .5rem;
+    border-radius: 5px;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  #myModal_MensajeAux .modal-footer-tickets button i{
+    font-size: 1.4rem;
+    padding: 0.4rem 0.1rem;
+  }
+  #myModal_MensajeAux .modal-body-tickets{
+    background-color: #FFFFFF;
+    padding: 1rem;
+  }
+  #myModal_MensajeAux .modal-body-tickets .mensaje{
+    width: 100%;
+    text-align: left;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0 30px 30px 35px;
+    background-color: #D6EAF8;
+  }
+  #myModal_MensajeAux .modal-body-tickets .mensaje p{
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+
+  /*  */
+
+  #myModal_MensajeCli .modal-footer-tickets {
+    padding: .8rem;
+    background-color: #F0F3F4;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+#myModal_MensajeCli .modal-footer-tickets textarea{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    width: 88%;
+    padding: .1rem .3rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+    resize: none;
+  }
+  #myModal_MensajeCli .modal-footer-tickets textarea{
+    color: #5499C7;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 88%;
+    padding: .1rem .3rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  #myModal_MensajeCli .modal-footer-tickets button{
+    font-family: 'Montserrat', sans-serif;
+    width: 12%;
+    padding: .1rem .5rem;
+    border-radius: 5px;
+    border: 2px solid rgba(37, 138, 206, .2);
+    background-color: rgba(154, 215, 255, 0.2);
+  }
+  #myModal_MensajeCli .modal-footer-tickets button i{
+    font-size: 1.4rem;
+    padding: 0.4rem 0.1rem;
+  }
+  #myModal_MensajeCli .modal-body-tickets{
+    background-color: #FFFFFF;
+    padding: 1rem;
+  }
+  #myModal_MensajeCli .modal-body-tickets .mensaje{
+    width: 100%;
+    text-align: left;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0 30px 30px 35px;
+    background-color: #D6EAF8;
+  }
+  #myModal_MensajeCli .modal-body-tickets .mensaje p{
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .btn_buscarTicket{
+    border: none;
+    background-color: #FFFFFF;
+    padding: 0 0.3rem;
+    cursor: pointer;
+    }
+    .btn_buscarTicket i{
+        font-size: .8rem;
+    }
