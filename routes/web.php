@@ -40,7 +40,10 @@ Route::get('departamentos/buscar', [departamentosController::class, 'searchDepar
 
 /* Rutas clientes jefe */
 Route::get('clientes', [clientesController::class, 'index'])->name('Clientes')->middleware('auth');
-Route::put('clientes/editar/{id}', [clientesController::class, 'editclientes'])->name('Clientes.editar')->middleware('auth');
+Route::post('clientes/agregar', [clientesController::class, 'newClientes'])->name('Clientes.agregar')->middleware('auth');
+Route::put('clientes/editar/{id}', [clientesController::class, 'editClientes'])->name('Clientes.editar')->middleware('auth');
+Route::delete('clientes/eliminar/{id}', [clientesController::class, 'deleteClientes'])->name('Clientes.eliminar')->middleware('auth');
+Route::get('clientes/buscar', [clientesController::class, 'searchClientes'])->name('Clientes.buscar')->middleware('auth');
 
 
 
