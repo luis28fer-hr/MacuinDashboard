@@ -11,6 +11,7 @@
     z-index: 100;
   }
 
+
   .modal-content {
     position: relative;
     background-color: #949494;
@@ -25,6 +26,9 @@
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
+  }
+  #myModal_AsigAux .modal-content{
+    width: 75%;
   }
 
   @-webkit-keyframes animatetop {
@@ -177,8 +181,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
+
+
+
   .modal-footer a{
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;

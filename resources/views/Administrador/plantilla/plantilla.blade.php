@@ -31,6 +31,8 @@
     <script src="{{ URL::asset('js/modalDepartamento.js') }}"></script>
     <script src="{{ URL::asset('js/modalAuxiliar.js') }}"></script>
     <script src="{{ URL::asset('js/modalCliente.js') }}"></script>
+    <script src="{{ URL::asset('js/modalTickets.js') }}"></script>
+
 
 </body>
 
