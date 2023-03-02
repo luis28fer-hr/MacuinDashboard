@@ -40,6 +40,10 @@ Route::get('departamentos/buscar', [departamentosController::class, 'searchDepar
 
 /* Rutas clientes jefe */
 Route::get('clientes', [clientesController::class, 'index'])->name('Clientes')->middleware('auth');
+Route::put('clientes/editar/{id}', [clientesController::class, 'editclientes'])->name('Clientes.editar')->middleware('auth');
+
+
+
 
 /* Ruta tickets Jefe */
 Route::get('tickets', [ticketsController::class, 'index'])->name('Tickets')->middleware('auth');
