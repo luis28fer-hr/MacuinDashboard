@@ -1,4 +1,4 @@
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="{{route('Clientes.editar', $consul->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     {!! method_field('PUT')!!}
 <!-- Modal para actualizar un cliente -->
@@ -16,7 +16,7 @@
                 <input type="text" name="name" placeholder="Ej: Arturo" value="{{ $consul->name }}">
                 <span class="error"></span>
             </div>
-            <div>
+            <div> 
                 <p><span>*</span> Apellido Paterno:</p>
                 <input type="text" name="apellido_p" placeholder="Ej: Duran" value="{{ $consul->apellido_p }}">
                 <span class="error"></span>

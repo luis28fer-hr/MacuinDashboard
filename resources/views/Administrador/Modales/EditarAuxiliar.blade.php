@@ -5,7 +5,7 @@
 <div id="myModal_EditAux-{{$consul->id}}" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content"> 
         <div class="modal-header">
             <h2>Editar Auxiliar {{$consul->id}}</h2>
             <i class="fa-solid fa-xmark"  onclick="modalEditarOcultar({{ $consul->id }})" ></i>
