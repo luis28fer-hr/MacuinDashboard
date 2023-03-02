@@ -42,7 +42,7 @@
             <a id="myBtn_NewCli"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
             @include('Administrador/Modales/NuevoCliente')
             <div class="filtros">
-                <form action="">
+                <form action="{{ route('Clientes.buscar') }}">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchName">
                         <button class="btn_buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
