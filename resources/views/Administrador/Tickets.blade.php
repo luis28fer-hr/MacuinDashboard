@@ -4,9 +4,17 @@
 
 @section('contenido_Administrador')
 
+@if (session()->has('Actualizado'))
+{!! "<script> Swal.fire({
+            icon: 'success',
+            title: '¡Auxiliar asigando!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
+
     <main>
 
-        <h1>Departamentos</h1>
+        <h1>Tickets</h1>
         <div class="tickets-options">
             <form action="">
                 <div class="filtros">
@@ -39,35 +47,45 @@
         <section class="tickets">
 
             <div class="tickets-container">
+
+                @foreach($consultaTickets as $ticket)
+
                 <div class="tickets-card">
                     <div class="tickets-detalles">
                         <div class="general">
-                            <p>ID: 702819</p>
+                            <p>ID: {{$ticket->id_ticket}}</p>
                             <div>
                                 <p>Auxiliar:</p>
-                                <p>Carlos Peña Rodriguez
-                                <p>
+                                <p>{{$ticket->auxiliar->datos->name}} {{$ticket->auxiliar->datos->apellido_p}} {{$ticket->auxiliar->datos->apellido_m}}</p>
                             </div>
                             <div>
                                 <p>Estatus:</p>
-                                <p>Asignado</p>
+                                <p @if($ticket->estatus == 'En proceso')
+                                    style="color: #F39C12; font-weight: 700; letter-spacing: 0.5px;"
+                                    @endif
+                                    @if($ticket->estatus == 'Asignado')
+                                    style="color: #3498DB; font-weight: 700; letter-spacing: 0.5px;"
+                                    @endif
+                                    >{{$ticket->estatus}}</p>
                             </div>
+                            <p>Fecha: {{$ticket->created_at}}</p>
                         </div>
                         <div class="detallado">
-                            <p>Cliente: Hernandez Reyes Luis Fernando</p>
-                            <p>Departamento: Contabilidad</p>
-                            <p>Fecha: 02/02/2023</p>
-                            <p>Problematica: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, magni?</p>
+                            <p>{{$ticket->cliente->datos->name}} {{$ticket->cliente->datos->apellido_p}} {{$ticket->cliente->datos->apellido_m}}</p>
+                            <p>Departamento: {{$ticket->cliente->departamento->nombre}}</p>
+
+                            <p>Problematica: {{$ticket->problema}}</p>
+                            <p>Detalles: {{$ticket->detalles}}</p>
                         </div>
                     </div>
                     <div class="tickets-btns">
                         <div class="btns-aux">
-                            <a onclick="modalAsignarAuxiliar()" class="btn"><i class="fa-solid fa-user-tie"></i></a>
+                            <a title="Asignar un auxiliar" onclick="modalAsignarAuxiliar({{$ticket->id_ticket}})" class="btn"><i class="fa-solid fa-user-tie"></i></a>
                             @include('Administrador/Modales/Tickets/AsignarAuxiliar')
-                            <a onclick="modalMensajeAuxiliar()" class="btn"><i class="fa-regular fa-message"></i></a>
+                            <a title="Enviar comentario al auxiliar" onclick="modalMensajeAuxiliar()" class="btn"><i class="fa-regular fa-message"></i></a>
                             @include('Administrador/Modales/Tickets/MensajeAuxiliar')
-
                         </div>
+
                         <div class="btns-cli">
                             <a class="btn"><i class="fa-solid fa-users"></i></a>
                             <a onclick="modalMensajeCliente()" class="btn"><i class="fa-regular fa-message"></i></a>
@@ -79,6 +97,9 @@
                         </div>
                     </div>
                 </div>
+
+                @endforeach
+
             </div>
         </section>
 

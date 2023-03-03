@@ -1,16 +1,16 @@
 
 // PARA MOSTRAR ASIGNAR AUXILIAR A UN TICKET
-function modalAsignarAuxiliar() {
+function modalAsignarAuxiliar(id) {
 
-    var modal_asigAux = document.getElementById("myModal_AsigAux");
+    var modal_asigAux = document.getElementById("myModal_AsigAux-"+id);
     modal_asigAux.style.display = "block";
 
 }
 
 //PARA OCULTAR EL MODAL DE MOSTRAR ASIGNAR AUXILIAR A UN TICKET
-function modalOcultarAsignarAuxiliar() {
+function modalOcultarAsignarAuxiliar(id) {
 
-    var modal_asigAux = document.getElementById("myModal_AsigAux");
+    var modal_asigAux = document.getElementById("myModal_AsigAux-"+id);
     modal_asigAux.style.display = "none";
 
 }
