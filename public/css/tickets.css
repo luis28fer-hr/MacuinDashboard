@@ -187,64 +187,74 @@
     cursor: pointer;
 }
 
-.auxiliares-container-tickets{
+
+
+.myModal_AsigAux .auxiliares-container-tickets{
     display: grid;
-    grid-template-columns: repeat(4, 13rem);
-    align-items: flex-start;
-    justify-content: center;
+    grid-template-columns: repeat(4, 14rem);
     padding: .4rem 0;
+    max-height: 30rem;
+    overflow: auto;
 }
 
-.auxiliares-card-tickets{
+.myModal_AsigAux .auxiliares-card-tickets{
     position: relative;
-    text-align: center;
-    width: 98%;
+    width: 95%;
     height: 14.5rem;
     margin: 0 0 2.5vh 1.5vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
     background-color: #EAF2F8;
     transition: all 0.5s ease;
     border-radius: 5px;
 }
 
-.auxiliares-card-tickets:hover{
+.myModal_AsigAux .auxiliares-card-tickets:hover{
     box-shadow: 0px 0px 3px 4px rgba(46, 204, 113 , 0.6);
     transform: translateY(3px);
 }
 
 
-.auxiliares-card-tickets .auxiliares-name-tickets{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-name-tickets{
     margin-top: -.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size:.7rem;
+    width: 100%;
+    height: 10rem;
+}
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-name-tickets p{
+    font-size: 1rem;
+    height: 2.5rem;
+    text-align: center;
 }
 
-.auxiliares-card-tickets .auxiliares-data-tickets{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-data-tickets{
     margin-top: -.5rem;
     color: #9f9f9f;
     font-size:.9rem;
 }
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-data-tickets p{
+    font-size: 1rem;
+    font-weight: 600;
+    height: 1.2rem;
+    text-align: center;
+}
 
-.auxiliares-card-tickets .img-container-tickets{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .img-container-tickets{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.auxiliares-card-tickets .img-container-tickets img{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .img-container-tickets img{
     border-radius: 100%;
-    width: 55%;
+    width: 52%;
     height: 97%;
     overflow: hidden;
     object-fit: cover;
 }
 
-.auxiliares-card-tickets .auxiliares-bar-tickets{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-bar-tickets{
     margin-top: -.5rem;
     display: flex;
     align-items: center;
@@ -252,28 +262,33 @@
     font-weight: 600;
     color: #00a2ff;
 }
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-bar-tickets p{
+    font-weight: 600;
+    color: #00a2ff;
+}
 
-.auxiliares-card-tickets .auxiliares-btns-tickets{
+.myModal_AsigAux .modal-content .modal-body .auxiliares-container-tickets .auxiliares-card-tickets .auxiliares-btns-tickets{
     margin-top: -.5rem;
     background-color: #d4e6f1;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: .3rem;
+    padding: .22rem;
 }
 
-.auxiliares-card-tickets .auxiliares-btns-tickets a{
+.myModal_AsigAux .auxiliares-card-tickets .auxiliares-btns-tickets a{
+    text-align: center;
     width: 3rem;
     padding: .4rem .0rem;
     border-radius: 8px;
     background-color:#ffffff;
 }
-.auxiliares-card-tickets .auxiliares-btns-tickets a i{
+.myModal_AsigAux .auxiliares-card-tickets .auxiliares-btns-tickets a i{
     font-size: 1.4rem;
     color: #27AE60;
 }
-.auxiliares-card-tickets .auxiliares-btns-tickets a i:hover{
+.myModal_AsigAux .auxiliares-card-tickets .auxiliares-btns-tickets a i:hover{
     font-size: 1.4rem;
     color: #27AE60;
 }

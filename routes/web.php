@@ -50,3 +50,4 @@ Route::get('clientes/buscar', [clientesController::class, 'searchClientes'])->na
 
 /* Ruta tickets Jefe */
 Route::get('tickets', [ticketsController::class, 'index'])->name('Tickets')->middleware('auth');
+Route::get('tickets/actualizar/{id_ticket}/{id_auxiliar}', [ticketsController::class, 'actualizar'])->name('Tickets.actualizar')->middleware('auth');

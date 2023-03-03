@@ -16,7 +16,7 @@
                 <input type="text" name="name" placeholder="Ej: Arturo" value="{{ $consul->name }}">
                 <span class="error">{{$errors->first('name')}}</span>
             </div>
-            <div> 
+            <div>
                 <p><span>*</span> Apellido Paterno:</p>
                 <input type="text" name="apellido_p" placeholder="Ej: Duran" value="{{ $consul->apellido_p }}">
                 <span class="error">{{$errors->first('apellido_p')}}</span>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a class="_cancel close_EditCli" onclick="modalEditarOcultar({{ $consul->id }})">Cancelar</a>
+            <a class="_cancel close_EditCli" onclick="modalEditarOcultarClie({{ $consul->id }})">Cancelar</a>
             <span>&nbsp&nbsp</span>
             <button type="submit" class="_edit">Actualizar</button>
         </div>

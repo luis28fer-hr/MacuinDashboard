@@ -34,6 +34,7 @@ class loginController extends Controller
                 /* Verifica si es auxiliar */
 
 
+
                 /* Verifica si es cliente */
 
                 Auth::logout();
