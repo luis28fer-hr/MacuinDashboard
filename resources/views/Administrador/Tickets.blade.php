@@ -11,6 +11,20 @@
             text: 'Administrador',
             })</script> " !!}
 @endif
+@if (session()->has('MensajeEnviado'))
+{!! "<script> Swal.fire({
+            icon: 'success',
+            title: '¡Comentario enviado!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
+@if (session()->has('MensajeNoEnviado'))
+{!! "<script> Swal.fire({
+            icon: 'warning',
+            title: '¡Por favor escriba un comentario!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
 
     <main>
 
@@ -82,13 +96,13 @@
                         <div class="btns-aux">
                             <a title="Asignar un auxiliar" onclick="modalAsignarAuxiliar({{$ticket->id_ticket}})" class="btn"><i class="fa-solid fa-user-tie"></i></a>
                             @include('Administrador/Modales/Tickets/AsignarAuxiliar')
-                            <a title="Enviar comentario al auxiliar" onclick="modalMensajeAuxiliar()" class="btn"><i class="fa-regular fa-message"></i></a>
+                            <a title="Enviar comentario al auxiliar" onclick="modalMensajeAuxiliar({{$ticket->id_ticket}})" class="btn"><i class="fa-regular fa-message"></i></a>
                             @include('Administrador/Modales/Tickets/MensajeAuxiliar')
                         </div>
 
                         <div class="btns-cli">
                             <a class="btn"><i class="fa-solid fa-users"></i></a>
-                            <a onclick="modalMensajeCliente()" class="btn"><i class="fa-regular fa-message"></i></a>
+                            <a onclick="modalMensajeCliente({{ $ticket->id_ticket }})" class="btn"><i class="fa-regular fa-message"></i></a>
                             @include('Administrador/Modales/Tickets/MensajeCliente')
 
                         </div>

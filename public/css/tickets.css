@@ -295,7 +295,7 @@
 
 
 
-#myModal_MensajeAux .modal-footer-tickets {
+.myModal_MensajeAux .modal-footer-tickets {
     padding: .8rem;
     background-color: #F0F3F4;
     color: black;
@@ -304,7 +304,7 @@
     justify-content: center;
   }
 
-#myModal_MensajeAux .modal-footer-tickets textarea{
+.myModal_MensajeAux .modal-footer-tickets textarea{
     font-family: 'Montserrat', sans-serif;
     color: black;
     width: 88%;
@@ -316,7 +316,7 @@
     background-color: rgba(154, 215, 255, 0.2);
     resize: none;
   }
-  #myModal_MensajeAux .modal-footer-tickets textarea{
+.myModal_MensajeAux .modal-footer-tickets textarea{
     color: #5499C7;
     outline: none;
     font-family: 'Montserrat', sans-serif;
@@ -328,7 +328,7 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
-  #myModal_MensajeAux .modal-footer-tickets button{
+.myModal_MensajeAux .modal-footer-tickets button{
     font-family: 'Montserrat', sans-serif;
     width: 12%;
     padding: .1rem .5rem;
@@ -336,22 +336,26 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
-  #myModal_MensajeAux .modal-footer-tickets button i{
+.myModal_MensajeAux .modal-footer-tickets button i{
     font-size: 1.4rem;
     padding: 0.4rem 0.1rem;
   }
-  #myModal_MensajeAux .modal-body-tickets{
+.myModal_MensajeAux .modal-body-tickets{
     background-color: #FFFFFF;
     padding: 1rem;
+    max-height: 25rem;
+    overflow: auto;
+
   }
-  #myModal_MensajeAux .modal-body-tickets .mensaje{
+.myModal_MensajeAux .modal-body-tickets .mensaje{
     width: 100%;
     text-align: left;
     padding: 0.3rem 0.5rem;
     border-radius: 0 30px 30px 35px;
     background-color: #D6EAF8;
+    margin-bottom: 0.5rem;
   }
-  #myModal_MensajeAux .modal-body-tickets .mensaje p{
+.myModal_MensajeAux .modal-body-tickets .mensaje p{
     margin-bottom: 0.6rem;
     font-size: 0.8rem;
   }
@@ -359,7 +363,7 @@
 
   /*  */
 
-  #myModal_MensajeCli .modal-footer-tickets {
+.myModal_MensajeCli .modal-footer-tickets {
     padding: .8rem;
     background-color: #F0F3F4;
     color: black;
@@ -368,7 +372,7 @@
     justify-content: center;
   }
 
-#myModal_MensajeCli .modal-footer-tickets textarea{
+.myModal_MensajeCli .modal-footer-tickets textarea{
     font-family: 'Montserrat', sans-serif;
     color: black;
     width: 88%;
@@ -380,7 +384,7 @@
     background-color: rgba(154, 215, 255, 0.2);
     resize: none;
   }
-  #myModal_MensajeCli .modal-footer-tickets textarea{
+.myModal_MensajeCli .modal-footer-tickets textarea{
     color: #5499C7;
     outline: none;
     font-family: 'Montserrat', sans-serif;
@@ -392,7 +396,7 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
-  #myModal_MensajeCli .modal-footer-tickets button{
+.myModal_MensajeCli .modal-footer-tickets button{
     font-family: 'Montserrat', sans-serif;
     width: 12%;
     padding: .1rem .5rem;
@@ -400,32 +404,35 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
-  #myModal_MensajeCli .modal-footer-tickets button i{
+.myModal_MensajeCli .modal-footer-tickets button i{
     font-size: 1.4rem;
     padding: 0.4rem 0.1rem;
   }
-  #myModal_MensajeCli .modal-body-tickets{
+.myModal_MensajeCli .modal-body-tickets{
     background-color: #FFFFFF;
     padding: 1rem;
+    max-height: 25rem;
+    overflow: auto;
   }
-  #myModal_MensajeCli .modal-body-tickets .mensaje{
+.myModal_MensajeCli .modal-body-tickets .mensaje{
     width: 100%;
     text-align: left;
     padding: 0.3rem 0.5rem;
     border-radius: 0 30px 30px 35px;
     background-color: #D6EAF8;
+    margin-bottom: 0.5rem;
   }
-  #myModal_MensajeCli .modal-body-tickets .mensaje p{
+.myModal_MensajeCli .modal-body-tickets .mensaje p{
     margin-bottom: 0.6rem;
     font-size: 0.8rem;
   }
 
-  .btn_buscarTicket{
+.btn_buscarTicket{
     border: none;
     background-color: #FFFFFF;
     padding: 0 0.3rem;
     cursor: pointer;
     }
-    .btn_buscarTicket i{
+.btn_buscarTicket i{
         font-size: .8rem;
     }

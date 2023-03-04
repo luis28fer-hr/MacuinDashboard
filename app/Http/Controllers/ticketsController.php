@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\comentario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -20,10 +21,15 @@ class ticketsController extends Controller
             $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
             $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
             $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-        }
 
+            //comentarios del ticket / admin a aux
+            $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
+            $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
+
+        }
         $consultaAuxiliares = DB::select('select u.* from users as u,
         auxiliares as a where a.usuario_id = u.id and not u.id = 999999');
+
 
         return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares'));
     }
@@ -43,5 +49,36 @@ class ticketsController extends Controller
         ]);
 
         return redirect('tickets')->with('Actualizado', 'Ticket');
+    }
+
+
+    public function enviarMensajeAdminAux(comentario $request, $id_ticket)
+    {
+        if($request->input('comentario')==null){
+            return redirect('tickets')->with('MensajeNoEnviado', 'Ticket');
+        }
+        DB::table('cometarioadministrador')->insert([
+            "ticket_id" => $id_ticket,
+            "tipo" => 1,
+            "comentario" =>  $request->input('comentario'),
+            "created_at" => Carbon::now(),
+        ]);
+
+        return redirect('tickets')->with('MensajeEnviado', 'Ticket');
+    }
+
+    public function enviarMensajeAdminCli(comentario $request, $id_ticket)
+    {
+        if($request->input('comentario')==null){
+            return redirect('tickets')->with('MensajeNoEnviado', 'Ticket');
+        }
+        DB::table('cometarioadministrador')->insert([
+            "ticket_id" => $id_ticket,
+            "tipo" => 2,
+            "comentario" =>  $request->input('comentario'),
+            "created_at" => Carbon::now(),
+        ]);
+
+        return redirect('tickets')->with('MensajeEnviado', 'Ticket');
     }
 }
