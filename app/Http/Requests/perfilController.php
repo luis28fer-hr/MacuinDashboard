@@ -29,6 +29,7 @@ class perfilController extends FormRequest
             'apellido_m' => ['required', 'string', 'max:20'],
             'numTel' => ['required',  'numeric', 'digits_between:10,10'],
             'fotoPerfil' => ['required', 'image'],
+            'correo' => ['required', 'email'],
         ];
     }
 }

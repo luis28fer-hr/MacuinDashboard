@@ -57,30 +57,32 @@ class auxiliaresController extends Controller
             ]);
 
             return redirect('auxiliares')->with('Nuevo_auxiliar', 'auxiliares');
-
         } catch (Exception $e) {
-
-
-        return redirect('auxiliares')->with('error_email', 'error');
+            return redirect('auxiliares')->with('error_email', 'error');
         }
     }
 
     public function editAuxiliares(editAuxiliares $request, $id)
     {
-        $img = $request->file('fotoPerfil')->store('public/img');
-        $url = Storage::url($img);
+        try {
 
-        DB::table('users')->where('id', $id)->update([
-            "name" => $request->input('name'),
-            "apellido_p" => $request->input('apellido_p'),
-            "apellido_m" => $request->input('apellido_m'),
-            "num_telefono" => $request->input('numCel'),
-            "email" => $request->input('email'),
-            "url_foto" => $url,
-            "updated_at" => Carbon::now()
-        ]);
+            $img = $request->file('fotoPerfil')->store('public/img');
+            $url = Storage::url($img);
 
-        return redirect('auxiliares')->with('Editar_auxiliar', 'auxiliares');
+            DB::table('users')->where('id', $id)->update([
+                "name" => $request->input('name'),
+                "apellido_p" => $request->input('apellido_p'),
+                "apellido_m" => $request->input('apellido_m'),
+                "num_telefono" => $request->input('numCel'),
+                "email" => $request->input('email'),
+                "url_foto" => $url,
+                "updated_at" => Carbon::now()
+            ]);
+
+            return redirect('auxiliares')->with('Editar_auxiliar', 'auxiliares');
+        } catch (Exception $e) {
+            return redirect('auxiliares')->with('error_email', 'error');
+        }
     }
 
     public function deleteAuxiliares($id)
@@ -94,15 +96,14 @@ class auxiliaresController extends Controller
     {
         $name = $request->input('searchName');
 
-        $consulAuxiliares = DB::select('select u.* from users as u, auxiliares as a WHERE (name  like ? or apellido_p like ? or apellido_m like ?) and u.id = a.usuario_id', ['%'.$name.'%', '%'.$name.'%', '%'.$name.'%']);
+        $consulAuxiliares = DB::select('select u.* from users as u, auxiliares as a WHERE (name  like ? or apellido_p like ? or apellido_m like ?) and u.id = a.usuario_id', ['%' . $name . '%', '%' . $name . '%', '%' . $name . '%']);
 
-        if($consulAuxiliares!=null){
+        if ($consulAuxiliares != null) {
 
             return view('Administrador/Auxiliares', compact('consulAuxiliares'));
-        }else{
+        } else {
 
             return redirect('auxiliares')->with('nocoincide_auxiliar', 'auxiliares');
         }
-
     }
 }

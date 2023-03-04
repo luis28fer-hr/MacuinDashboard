@@ -36,6 +36,11 @@
                     <input type="file" name="fotoPerfil" accept="image/*">
                     <span class="error">{{$errors->first('fotoPerfil')}}</span>
                 </div>
+                <div>
+                    <p><span>*</span> Correo:</p>
+                    <input type="email" name="correo" value="{{Auth::user()->email}}">
+                    <span class="error">{{$errors->first('email')}}</span>
+                </div>
             </div>
             <div class="modal-footer">
                 <a href="" class="_cancel close">Cancelar</a>

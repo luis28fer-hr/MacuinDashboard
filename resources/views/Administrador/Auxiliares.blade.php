@@ -7,7 +7,7 @@
     @if (session()->has('Nuevo_auxiliar'))
         {!! "<script> Swal.fire({
                     icon: 'success',
-                    title: '¡Tus datos se han agregado!',
+                    title: '¡Auxiliar Registrado!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif
@@ -15,7 +15,7 @@
     @if (session()->has('Editar_auxiliar'))
         {!! "<script> Swal.fire({
                     icon: 'info',
-                    title: '¡Tus datos se han actualizado!',
+                    title: '¡Auxiliar actualizado correctamente!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif
@@ -23,7 +23,7 @@
     @if (session()->has('Eliminar_auxiliar'))
         {!! "<script> Swal.fire({
                     icon: 'warning',
-                    title: '¡Tus datos se han elimiado!',
+                    title: '¡Auxiliar Eliminado!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif

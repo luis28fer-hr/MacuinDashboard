@@ -30,6 +30,7 @@ class clientes extends FormRequest
             'numCel' => ['required',  'numeric', 'digits_between:10,10'],
             'fotoPerfil' => ['required', 'image'],
             'email' => ['required', 'email'],
+            'departamento' => ['required']
         ];
     }
 }

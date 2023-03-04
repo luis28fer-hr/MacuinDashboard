@@ -19,7 +19,10 @@ class dashboardController extends Controller
         $departamentos=DB::table('departamentos')->get();
         $contDep = $departamentos->count();
 
+        $tickets=DB::table('tickets')->get();
+        $contTick = $tickets->count();
 
-        return view('Administrador/Dashboard', compact('contAux','contCli','contDep'));
+
+        return view('Administrador/Dashboard', compact('contAux','contCli','contDep', 'contTick'));
     }
 }

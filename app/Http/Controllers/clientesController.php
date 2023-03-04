@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Exception;
 use App\Http\Requests\auxiliares;
 use App\Http\Requests\editAuxiliares;
@@ -21,13 +22,13 @@ class clientesController extends Controller
         $consulClientes = DB::select('select u.*, c.* from users as u,
         clientes as c where c.usuario_id = u.id');
 
-        foreach($consulClientes as $cliente){
-            $cliente->departamento = DB::table('departamentos')->where('id_departamento',$cliente->departamento_id)->first();
+        foreach ($consulClientes as $cliente) {
+            $cliente->departamento = DB::table('departamentos')->where('id_departamento', $cliente->departamento_id)->first();
         }
 
-        $consulDepartaments= DB::table('departamentos')->get();
+        $consulDepartaments = DB::table('departamentos')->get();
 
-        return view('Administrador/Clientes', compact('consulClientes','consulDepartaments'));
+        return view('Administrador/Clientes', compact('consulClientes', 'consulDepartaments'));
     }
 
     public function newClientes(clientes $request)
@@ -63,41 +64,37 @@ class clientesController extends Controller
                 "updated_at" => Carbon::now()
             ]);
 
-            return redirect('clientes')->with('Nuevo_cliente', 'clientes'); 
-
+            return redirect('clientes')->with('Nuevo_cliente', 'clientes');
         } catch (Exception $e) {
-
-
-        return redirect('clientes')->with('error_email', 'error');
-        } 
+            return redirect('clientes')->with('error_email', 'error');
+        }
     }
 
     public function editClientes(clientes $request, $id)
     {
+        try {
+            $img = $request->file('fotoPerfil')->store('public/img');
+            $url = Storage::url($img);
 
-            /*       $depa=$request->input('departamento');
+            DB::table('users')->where('id', $id)->update([
+                "name" => $request->input('name'),
+                "apellido_p" => $request->input('apellido_p'),
+                "apellido_m" => $request->input('apellido_m'),
+                "num_telefono" => $request->input('numCel'),
+                "email" => $request->input('email'),
+                "url_foto" => $url,
+                "updated_at" => Carbon::now()
+            ]);
 
-        return $depa; 
-         */
-        $img = $request->file('fotoPerfil')->store('public/img');
-        $url = Storage::url($img);
+            DB::table('clientes')->where('usuario_id', $id)->update([
+                "departamento_id" => $request->input('departamento'),
+                "updated_at" => Carbon::now()
+            ]);
 
-       DB::table('users')->where('id', $id)->update([
-            "name" => $request->input('name'),
-            "apellido_p" => $request->input('apellido_p'),
-            "apellido_m" => $request->input('apellido_m'),
-            "num_telefono" => $request->input('numCel'),
-            "email" => $request->input('email'),
-            "url_foto" => $url,
-            "updated_at" => Carbon::now()
-        ]); 
-
-        DB::table('clientes')->where('usuario_id', $id)->update([
-            "departamento_id" => $request->input('departamento'),
-            "updated_at" => Carbon::now()
-        ]);
-
-        return redirect('clientes')->with('Editar_cliente', 'clientes');
+            return redirect('clientes')->with('Editar_cliente', 'clientes');
+        } catch (Exception $e) {
+            return redirect('clientes')->with('error_email', 'error');
+        }
     }
 
 
@@ -115,23 +112,19 @@ class clientesController extends Controller
     {
         $name = $request->input('searchName');
 
-        $consulClientes = DB::select('select u.*, a.* from users as u, clientes as a WHERE (name  like ? or apellido_p like ? or apellido_m like ?) and u.id = a.usuario_id', ['%'.$name.'%', '%'.$name.'%', '%'.$name.'%']);
-
-
-        foreach($consulClientes as $cliente){
-            $cliente->departamento = DB::table('departamentos')->where('id_departamento',$cliente->departamento_id)->first();
+        $consulClientes = DB::select('select u.*, a.* from users as u, clientes as a WHERE (name  like ? or apellido_p like ? or apellido_m like ?) and u.id = a.usuario_id', ['%' . $name . '%', '%' . $name . '%', '%' . $name . '%']);
+        foreach ($consulClientes as $cliente) {
+            $cliente->departamento = DB::table('departamentos')->where('id_departamento', $cliente->departamento_id)->first();
         }
 
 
-        $consulDepartaments= DB::table('departamentos')->get();
+        $consulDepartaments = DB::table('departamentos')->get();
 
-        if($consulClientes!=null){
+        if ($consulClientes != null) {
 
-            
-            return view('Administrador/Clientes', compact('consulClientes','consulDepartaments'));
-        }else{
+            return view('Administrador/Clientes', compact('consulClientes', 'consulDepartaments'));
+        } else {
             return redirect('clientes')->with('nocoincide_clientes', 'clientes');
         }
-
     }
 }
