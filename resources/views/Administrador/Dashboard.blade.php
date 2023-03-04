@@ -21,6 +21,13 @@
     })</script> "!!}
 @endif
 
+@if (session()->has('error_email'))
+{!!"<script> Swal.fire({
+    icon: 'error',
+    title: '¡Por favor use otro correo!',
+    text: 'Administrador',
+    })</script> "!!}
+@endif
 
 <main>
     <h1>Dashboard</h1>
@@ -44,7 +51,7 @@
         <div class="grid-item">
             <i class="fa-solid fa-ticket"></i>
             Tickets
-            <span>Cantidad: </span>
+            <span>Cantidad: {{$contTick}}</span>
         </div>
     </div>
 

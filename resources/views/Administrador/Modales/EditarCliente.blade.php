@@ -29,7 +29,7 @@
             <div>
                 <p><span>*</span> Selecciona su Departamento:</p>
                 <select name="departamento">
-                    <option selected>{{ $consul->departamento->nombre }}</option>
+                    <option selected value="{{ $consul->departamento_id }}">{{ $consul->departamento->nombre }}</option>
                     @foreach ($consulDepartaments as $departamentos)
                       <option value={{$departamentos->id_departamento}}>{{$departamentos->nombre}}</option>
                     @endforeach

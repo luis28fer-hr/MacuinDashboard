@@ -7,7 +7,7 @@
     @if (session()->has('Nuevo_cliente'))
         {!! "<script> Swal.fire({
                     icon: 'success',
-                    title: '¡Tus datos se han agregado!',
+                    title: 'Cliente Registrado!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif
@@ -15,7 +15,7 @@
     @if (session()->has('Editar_cliente'))
         {!! "<script> Swal.fire({
                     icon: 'info',
-                    title: '¡Tus datos se han actualizado!',
+                    title: 'Cliente actualizado correctamente!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif
@@ -23,12 +23,20 @@
     @if (session()->has('Eliminar_cliente'))
         {!! "<script> Swal.fire({
                     icon: 'warning',
-                    title: '¡Tus datos se han elimiado!',
+                    title: 'Cliente Eliminado!',
                     text: 'Administrador',
                     })</script> " !!}
     @endif
 
-    @if (session()->has('nocoincide_cliente'))
+    @if (session()->has('error_email'))
+    {!! "<script> Swal.fire({
+            icon: 'error',
+            title: '¡Por favor use otro correo!',
+            text: 'Administrador',
+            })</script> " !!}
+    @endif
+
+    @if (session()->has('nocoincide_clientes'))
     {!! "<script> Swal.fire({
             icon: 'warning',
             title: '¡No existe cliente!',
