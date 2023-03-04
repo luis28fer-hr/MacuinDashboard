@@ -17,34 +17,34 @@ function modalOcultarAsignarAuxiliar(id) {
 
 
 // PARA MOSTRAR LOS MENSAJES AL AUXILIAR A UN TICKET
-function modalMensajeAuxiliar() {
+function modalMensajeAuxiliar(id) {
 
-    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux-"+id);
     modal_mensajeAux.style.display = "block";
 
 }
 
 //PARA OCULTAR EL MODAL DE MOSTRAR ASIGNAR AUXILIAR A UN TICKET
-function modalOcultarMensajeAuxiliar() {
+function modalOcultarMensajeAuxiliar(id) {
 
-    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux-"+id);
     modal_mensajeAux.style.display = "none";
 
 }
 
 
 // PARA MOSTRAR LOS MENSAJES AL CLIENTE A UN TICKET
-function modalMensajeCliente() {
+function modalMensajeCliente(id) {
 
-    var modal_mensajeCli = document.getElementById("myModal_MensajeCli");
+    var modal_mensajeCli = document.getElementById("myModal_MensajeCli-"+id);
     modal_mensajeCli.style.display = "block";
 
 }
 
 //PARA OCULTAR EL MODAL DE MOSTRAR ASIGNAR CLIENTE A UN TICKET
-function modalOcultarMensajeCliente() {
+function modalOcultarMensajeCliente(id) {
 
-    var modal_mensajeCli = document.getElementById("myModal_MensajeCli");
+    var modal_mensajeCli = document.getElementById("myModal_MensajeCli-"+id);
     modal_mensajeCli.style.display = "none";
 
 }
