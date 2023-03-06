@@ -45,11 +45,9 @@ Route::put('clientes/editar/{id}', [clientesController::class, 'editClientes'])-
 Route::delete('clientes/eliminar/{id}', [clientesController::class, 'deleteClientes'])->name('Clientes.eliminar')->middleware('auth');
 Route::get('clientes/buscar', [clientesController::class, 'searchClientes'])->name('Clientes.buscar')->middleware('auth');
 
-
-
-
 /* Ruta tickets Jefe */
 Route::get('tickets', [ticketsController::class, 'index'])->name('Tickets')->middleware('auth');
 Route::get('tickets/actualizar/{id_ticket}/{id_auxiliar}', [ticketsController::class, 'actualizar'])->name('Tickets.actualizar')->middleware('auth');
 Route::post('tickets/comentarios/adminaux/{id}', [ticketsController::class, 'enviarMensajeAdminAux'])->name('Tickets.comentario.adminaux')->middleware('auth');
 Route::post('tickets/comentarios/admincli/{id}', [ticketsController::class, 'enviarMensajeAdminCli'])->name('Tickets.comentario.admincli')->middleware('auth');
+Route::get('tickets/buscar', [ticketsController::class, 'searchTickets'])->name('Tickets.buscar')->middleware('auth');

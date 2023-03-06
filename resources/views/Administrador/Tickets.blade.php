@@ -25,27 +25,47 @@
             text: 'Administrador',
             })</script> " !!}
 @endif
+@if (session()->has('selectFiltro'))
+{!! "<script> Swal.fire({
+            icon: 'info',
+            title: '¡Por favor ingrese un campo de filtrado!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
+@if (session()->has('noExiste'))
+{!! "<script> Swal.fire({
+            icon: 'info',
+            title: '¡No existe ningun ticket con estas caracteristicas!',
+            text: 'Administrador',
+            })</script> " !!}
+@endif
 
     <main>
 
         <h1>Tickets</h1>
         <div class="tickets-options">
-            <form action="">
+            <form method="" action="{{ route('Tickets.buscar') }}">
                 <div class="filtros">
                     <div>
-                        <select name="" id="">
+                        <select name="searchByEstatus" id="">
                             <option value="" selected disabled>Estatus</option>
-                            <option value="">10%</option>
+                            <option value="Asignado">Asignado</option>
+                            <option value="En Proceso">En Proceso</option>
+                            <option value="Completado">Completado</option>
+                            <option value="No Solucionado">No Solucionado</option>
+                            <option value="Cancelado">Cancelado</option>
                         </select>
                     </div>
                     <div>
-                        <select name="" id="">
+                        <select name="searchByDepartamento" id="">
                             <option value="" selected disabled>Departamento</option>
-                            <option value="">10%</option>
+                            @foreach ($consulDepartaments as $departamentos)
+                            <option value={{ $departamentos->id_departamento }}>{{ $departamentos->nombre }}</option>
+                        @endforeach
                         </select>
                     </div>
                     <div>
-                        <input type="date" placeholder="Fecha" name="searchFecha">
+                        <input type="date" placeholder="Fecha" name="searchByFecha">
                     </div>
                     <div>
                         <button class="btn_buscarTicket" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -74,11 +94,20 @@
                             </div>
                             <div>
                                 <p>Estatus:</p>
-                                <p @if($ticket->estatus == 'En proceso')
+                                <p @if($ticket->estatus == 'Asignado')
+                                    style="color: #3498DB; font-weight: 700; letter-spacing: 0.5px;"
+                                    @endif
+                                    @if($ticket->estatus == 'En Proceso')
+                                    style="color: #f4d03f; font-weight: 700; letter-spacing: 0.5px;"
+                                    @endif
+                                    @if($ticket->estatus == 'Completado')
+                                    style="color: #5cc186; font-weight: 700; letter-spacing: 0.5px;"
+                                    @endif
+                                    @if($ticket->estatus == 'No Solucionado')
                                     style="color: #F39C12; font-weight: 700; letter-spacing: 0.5px;"
                                     @endif
-                                    @if($ticket->estatus == 'Asignado')
-                                    style="color: #3498DB; font-weight: 700; letter-spacing: 0.5px;"
+                                    @if($ticket->estatus == 'Cancelado')
+                                    style="color: #fa6e6e; font-weight: 700; letter-spacing: 0.5px;"
                                     @endif
                                     >{{$ticket->estatus}}</p>
                             </div>
