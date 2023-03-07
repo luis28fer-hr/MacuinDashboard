@@ -51,3 +51,4 @@ Route::get('tickets/actualizar/{id_ticket}/{id_auxiliar}', [ticketsController::c
 Route::post('tickets/comentarios/adminaux/{id}', [ticketsController::class, 'enviarMensajeAdminAux'])->name('Tickets.comentario.adminaux')->middleware('auth');
 Route::post('tickets/comentarios/admincli/{id}', [ticketsController::class, 'enviarMensajeAdminCli'])->name('Tickets.comentario.admincli')->middleware('auth');
 Route::get('tickets/buscar', [ticketsController::class, 'searchTickets'])->name('Tickets.buscar')->middleware('auth');
+Route::get('tickets/reporte/{id}', [ticketsController::class, 'generatePDF'])->name('Tickets.reporte')->middleware('auth');
