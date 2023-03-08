@@ -24,6 +24,7 @@ class searchTickets extends FormRequest
     public function rules()
     {
         return [
+            'auxiliar' => [''],
             'searchByEstatus' => ['string'],
             'searchByDepartamento' => ['numeric'],
             'searchByFecha' => [''],

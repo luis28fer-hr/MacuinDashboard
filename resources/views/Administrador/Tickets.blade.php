@@ -74,9 +74,10 @@
                 </div>
             </form>
             <div class="filtros">
-                <a href="" class="reporte">Reporte <i class="fa-solid fa-file-pdf"></i></a>
+                <a onclick="modalPDF()" class="reporte">Reporte <i class="fa-solid fa-file-pdf"></i></a>
             </div>
         </div>
+        @include('Administrador/Modales/Tickets/filtroPDF')
         <hr>
 
         <section class="tickets">
