@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\administradorController;
+use App\Http\Controllers\auxiliarController;
 use App\Http\Controllers\auxiliaresController;
 use App\Http\Controllers\clientesController;
 use App\Http\Controllers\dashboardController;
@@ -14,12 +15,16 @@ use Illuminate\Support\Facades\Route;
     return view('Administrador/Dashboard');
 }); */
 
+
+
+
 /* Rutas login */
 
 Route::get('/', [loginController::class, 'index'])->name('login');
 Route::post('login', [loginController::class, 'validar'])->name('validar');
 Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
+/* RUTAS DE PERFIL ADMINISTRADOR */
 
 Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
 Route::post('perfil', [administradorController::class, 'updatePerfil'])->name('perfil')->middleware('auth');
@@ -52,3 +57,9 @@ Route::post('tickets/comentarios/adminaux/{id}', [ticketsController::class, 'env
 Route::post('tickets/comentarios/admincli/{id}', [ticketsController::class, 'enviarMensajeAdminCli'])->name('Tickets.comentario.admincli')->middleware('auth');
 Route::get('tickets/buscar', [ticketsController::class, 'searchTickets'])->name('Tickets.buscar')->middleware('auth');
 Route::get('tickets/reporte/{id}', [ticketsController::class, 'generatePDF'])->name('Tickets.reporte')->middleware('auth');
+Route::post('tickets/reporte', [ticketsController::class, 'generatePDFfiltro'])->name('Tickets.reporte.filtro')->middleware('auth');
+
+
+/* RUTAS DE PERFIL AUXILIAR */
+
+Route::get('auxiliar/tickets', [auxiliarController::class, 'index'])->name('aux.tickets')->middleware('auth');

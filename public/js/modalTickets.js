@@ -50,3 +50,21 @@ function modalOcultarMensajeCliente(id) {
 }
 
 
+// PARA MOSTRAR FILTRO PDF
+function modalPDF() {
+
+    var modal_pdf = document.getElementById("myModal_PDF");
+    modal_pdf.style.display = "block";
+
+}
+
+//PARA OCULTAR EL MODAL DE MOSTRAR ASIGNAR CLIENTE A UN TICKET
+function modalOcultarPDF() {
+
+    var modal_pdf = document.getElementById("myModal_PDF");
+    modal_pdf.style.display = "none";
+
+}
+
+
+

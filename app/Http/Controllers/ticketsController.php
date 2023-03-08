@@ -16,7 +16,7 @@ class ticketsController extends Controller
     {
 
         $consultaTickets = DB::table('tickets')->get();
-        foreach($consultaTickets as $ticket){
+        foreach ($consultaTickets as $ticket) {
             //auxiliar
             $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
             $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -29,8 +29,8 @@ class ticketsController extends Controller
             //comentarios del ticket / admin a aux
             $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
             $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-
         }
+
         $consultaAuxiliares = DB::select('select u.* from users as u,
         auxiliares as a where a.usuario_id = u.id and not u.id = 999999');
 
@@ -60,7 +60,7 @@ class ticketsController extends Controller
 
     public function enviarMensajeAdminAux(comentario $request, $id_ticket)
     {
-        if($request->input('comentario')==null){
+        if ($request->input('comentario') == null) {
             return redirect('tickets')->with('MensajeNoEnviado', 'Ticket');
         }
         DB::table('cometarioadministrador')->insert([
@@ -75,7 +75,7 @@ class ticketsController extends Controller
 
     public function enviarMensajeAdminCli(comentario $request, $id_ticket)
     {
-        if($request->input('comentario')==null){
+        if ($request->input('comentario') == null) {
             return redirect('tickets')->with('MensajeNoEnviado', 'Ticket');
         }
         DB::table('cometarioadministrador')->insert([
@@ -103,14 +103,15 @@ class ticketsController extends Controller
         $fecha = $request->input('searchByFecha');
 
 
-        if (empty($estatus) and empty($departamento) and empty($fecha)){ //Sin ningun filtro seleccionado
+        if (empty($estatus) and empty($departamento) and empty($fecha)) { //Sin ningun filtro seleccionado
+
             return redirect('tickets')->with('selectFiltro', 'Ticket');
-        } elseif(empty($estatus) and empty($departamento)){ //Busqueda por Fecha
+        } elseif (empty($estatus) and empty($departamento)) { //Busqueda por Fecha
 
             $consultaTickets = DB::select('select * from tickets where date(created_at) = ?', [$fecha]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -129,13 +130,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
-        } elseif(empty($estatus) and empty($fecha)){ //Busqueda por Departamento
+        } elseif (empty($estatus) and empty($fecha)) { //Busqueda por Departamento
 
             $consultaTickets = DB::select('select * from tickets where cliente_id in (select id_cliente from clientes where departamento_id = ?)', [$departamento]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -154,13 +154,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
-        } elseif(empty($fecha) and empty($departamento)){ //Busqueda por Estatus
+        } elseif (empty($fecha) and empty($departamento)) { //Busqueda por Estatus
 
             $consultaTickets = DB::select('select * from tickets where estatus = ?', [$estatus]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -179,13 +178,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
-        } elseif(empty($fecha)){ //Busqueda por Estatus y Departamento
+        } elseif (empty($fecha)) { //Busqueda por Estatus y Departamento
 
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id =?) and estatus = ?', [$departamento, $estatus]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -204,13 +202,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
-        } elseif(empty($departamento)){ //Bysqueda por Estatus y Fecha
+        } elseif (empty($departamento)) { //Bysqueda por Estatus y Fecha
 
             $consultaTickets = DB::select('select * from tickets where estatus = ? and date(created_at) = ?', [$estatus, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -229,13 +226,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
-        } elseif(empty($estatus)){ //Busqueda por Departamento y Fecha
+        } elseif (empty($estatus)) { //Busqueda por Departamento y Fecha
 
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and date(created_at) = ?', [$departamento, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -254,13 +250,12 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
         } else { //Busqueda por Estatus, Departamento y Fecha
 
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and estatus = ? and date(created_at) = ?', [$departamento, $estatus, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach($consultaTickets as $ticket){
+                foreach ($consultaTickets as $ticket) {
                     //auxiliar
                     $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
                     $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
@@ -279,9 +274,7 @@ class ticketsController extends Controller
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
-
         }
-
     }
 
     public function generatePDF($id)
@@ -298,5 +291,100 @@ class ticketsController extends Controller
         $pdf = PDF::loadView('Administrador/Reportes/Tickets', compact('consultaTicket'));
         return $pdf->stream();
     }
+
+    public function generatePDFfiltro(searchTickets $request)
+    {
+
+        $aux = $request->input('auxiliar');
+        $departamento = $request->input('searchByDepartamento');
+        $fecha = $request->input('searchByFecha');
+
+
+
+        if ($aux != 0 and $departamento == 0 and $fecha == null) { //Verifica que aux tenga valor diferente a todos
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a  WHERE t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?', [$aux]);
+
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+
+            //if si no es nula
+        //        $pdf = PDF::loadView('Administrador/Reportes/Tickets', compact('consultaTicket'));
+        //        return $pdf->stream();
+        //else retorna mensaje
+            return $consultaTickets;
+        }
+
+        if ($aux != 0 and $departamento != 0 and $fecha == null) { //Verifica que aux y departamento tengan un valor diferente a todos
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?)', [$aux, $departamento]);
+
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+        }
+
+
+        if ($aux != 0 and $departamento != 0 and $fecha != null) { //Verifica que aux, departamento y fecha tenga valor difernte a todos y null
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$aux, $departamento, $fecha]);
+
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+
+        }
+
+        if ($aux == 0 and $departamento != 0 and $fecha == null) { //Verifica que departamento sea el unico en pdf
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, clientes as c WHERE (t.cliente_id = c.id_cliente and c.departamento_id = ?)', [$departamento]);
+
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+
+        }
+
+        if ($aux == 0 and $departamento != 0 and $fecha != null) { //Verifica que departamento y fecha
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, clientes as c WHERE (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$departamento, $fecha]);
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+        }
+
+        if ($aux == 0 and $departamento == 0 and $fecha != null) { //Verifica fecha
+
+            $consultaTickets = DB::select('SELECT * FROM tickets WHERE date(created_at) = ?', [$fecha]);
+
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+        }
+
+
+
+        if ($aux == 0 and $departamento == 0 and $fecha == null) { //Verifica que aux sean todos, departamento todos  y la fecha sea cualquiera
+
+            $consultaTickets = DB::table('tickets')->get();
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            return $consultaTickets;
+        }
+    }
+
+
+    private function asignarDatosPDF($consultaTickets){
+
+        foreach ($consultaTickets as $ticket) {
+            $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
+            $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
+            $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
+            $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
+            $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
+            $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
+            $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
+        }
+
+        return $consultaTickets;
+
+    }
+
+
+
+
 
 }

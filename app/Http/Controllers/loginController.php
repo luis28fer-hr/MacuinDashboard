@@ -32,13 +32,16 @@ class loginController extends Controller
             }
             else{
                 /* Verifica si es auxiliar */
+                $aux_activo=DB::table('auxiliares')->where('usuario_id', $id_activo)->first();
+                if($aux_activo!=null){
 
-
+                    return redirect('auxiliar/tickets')->with('activa_sesion', 'login');
+                }
 
                 /* Verifica si es cliente */
 
                 Auth::logout();
-                return 'Usted no es administrador, su interfaz esta en desarrollo';
+                return 'Usted no es administrador y tampoco es Auxiliar, su interfaz esta en desarrollo';
             }
         }
 
