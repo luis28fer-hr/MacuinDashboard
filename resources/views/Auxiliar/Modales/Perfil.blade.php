@@ -1,6 +1,6 @@
-<form action="" method="POST" enctype="multipart/form-data">
-@csrf
-
+<form action="{{route('perfil.auxiliar')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+ 
     <!-- Modal para editar perfil -->
     <div id="myModal" class="modal">
 

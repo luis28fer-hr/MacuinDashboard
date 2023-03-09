@@ -63,3 +63,4 @@ Route::post('tickets/reporte', [ticketsController::class, 'generatePDFfiltro'])-
 /* RUTAS DE PERFIL AUXILIAR */
 
 Route::get('auxiliar/tickets', [auxiliarController::class, 'index'])->name('aux.tickets')->middleware('auth');
+Route::post('perfil/auxiliar', [auxiliarController::class, 'updatePerfil'])->name('perfil.auxiliar')->middleware('auth');
