@@ -39,6 +39,13 @@
                     text: 'Administrador',
                     })</script> " !!}
     @endif
+    @if (session()->has('sinRegistros'))
+        {!! "<script> Swal.fire({
+                    icon: 'info',
+                    title: '¡No existe ningun ticket con estas caracteristicas!',
+                    text: 'Administrador',
+                    })</script> " !!}
+    @endif
 
     <main>
 
