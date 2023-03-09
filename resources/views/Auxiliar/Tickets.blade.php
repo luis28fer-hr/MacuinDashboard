@@ -13,6 +13,15 @@
         })</script> "!!}
     @endif
 
+    @if (session()->has('perfil_actualizado'))
+    {!!"<script> Swal.fire({
+        icon: 'success',
+        title: 'Perfil Actualizado!',
+        text: 'Auxiliar!',
+        })</script> "!!}
+    @endif
+
+
     @if (session()->has('Actualizado'))
         {!! "<script> Swal.fire({
                     icon: 'success',
