@@ -141,6 +141,16 @@
     justify-content: space-around;
     padding: 0 1.5rem;
 }
+.tickets-btns-aux{
+    background-color: #d4e6f1;
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+
 .btn{
     width: 3rem;
     font-size: 1rem;
@@ -155,17 +165,48 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    width: 33%;
 }
+
+
 .btns-aux a{
     color: #5499C7;
 }
+
 .btns-cli{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 33%;
 }
+.btns-status{
+    height: 2.45rem;
+    padding: .8rem;
+    border-radius: 10px;
+    background-color:#ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.btns-status select{
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: .1rem .1rem;
+    border-radius: 8px;
+    background-color:#F0F3F4;
+    margin-right: .3rem;
+    color: #3498DB;
+}
+
+.btns-status button{
+    cursor: pointer;
+    border: none;
+    border-radius: 100%;
+    padding: 0.0rem 0.14rem;
+    font-size: 1.25rem;
+    color: #3498DB;
+}
+
+
 .btns-cli a{
     color: #48C9B0;
 }
@@ -174,14 +215,14 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    width: 33%;
+
 }
 
 .btns-repo a{
     color: #f62d2d;
 }
 
-.tickets-btns a:hover{
+.tickets-btns, .tickets-btns-aux a:hover{
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
     transform: scale(1.1);
     cursor: pointer;

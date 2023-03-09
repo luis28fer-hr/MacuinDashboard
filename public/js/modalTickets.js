@@ -58,7 +58,7 @@ function modalPDF() {
 
 }
 
-//PARA OCULTAR EL MODAL DE MOSTRAR ASIGNAR CLIENTE A UN TICKET
+//PARA OCULTAR EL MODAL DE PDF
 function modalOcultarPDF() {
 
     var modal_pdf = document.getElementById("myModal_PDF");
@@ -68,3 +68,52 @@ function modalOcultarPDF() {
 
 
 
+// PARA MOSTRAR FILTRO PDF DE PERFIL AUXILIAR
+function modalPDFaux() {
+
+    var modal_pdf_aux = document.getElementById("myModal_PDFaux");
+    modal_pdf_aux.style.display = "block";
+
+}
+
+//PARA OCULTAR EL MODAL DE PDF PERFIL AUXILIAR
+function modalOcultarPDFaux() {
+
+    var modal_pdf_aux = document.getElementById("myModal_PDFaux");
+    modal_pdf_aux.style.display = "none";
+
+}
+
+
+
+// PARA MOSTRAR LOS MENSAJES AL ADMINISTRADOR QUE RECIBE EL AUXILIAR
+function modalMensajeAdmAuxiliar() {
+
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    modal_mensajeAux.style.display = "block";
+
+}
+
+//
+function modalOcultarMensajeAdmAuxiliar() {
+
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    modal_mensajeAux.style.display = "none";
+
+}
+
+// PARA MOSTRAR LOS MENSAJES AL AUXILAR QUE ENVIA AL AUXILIAR
+function modalMensajeAuxiliarClie() {
+
+    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli");
+    modal_mensajeAuxCli.style.display = "block";
+
+}
+
+//
+function modalOcultarMensajeAuxiliarClie() {
+
+    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli");
+    modal_mensajeAuxCli.style.display = "none";
+
+}
