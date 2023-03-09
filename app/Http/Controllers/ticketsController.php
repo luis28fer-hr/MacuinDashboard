@@ -57,7 +57,6 @@ class ticketsController extends Controller
         return redirect('tickets')->with('Actualizado', 'Ticket');
     }
 
-
     public function enviarMensajeAdminAux(comentario $request, $id_ticket)
     {
         if ($request->input('comentario') == null) {
@@ -111,21 +110,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where date(created_at) = ?', [$fecha]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -135,21 +120,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in (select id_cliente from clientes where departamento_id = ?)', [$departamento]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -159,21 +130,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where estatus = ?', [$estatus]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -183,21 +140,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id =?) and estatus = ?', [$departamento, $estatus]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -207,21 +150,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where estatus = ? and date(created_at) = ?', [$estatus, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -231,21 +160,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and date(created_at) = ?', [$departamento, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -255,21 +170,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and estatus = ? and date(created_at) = ?', [$departamento, $estatus, $fecha]);
 
             if ($consultaTickets != null) {
-                foreach ($consultaTickets as $ticket) {
-                    //auxiliar
-                    $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
-                    $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
-
-                    //cliente
-                    $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
-                    $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
-                    $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
-
-                    //comentarios del ticket / admin a aux
-                    $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                    $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
-                }
-
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
                 return redirect('tickets')->with('noExiste', 'Ticket');
@@ -306,12 +207,13 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a  WHERE t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?', [$aux]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-
-            //if si no es nula
-        //        $pdf = PDF::loadView('Administrador/Reportes/Tickets', compact('consultaTicket'));
-        //        return $pdf->stream();
-        //else retorna mensaje
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/Auxiliar', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
         }
 
         if ($aux != 0 and $departamento != 0 and $fecha == null) { //Verifica que aux y departamento tengan un valor diferente a todos
@@ -319,7 +221,13 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?)', [$aux, $departamento]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/AuxiliarDepartamento', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
         }
 
 
@@ -328,7 +236,13 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$aux, $departamento, $fecha]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/Especifica', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
 
         }
 
@@ -337,7 +251,13 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, clientes as c WHERE (t.cliente_id = c.id_cliente and c.departamento_id = ?)', [$departamento]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/AuxiliarDepartamento', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
 
         }
 
@@ -345,7 +265,13 @@ class ticketsController extends Controller
 
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, clientes as c WHERE (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$departamento, $fecha]);
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/DepartamentoFecha', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
         }
 
         if ($aux == 0 and $departamento == 0 and $fecha != null) { //Verifica fecha
@@ -353,7 +279,26 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT * FROM tickets WHERE date(created_at) = ?', [$fecha]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/Fecha', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
+        }
+
+        if ($aux != 0 and $departamento == 0 and $fecha != null) { //Verifica fecha y auxiliar
+
+            $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a  WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (date(t.created_at) = ?)', [$aux, $fecha]);
+            $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/FechaAuxiliar', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
         }
 
 
@@ -362,10 +307,15 @@ class ticketsController extends Controller
 
             $consultaTickets = DB::table('tickets')->get();
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            return $consultaTickets;
+            
+            if ($consultaTickets != null){
+                $pdf = PDF::loadView('Administrador/Reportes/General', compact('consultaTickets'));
+                return $pdf->stream();
+            } else {
+                return redirect('tickets')->with('sinRegistros', 'Ticket');
+            }
         }
     }
-
 
     private function asignarDatosPDF($consultaTickets){
 
@@ -375,6 +325,27 @@ class ticketsController extends Controller
             $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
             $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
             $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
+            $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
+            $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
+        }
+
+        return $consultaTickets;
+
+    }
+
+    private function asignarDatosFiltro($consultaTickets){
+
+        foreach ($consultaTickets as $ticket) {
+            //auxiliar
+            $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
+            $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
+
+            //cliente
+            $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
+            $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
+            $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
+
+            //comentarios del ticket / admin a aux
             $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
             $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
         }

@@ -1,4 +1,4 @@
-<form action="{{route('Tickets.reporte.filtro')}}" method="POST">
+<form action="{{route('Tickets.reporte.filtro')}}" target="_blank" method="POST">
     @csrf
     <div id="myModal_PDF" class="modal">
 
@@ -37,6 +37,7 @@
             <div class="modal-footer">
                 <a onclick="modalOcultarPDF()" class="_cancel close">Cancelar</a>
                 <span>&nbsp&nbsp</span>
+                <button type="submit" class="_save">Generar</button>
                 <button type="submit" class="_save">Generar PDF</button>
             </div>
         </div>
