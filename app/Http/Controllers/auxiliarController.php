@@ -22,15 +22,15 @@ class auxiliarController extends Controller
 
     public function updatePerfil(perfilController $request)
     {
-   
+
             try {
-    
+
                 $img = $request->file('fotoPerfil')->store('public/img');
                 $url = Storage::url($img);
-    
+
                 $idActivo = Auth::user()->id;
-     
-    
+
+
                 DB::table('users')->where('id', $idActivo)->update([
                     "name" => $request->input('name'),
                     "apellido_p" => $request->input('apellido_p'),
@@ -40,17 +40,17 @@ class auxiliarController extends Controller
                     "email" => $request->input('correo'),
                     "updated_at" => Carbon::now()
                 ]);
-    
+
                 return redirect('auxiliar/tickets')->with('perfil_actualizado', 'perfil');
-    
+
             } catch (Exception $e) {
-    
-    
+
+
                 return redirect('auxiliar/tickets')->with('error_email', 'error');
             }
         }
 
-        
+
 
     public function searchTickets(searchTickets $request)
     {    //Consulta de los departamentos
@@ -67,9 +67,9 @@ class auxiliarController extends Controller
             return redirect('auxiliar/tickets')->with('selectFiltro', 'Ticket');
         } elseif (empty($estatus) and empty($departamento)) { //Busqueda por Fecha
 
-            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar 
+            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
             and usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id,$fecha]);
-            
+
             if ($consultaTickets != null) {
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('auxiliar/tickets', compact('consultaTickets', 'consulDepartaments'));
@@ -81,7 +81,7 @@ class auxiliarController extends Controller
             $consultaTickets = DB::select('select * from tickets as t, auxiliares as a
               where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
               where c.departamento_id = ?)', [Auth::user()->id,$departamento]);
-                
+
             if ($consultaTickets != null) {
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('auxiliar/tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
@@ -92,7 +92,7 @@ class auxiliarController extends Controller
 
             $consultaTickets = DB::select('select * from tickets where estatus = ?', [$estatus]);
 
-            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar 
+            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
             and usuario_id = ?) and t.estatus = ?', [Auth::user()->id,$estatus]);
 
             if ($consultaTickets != null) {
@@ -115,7 +115,7 @@ class auxiliarController extends Controller
             }
         } elseif (empty($departamento)) { //Busqueda por Estatus y Fecha
 
-            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar 
+            $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
             and usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id,$fecha,$estatus]);
 
             if ($consultaTickets != null) {

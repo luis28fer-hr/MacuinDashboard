@@ -104,15 +104,18 @@ class ticketsController extends Controller
 
         if (empty($estatus) and empty($departamento) and empty($fecha)) { //Sin ningun filtro seleccionado
 
+
             return redirect('tickets')->with('selectFiltro', 'Ticket');
         } elseif (empty($estatus) and empty($departamento)) { //Busqueda por Fecha
 
             $consultaTickets = DB::select('select * from tickets where date(created_at) = ?', [$fecha]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
+
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
         } elseif (empty($estatus) and empty($fecha)) { //Busqueda por Departamento
@@ -120,9 +123,11 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in (select id_cliente from clientes where departamento_id = ?)', [$departamento]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
+
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
         } elseif (empty($fecha) and empty($departamento)) { //Busqueda por Estatus
@@ -130,6 +135,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where estatus = ?', [$estatus]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
@@ -140,6 +146,7 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id =?) and estatus = ?', [$departamento, $estatus]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
@@ -150,9 +157,11 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where estatus = ? and date(created_at) = ?', [$estatus, $fecha]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
+
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
         } elseif (empty($estatus)) { //Busqueda por Departamento y Fecha
@@ -160,9 +169,11 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and date(created_at) = ?', [$departamento, $fecha]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
+
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
         } else { //Busqueda por Estatus, Departamento y Fecha
@@ -170,9 +181,11 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and estatus = ? and date(created_at) = ?', [$departamento, $estatus, $fecha]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Administrador/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
             } else {
+
                 return redirect('tickets')->with('noExiste', 'Ticket');
             }
         }
@@ -207,8 +220,8 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a  WHERE t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?', [$aux]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/Auxiliar', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -221,8 +234,8 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?)', [$aux, $departamento]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/AuxiliarDepartamento', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -236,14 +249,13 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a, clientes as c WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$aux, $departamento, $fecha]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/Especifica', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
                 return redirect('tickets')->with('sinRegistros', 'Ticket');
             }
-
         }
 
         if ($aux == 0 and $departamento != 0 and $fecha == null) { //Verifica que departamento sea el unico en pdf
@@ -252,21 +264,20 @@ class ticketsController extends Controller
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
 
-            if ($consultaTickets != null){
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/AuxiliarDepartamento', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
                 return redirect('tickets')->with('sinRegistros', 'Ticket');
             }
-
         }
 
         if ($aux == 0 and $departamento != 0 and $fecha != null) { //Verifica que departamento y fecha
 
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, clientes as c WHERE (t.cliente_id = c.id_cliente and c.departamento_id = ?) and (date(t.created_at) = ?)', [$departamento, $fecha]);
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/DepartamentoFecha', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -279,8 +290,8 @@ class ticketsController extends Controller
             $consultaTickets = DB::select('SELECT * FROM tickets WHERE date(created_at) = ?', [$fecha]);
 
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/Fecha', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -292,8 +303,8 @@ class ticketsController extends Controller
 
             $consultaTickets = DB::select('SELECT t.* FROM tickets as t, auxiliares as a  WHERE (t.auxiliar_id =  a.id_auxiliar and a.usuario_id = ?) and (date(t.created_at) = ?)', [$aux, $fecha]);
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/FechaAuxiliar', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -307,8 +318,8 @@ class ticketsController extends Controller
 
             $consultaTickets = DB::table('tickets')->get();
             $consultaTickets =  $this->asignarDatosPDF($consultaTickets);
-            
-            if ($consultaTickets != null){
+
+            if ($consultaTickets != null) {
                 $pdf = PDF::loadView('Administrador/Reportes/General', compact('consultaTickets'));
                 return $pdf->stream();
             } else {
@@ -317,7 +328,8 @@ class ticketsController extends Controller
         }
     }
 
-    private function asignarDatosPDF($consultaTickets){
+    private function asignarDatosPDF($consultaTickets)
+    {
 
         foreach ($consultaTickets as $ticket) {
             $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
@@ -330,10 +342,10 @@ class ticketsController extends Controller
         }
 
         return $consultaTickets;
-
     }
 
-    private function asignarDatosFiltro($consultaTickets){
+    private function asignarDatosFiltro($consultaTickets)
+    {
 
         foreach ($consultaTickets as $ticket) {
             //auxiliar
@@ -351,11 +363,5 @@ class ticketsController extends Controller
         }
 
         return $consultaTickets;
-
     }
-
-
-
-
-
 }
