@@ -37,7 +37,6 @@
             <div class="modal-footer">
                 <a onclick="modalOcultarPDF()" class="_cancel close">Cancelar</a>
                 <span>&nbsp&nbsp</span>
-                <button type="submit" class="_save">Generar</button>
                 <button type="submit" class="_save">Generar PDF</button>
             </div>
         </div>
