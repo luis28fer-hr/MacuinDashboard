@@ -34,7 +34,7 @@ class loginController extends Controller
                 /* Verifica si es auxiliar */
                 $aux_activo=DB::table('auxiliares')->where('usuario_id', $id_activo)->first();
                 if($aux_activo!=null){
-
+                    $consulDepartaments = DB::table('departamentos')->get();
                     return redirect('auxiliar/tickets')->with('activa_sesion', 'login');
                 }
 
