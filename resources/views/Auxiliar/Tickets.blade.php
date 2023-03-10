@@ -62,7 +62,7 @@
 
         <h1>Tickets</h1>
         <div class="tickets-options">
-            <form method="" action="">
+            <form method="" action="{{route('aux.Tickets.buscar')}}" > 
                 <div class="filtros">
                     <div>
                         <select name="searchByEstatus" id="">
@@ -77,7 +77,9 @@
                     <div>
                         <select name="searchByDepartamento" id="">
                             <option value="" selected disabled>Departamento</option>
-
+                            @foreach ($consulDepartaments as $departamentos)
+                                <option value={{ $departamentos->id_departamento }}>{{ $departamentos->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\clientesController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\departamentosController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ticketsAuxiliarController;
 use App\Http\Controllers\ticketsController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 /* Rutas login */
 
 Route::get('/', [loginController::class, 'index'])->name('login');
-Route::post('login', [loginController::class, 'validar'])->name('validar');
+Route::post('login', [loginController::class, 'validar'])->name('validar'); 
 Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 /* RUTAS DE PERFIL ADMINISTRADOR */
@@ -64,3 +65,4 @@ Route::post('tickets/reporte', [ticketsController::class, 'generatePDFfiltro'])-
 
 Route::get('auxiliar/tickets', [auxiliarController::class, 'index'])->name('aux.tickets')->middleware('auth');
 Route::post('perfil/auxiliar', [auxiliarController::class, 'updatePerfil'])->name('perfil.auxiliar')->middleware('auth');
+Route::get('auxiliar/tickets/buscar', [auxiliarController::class, 'searchTickets'])->name('aux.Tickets.buscar')->middleware('auth');
