@@ -20,13 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 
 /* Rutas login */
-
 Route::get('/', [loginController::class, 'index'])->name('login');
 Route::post('login', [loginController::class, 'validar'])->name('validar');
 Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 /* RUTAS DE PERFIL ADMINISTRADOR */
-
 Route::get('dashboard', [dashboardController::class, 'index'])->name('Principal')->middleware('auth');
 Route::post('perfil', [administradorController::class, 'updatePerfil'])->name('perfil')->middleware('auth');
 
@@ -65,4 +63,5 @@ Route::post('tickets/reporte', [ticketsController::class, 'generatePDFfiltro'])-
 
 Route::get('auxiliar/tickets', [auxiliarController::class, 'index'])->name('aux.tickets')->middleware('auth');
 Route::post('perfil/auxiliar', [auxiliarController::class, 'updatePerfil'])->name('perfil.auxiliar')->middleware('auth');
+Route::put('auxiliar/actualizar/{id_ticket}', [auxiliarController::class, 'updateStatus'])->name('aux.actualizar')->middleware('auth');
 Route::get('auxiliar/tickets/buscar', [auxiliarController::class, 'searchTickets'])->name('aux.tickets.buscar')->middleware('auth');

@@ -1,19 +1,19 @@
 <form action="" method="">
     @csrf
-    <div id="myModal_MensajeCli" class="modal myModal_MensajeCli">
+    <div id="myModal_MensajeCli-{{$ticket->id_ticket}}" class="modal myModal_MensajeCli">
 
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Comentarios con el Cliente</h2>
-                <i class="fa-solid fa-xmark" onclick="modalOcultarMensajeAuxiliarClie()"></i>
+                <i class="fa-solid fa-xmark" onclick="modalOcultarMensajeAuxiliarClie({{$ticket->id_ticket}})"></i>
             </div>
             <div class="modal-body-tickets">
-
+                @foreach ($ticket->comentarioAuxCli as $mensaje)
                     <div class="mensaje">
-                        <p>Todos los comentarios que se envian a este ticket de parte del auxiliar</p>
+                        <p>{{$mensaje->comentario}}</p>
                     </div>
-
+                @endforeach
             </div>
             <div class="modal-footer-tickets">
 

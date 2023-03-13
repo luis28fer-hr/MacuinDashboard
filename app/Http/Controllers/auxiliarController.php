@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\comentario;
 use App\Http\Requests\perfilController;
 use Exception;
 use Illuminate\Http\Request;
@@ -15,9 +16,14 @@ class auxiliarController extends Controller
 {
     public function index()
     {
-        $ConsultaTicket = DB::select('select * from tickets as t, auxiliares as a where t.auxiliar_id = a.id_auxiliar and usuario_id = 1000016');
+        // Tickets del auxiliar logueado
+        $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where t.auxiliar_id = a.id_auxiliar and usuario_id = ?', [Auth::user()->id]);
+        $consultaTickets = $this->asignarDatos($consultaTickets);
+
+        // Consulta de Departamentos
         $consulDepartaments = DB::table('departamentos')->get();
-        return view('Auxiliar/Tickets', compact('ConsultaTicket', 'consulDepartaments'));
+        
+        return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
     }
 
     public function updatePerfil(perfilController $request)
@@ -49,8 +55,34 @@ class auxiliarController extends Controller
         }
     }
 
+    public function updateStatus(searchTickets $request, $id_ticket)
+    {
+        //Obtenemos el estaus
+        $estatus = $request->input('updateStatus');
 
+        // Actualizamos el estatus
+        DB::table('tickets')->where('id_ticket', $id_ticket)->update([
+            "estatus" => $estatus,
+            "updated_at" => Carbon::now()
+        ]);
 
+        //Consulta de los departamentos
+        $consulDepartaments = DB::table('departamentos')->get();
+
+        // Tickets del ticket editado
+        $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where t.auxiliar_id = a.id_auxiliar and usuario_id = ?', [Auth::user()->id]);
+        $consultaTickets = $this->asignarDatos($consultaTickets);
+
+        return redirect('auxiliar/tickets')->with('Actualizado', 'Ticket');
+    }
+
+    public function nuevoMensaje(comentario $request, $id_ticket)
+    {
+        
+        if($request->innput('comentario') == null){
+            return redirect('auxiliar/tickets')->with('MensajeNoEnviado', 'Ticket')
+        } 
+    }
 
     public function searchTickets(searchTickets $request)
     {    //Consulta de los departamentos
@@ -72,7 +104,7 @@ class auxiliarController extends Controller
             and usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $fecha]);
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -83,7 +115,7 @@ class auxiliarController extends Controller
               where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c where c.departamento_id = ?)', [Auth::user()->id,$departamento]);
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -98,7 +130,7 @@ class auxiliarController extends Controller
 
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets',  'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -110,7 +142,7 @@ class auxiliarController extends Controller
               where c.departamento_id = ?) and t.estatus=?', [Auth::user()->id, $departamento, $estatus]);
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -122,7 +154,7 @@ class auxiliarController extends Controller
 
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -135,7 +167,7 @@ class auxiliarController extends Controller
 
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                $consultaTickets =  $this->asignarDatos($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
@@ -147,15 +179,17 @@ class auxiliarController extends Controller
             where c.departamento_id = ?) and date(t.created_at) = ? and t.estatus =?', [Auth::user()->id, $departamento, $fecha, $estatus]);
 
             if ($consultaTickets != null) {
+
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
                 return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
+
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
             }
         }
     }
 
-    private function asignarDatosFiltro($consultaTickets)
+    private function asignarDatos($consultaTickets)
     {
 
         foreach ($consultaTickets as $ticket) {
@@ -168,9 +202,11 @@ class auxiliarController extends Controller
             $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
             $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
 
+            //comentarios del ticket / aux a cliente
+            $ticket->comentarioAuxCli = DB::select('select * from comentarioauxiliar where ticket_id = ? ORDER BY created_at DESC', [$ticket->id_ticket]);
+
             //comentarios del ticket / admin a aux
             $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
-            $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
         }
 
         return $consultaTickets;
