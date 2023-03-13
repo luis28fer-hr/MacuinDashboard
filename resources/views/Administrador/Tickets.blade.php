@@ -125,24 +125,25 @@
                             <div class="btns-aux">
                                 <a title="Asignar un auxiliar" onclick="modalAsignarAuxiliar({{ $ticket->id_ticket }})"
                                     class="btn"><i class="fa-solid fa-user-tie"></i></a>
-                                @include('Administrador/Modales/Tickets/AsignarAuxiliar')
                                 <a title="Enviar comentario al auxiliar"
                                     onclick="modalMensajeAuxiliar({{ $ticket->id_ticket }})" class="btn"><i
                                         class="fa-regular fa-message"></i></a>
-                                @include('Administrador/Modales/Tickets/MensajeAuxiliar')
                             </div>
 
                             <div class="btns-cli">
                                 <a class="btn"><i class="fa-solid fa-users"></i></a>
                                 <a onclick="modalMensajeCliente({{ $ticket->id_ticket }})" class="btn"><i
                                         class="fa-regular fa-message"></i></a>
-                                @include('Administrador/Modales/Tickets/MensajeCliente')
 
                             </div>
                             <div class="btns-repo">
                                 <a href="{{route('Tickets.reporte', $ticket->id_ticket)}}" target="_blank"  class="btn"><i class="fa-solid fa-file-pdf"></i></a>
                             </div>
                         </div>
+                        @include('Administrador/Modales/Tickets/AsignarAuxiliar')
+                        @include('Administrador/Modales/Tickets/MensajeAuxiliar')
+                        @include('Administrador/Modales/Tickets/MensajeCliente')
+
                     </div>
                 @endforeach
 

@@ -62,7 +62,9 @@
 
         <h1>Tickets</h1>
         <div class="tickets-options">
-            <form method="" action="{{route('aux.tickets.buscar')}}" > 
+
+            <form method="" action="{{route('aux.tickets.buscar')}}" >
+
                 <div class="filtros">
                     <div>
                         <select name="searchByEstatus" id="">

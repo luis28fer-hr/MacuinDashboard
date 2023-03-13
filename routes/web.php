@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Rutas login */
 Route::get('/', [loginController::class, 'index'])->name('login');
-Route::post('login', [loginController::class, 'validar'])->name('validar'); 
+Route::post('login', [loginController::class, 'validar'])->name('validar');
 Route::get('salir', [loginController::class, 'logOut'])->name('logOut');
 
 /* RUTAS DE PERFIL ADMINISTRADOR */

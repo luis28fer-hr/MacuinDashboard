@@ -179,8 +179,10 @@ class auxiliarController extends Controller
             where c.departamento_id = ?) and date(t.created_at) = ? and t.estatus =?', [Auth::user()->id, $departamento, $fecha, $estatus]);
 
             if ($consultaTickets != null) {
-                $consultaTickets =  $this->asignarDatos($consultaTickets);
-                return view('Auxiliar/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
+
+                $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
+                return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
+
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
             }

@@ -152,13 +152,12 @@
 }
 
 .btn{
-    width: 3rem;
-    font-size: 1rem;
+    width: 2.8rem;
     padding: .4rem .0rem;
     border-radius: 8px;
     background-color:#ffffff;
     margin-right: .3rem;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
 }
 
 .btns-aux{
