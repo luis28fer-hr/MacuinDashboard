@@ -86,34 +86,34 @@ function modalOcultarPDFaux() {
 
 
 
-// PARA MOSTRAR LOS MENSAJES AL ADMINISTRADOR QUE RECIBE EL AUXILIAR
-function modalMensajeAdmAuxiliar() {
+// PARA MOSTRAR LOS MENSAJES AL AUXILIR QUE RECIBE DEL ADMINISTRADOR
+function modalMensajeAdmAuxiliar(id) {
 
-    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux-"+id);
     modal_mensajeAux.style.display = "block";
 
 }
 
 //
-function modalOcultarMensajeAdmAuxiliar() {
+function modalOcultarMensajeAdmAuxiliar(id) {
 
-    var modal_mensajeAux = document.getElementById("myModal_MensajeAux");
+    var modal_mensajeAux = document.getElementById("myModal_MensajeAux-"+id);
     modal_mensajeAux.style.display = "none";
 
 }
 
-// PARA MOSTRAR LOS MENSAJES AL AUXILAR QUE ENVIA AL AUXILIAR
-function modalMensajeAuxiliarClie() {
+// PARA MOSTRAR LOS MENSAJES AL AUXILAR QUE ENVIA AL CLIENTE
+function modalMensajeAuxiliarClie(id) {
 
-    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli");
+    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli-"+id);
     modal_mensajeAuxCli.style.display = "block";
 
 }
 
 //
-function modalOcultarMensajeAuxiliarClie() {
+function modalOcultarMensajeAuxiliarClie(id) {
 
-    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli");
+    var modal_mensajeAuxCli = document.getElementById("myModal_MensajeCli-"+id);
     modal_mensajeAuxCli.style.display = "none";
 
 }

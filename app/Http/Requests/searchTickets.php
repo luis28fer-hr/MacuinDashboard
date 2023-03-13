@@ -28,6 +28,7 @@ class searchTickets extends FormRequest
             'searchByEstatus' => ['string'],
             'searchByDepartamento' => ['numeric'],
             'searchByFecha' => [''],
+            'updateStatus' => ['string'],
         ];
     }
 }

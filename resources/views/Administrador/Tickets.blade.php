@@ -57,9 +57,9 @@
                         <select name="searchByEstatus" id="">
                             <option value="" selected disabled>Estatus</option>
                             <option value="Asignado">Asignado</option>
-                            <option value="En Proceso">En Proceso</option>
+                            <option value="En proceso">En Proceso</option>
                             <option value="Completado">Completado</option>
-                            <option value="No Solucionado">No Solucionado</option>
+                            <option value="No solucionado">No Solucionado</option>
                             <option value="Cancelado">Cancelado</option>
                         </select>
                     </div>
