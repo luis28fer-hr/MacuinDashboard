@@ -79,9 +79,18 @@ class auxiliarController extends Controller
     public function nuevoMensaje(comentario $request, $id_ticket)
     {
         
-        if($request->innput('comentario') == null){
-            return redirect('auxiliar/tickets')->with('MensajeNoEnviado', 'Ticket')
-        } 
+        if ($request->input('comentario') == null) {
+
+            return redirect('auxiliar/tickets')->with('MensajeNoEnviado', 'Ticket');
+        } else {
+            DB::table('comentarioauxiliar')->insert([
+                "ticket_id" => $id_ticket,
+                "comentario" =>  $request->input('comentario'),
+                "created_at" => Carbon::now(),
+            ]);
+            
+            return redirect('auxiliar/tickets')->with('MensajeEnviado', 'Ticket');
+        }
     }
 
     public function searchTickets(searchTickets $request)

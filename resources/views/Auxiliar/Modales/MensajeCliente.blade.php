@@ -1,4 +1,4 @@
-<form action="" method="">
+<form action="{{route('aux.comentario.auxcli', $ticket->id_ticket)}}" method="POST">
     @csrf
     <div id="myModal_MensajeCli-{{$ticket->id_ticket}}" class="modal myModal_MensajeCli">
 
