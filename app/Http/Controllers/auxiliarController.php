@@ -148,7 +148,7 @@ class auxiliarController extends Controller
 
             if ($consultaTickets != null) {
                 $consultaTickets =  $this->asignarDatosFiltro($consultaTickets);
-                return view('Auxiliar/Tickets', compact('consultaTickets', 'consultaAuxiliares', 'consulDepartaments'));
+                return view('Auxiliar/Tickets', compact('consultaTickets', 'consulDepartaments'));
             } else {
                 return redirect('auxiliar/tickets')->with('noExiste', 'Ticket');
             }
