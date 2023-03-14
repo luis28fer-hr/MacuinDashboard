@@ -2,12 +2,12 @@
     <nav>
         <div class="nav_header">
             <div class="settings">
-                <a id="myBtn"><i class="fa-solid fa-gear"></i></a>
+                <a id="myBtn" title="Mis datos"><i class="fa-solid fa-gear"></i></a>
                 @include('Administrador/Modales/Perfil')
 
             </div>
             <div class="foto_perfil">
-                <img src="{{Auth::user()->url_foto}}" alt="foto de perfil">
+                <img src="{{Auth::user()->url_foto}}" alt="foto de perfil" title="Mi foto de perfil">
             </div>
             <div class="nombre_usuario">
                 <p>{{Auth::user()->name}} {{Auth::user()->apellido_p}} {{Auth::user()->apellido_m}}</p>
@@ -35,7 +35,7 @@
         <div class="nav_footer">
             <ul>
                 <li>
-                    <a id="myBtn_logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a>
+                    <a id="myBtn_logout" title="Cerrar Sesion"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</a>
                     @include('Administrador/Modales/Salir')
                 </li>
             </ul>

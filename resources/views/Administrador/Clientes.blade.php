@@ -47,7 +47,7 @@
 <main>
     <h1>Clientes</h1>
         <div class="clientes-options">
-            <a id="myBtn_NewCli"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
+            <a id="myBtn_NewCli" title="Agregar Nuevo Cliente"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
             @include('Administrador/Modales/NuevoCliente')
             <div class="filtros">
                 <form action="{{ route('Clientes.buscar') }}">
@@ -81,9 +81,9 @@
                             <p class="">{{ $consul->departamento->nombre }}</p>
                         </div>
                         <div class="clientes-btns">
-                            <a onclick="modalEditarMostrarClie({{ $consul->id }})" class="btn-edit"><i
+                            <a onclick="modalEditarMostrarClie({{ $consul->id }})" title="Editar" class="btn-edit"><i
                                     class="fa-solid fa-pen"></i></a>
-                            <a onclick="modalEliminarMostrarClie({{ $consul->id }})" class="btn-delete"><i
+                            <a onclick="modalEliminarMostrarClie({{ $consul->id }})"title="Eliminar" class="btn-delete"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                         @include('Administrador/Modales/EditarCliente')

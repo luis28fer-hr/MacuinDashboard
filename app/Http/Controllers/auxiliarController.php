@@ -18,7 +18,7 @@ class auxiliarController extends Controller
     public function index()
     {
         // Tickets del auxiliar logueado
-        $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where t.auxiliar_id = a.id_auxiliar and usuario_id = ?', [Auth::user()->id]);
+        $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where t.auxiliar_id = a.id_auxiliar and usuario_id = ? ORDER BY t.created_at DESC', [Auth::user()->id]);
         $consultaTickets = $this->asignarDatos($consultaTickets);
 
         // Consulta de Departamentos

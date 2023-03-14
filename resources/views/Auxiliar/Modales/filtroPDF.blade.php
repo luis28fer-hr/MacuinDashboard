@@ -1,4 +1,4 @@
-<form action="{{route('aux.tickets.reporte.filtro')}}" method="POST">
+<form action="{{route('aux.tickets.reporte.filtro')}}" target="_blank" method="POST">
     @csrf
     <div id="myModal_PDFaux" class="modal">
 
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <p><span></span>Seleccione un departamento:</p>
-                    
+
                     <select name="searchByDepartamento" id="">
                         <option value="0" selected >Todos</option>
                         @foreach ($consulDepartaments as $departamentos)

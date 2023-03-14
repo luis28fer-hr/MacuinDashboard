@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Seleccione un Auxiliar para este Ticket</h2>
-                <i class="fa-solid fa-xmark" onclick="modalOcultarAsignarAuxiliar({{$ticket->id_ticket}})"></i>
+                <i class="fa-solid fa-xmark" title="Cerrar" onclick="modalOcultarAsignarAuxiliar({{$ticket->id_ticket}})"></i>
             </div>
             <div class="modal-body">
                 <div class="auxiliares-container-tickets">
@@ -18,7 +18,7 @@
                             <img src="{{ $auxiliar->url_foto }}" alt="FotodePerfil">
                         </div>
                         <div class="auxiliares-name-tickets">
-                            <p>{{ $auxiliar->name }} {{ $auxiliar->apellido_p }} {{ $auxiliar->apellido_m }}aaaaaaaaa</p>
+                            <p>{{ $auxiliar->name }} {{ $auxiliar->apellido_p }} {{ $auxiliar->apellido_m }}</p>
                         </div>
                         <div class="auxiliares-data-tickets">
                             <p>ID: {{ $auxiliar->id }}</p>
@@ -27,7 +27,7 @@
                             <p class="">60 %</p>
                         </div>
                         <div class="auxiliares-btns-tickets">
-                            <a href="{{route('Tickets.actualizar', [$ticket->id_ticket,  $auxiliar->id])}}" class="btn-confirmar"><i class="fa-solid fa-check"></i></a>
+                            <a href="{{route('Tickets.actualizar', [$ticket->id_ticket,  $auxiliar->id])}}" title="Asignar" class="btn-confirmar"><i class="fa-solid fa-check"></i></a>
                         </div>
                     </div>
 

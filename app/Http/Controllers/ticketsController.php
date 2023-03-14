@@ -15,7 +15,7 @@ class ticketsController extends Controller
     public function index()
     {
 
-        $consultaTickets = DB::table('tickets')->get();
+        $consultaTickets = DB::select('SELECT * FROM tickets ORDER BY created_at DESC');
         foreach ($consultaTickets as $ticket) {
             //auxiliar
             $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
@@ -108,7 +108,7 @@ class ticketsController extends Controller
             return redirect('tickets')->with('selectFiltro', 'Ticket');
         } elseif (empty($estatus) and empty($departamento)) { //Busqueda por Fecha
 
-            $consultaTickets = DB::select('select * from tickets where date(created_at) = ?', [$fecha]);
+            $consultaTickets = DB::select('select * from tickets where date(created_at) = ? ORDER BY created_at DESC', [$fecha]);
 
             if ($consultaTickets != null) {
 
@@ -120,7 +120,7 @@ class ticketsController extends Controller
             }
         } elseif (empty($estatus) and empty($fecha)) { //Busqueda por Departamento
 
-            $consultaTickets = DB::select('select * from tickets where cliente_id in (select id_cliente from clientes where departamento_id = ?)', [$departamento]);
+            $consultaTickets = DB::select('select * from tickets where cliente_id in (select id_cliente from clientes where departamento_id = ? ORDER BY created_at DESC)', [$departamento]);
 
             if ($consultaTickets != null) {
 
@@ -132,7 +132,7 @@ class ticketsController extends Controller
             }
         } elseif (empty($fecha) and empty($departamento)) { //Busqueda por Estatus
 
-            $consultaTickets = DB::select('select * from tickets where estatus = ?', [$estatus]);
+            $consultaTickets = DB::select('select * from tickets where estatus = ? ORDER BY created_at DESC', [$estatus]);
 
             if ($consultaTickets != null) {
 
@@ -143,7 +143,7 @@ class ticketsController extends Controller
             }
         } elseif (empty($fecha)) { //Busqueda por Estatus y Departamento
 
-            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id =?) and estatus = ?', [$departamento, $estatus]);
+            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id =?) and estatus = ? ORDER BY created_at DESC', [$departamento, $estatus]);
 
             if ($consultaTickets != null) {
 
@@ -154,7 +154,7 @@ class ticketsController extends Controller
             }
         } elseif (empty($departamento)) { //Bysqueda por Estatus y Fecha
 
-            $consultaTickets = DB::select('select * from tickets where estatus = ? and date(created_at) = ?', [$estatus, $fecha]);
+            $consultaTickets = DB::select('select * from tickets where estatus = ? and date(created_at) = ? ORDER BY created_at DESC', [$estatus, $fecha]);
 
             if ($consultaTickets != null) {
 
@@ -166,7 +166,7 @@ class ticketsController extends Controller
             }
         } elseif (empty($estatus)) { //Busqueda por Departamento y Fecha
 
-            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and date(created_at) = ?', [$departamento, $fecha]);
+            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and date(created_at) = ? ORDER BY created_at DESC', [$departamento, $fecha]);
 
             if ($consultaTickets != null) {
 
@@ -178,7 +178,7 @@ class ticketsController extends Controller
             }
         } else { //Busqueda por Estatus, Departamento y Fecha
 
-            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and estatus = ? and date(created_at) = ?', [$departamento, $estatus, $fecha]);
+            $consultaTickets = DB::select('select * from tickets where cliente_id in(select id_cliente from clientes where departamento_id = ?) and estatus = ? and date(created_at) = ? ORDER BY created_at DESC', [$departamento, $estatus, $fecha]);
 
             if ($consultaTickets != null) {
 

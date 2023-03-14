@@ -58,6 +58,13 @@
             })</script> " !!}
     @endif
 
+    @if (session()->has('sinRegistros'))
+        {!! "<script> Swal.fire({
+                    icon: 'info',
+                    title: '¡No existe ningun ticket con estas caracteristicas!',
+                    text: 'Administrador',
+                    })</script> " !!}
+    @endif
     <main>
 
         <h1>Tickets</h1>
@@ -140,7 +147,7 @@
                                 <a onclick="modalMensajeAdmAuxiliar({{ $ticket->id_ticket }})" class="btn"
                                     title="Ver comentarios del Administrador"><i class="fa-solid fa-user-tie"></i></a>
                                     @include('Auxiliar/Modales/MensajeAdmin')
-                                <a onclick="modalMensajeAuxiliarClie({{ $ticket->id_ticket }})" class="btn" 
+                                <a onclick="modalMensajeAuxiliarClie({{ $ticket->id_ticket }})" class="btn"
                                     title="Enviar comentario a Cliente"><i class="fa-regular fa-message"></i></a>
                                     @include('Auxiliar/Modales/MensajeCliente')
                             </div>
@@ -162,7 +169,7 @@
                             </form>
 
                             <div class="btns-repo">
-                                
+
                                 <a href="{{route('aux.tickets.reporte', $ticket->id_ticket)}}" target="_blank" class="btn" title="Generar PDF"><i
                                         class="fa-solid fa-file-pdf"></i></a>
                             </div>
