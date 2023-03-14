@@ -39,7 +39,7 @@
     <main>
         <h1>Departamentos</h1>
         <div class="departamento-options">
-            <a id="myBtn_NewDep"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
+            <a id="myBtn_NewDep" title="Agregar Nuevo Departamento"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
 
             @include('Administrador/Modales/NuevoDepartamento')
 
@@ -72,9 +72,9 @@
                         </div>
                         <div class="departamento-btns">
                             <a onclick="modalEditarMostrarDepar({{ $consul->id_departamento }})" class="btn-edit"><i
-                                    class="fa-solid fa-pen"></i></a>
-                            <a class="cantidad">{{ $consul->cantidad }}</a>
-                            <a onclick="modaEliminarMostrarDepar({{ $consul->id_departamento }})" class="btn-delete"><i
+                                    class="fa-solid fa-pen" title="Editar"></i></a>
+                            <a class="cantidad" title="Cantidad de clientes">{{ $consul->cantidad }}</a>
+                            <a onclick="modaEliminarMostrarDepar({{ $consul->id_departamento }})" title="Eliminar" class="btn-delete"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                         @include('Administrador/Modales/EditarDepartamento')

@@ -47,7 +47,7 @@
     <main>
         <h1>Auxiliares</h1>
         <div class="auxiliares-options">
-            <a id="myBtn_NewAux"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
+            <a id="myBtn_NewAux" title="Agregar Nuevo Auxiliar"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
             @include('Administrador/Modales/NuevoAuxiliar')
             <div class="filtros">
                 <div>
@@ -87,9 +87,9 @@
                             <p class="">60 %</p>
                         </div>
                         <div class="auxiliares-btns">
-                            <a onclick="modalEditarMostrar({{ $consul->id }})" class="btn-edit"><i
+                            <a onclick="modalEditarMostrar({{ $consul->id }})" title="Editar" class="btn-edit"><i
                                     class="fa-solid fa-pen"></i></a>
-                            <a onclick="modalEliminarMostrar({{ $consul->id }})" class="btn-delete"><i
+                            <a onclick="modalEliminarMostrar({{ $consul->id }})" title="Eliminar" class="btn-delete"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                         @include('Administrador/Modales/EditarAuxiliar')
