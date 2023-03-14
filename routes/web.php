@@ -66,3 +66,6 @@ Route::post('perfil/auxiliar', [auxiliarController::class, 'updatePerfil'])->nam
 Route::put('auxiliar/actualizar/{id_ticket}', [auxiliarController::class, 'updateStatus'])->name('aux.actualizar')->middleware('auth');
 Route::post('tickets/comentarios/auxcli/{id_ticket}', [auxiliarController::class, 'nuevoMensaje'])->name('aux.comentario.auxcli')->middleware('auth');
 Route::get('auxiliar/tickets/buscar', [auxiliarController::class, 'searchTickets'])->name('aux.tickets.buscar')->middleware('auth');
+
+Route::get('auxiliar/tickets/reporte/{id}', [auxiliarController::class, 'generatePDF'])->name('aux.tickets.reporte')->middleware('auth');
+Route::post('auxiliar/tickets/reporte', [auxiliarController::class, 'generatePDFfiltro'])->name('aux.tickets.reporte.filtro')->middleware('auth');

@@ -1,4 +1,4 @@
-<form action="" method="POST">
+<form action="{{route('aux.tickets.reporte.filtro')}}" method="POST">
     @csrf
     <div id="myModal_PDFaux" class="modal">
 
@@ -13,13 +13,22 @@
                 <div>
                     <p><span></span>Seleccione un estatus:</p>
                     <select name="auxiliar" id="">
-                        <option value="0" selected>Todos</option>
+                        <option value="0" selected >Todos</option>
+                        <option value="Asignado">Asignado</option>
+                        <option value="En proceso">En Proceso</option>
+                        <option value="Completado">Completado</option>
+                        <option value="No solucionado">No Solucionado</option>
+                        <option value="Cancelado">Cancelado</option>
                     </select>
                 </div>
                 <div>
                     <p><span></span>Seleccione un departamento:</p>
+                    
                     <select name="searchByDepartamento" id="">
                         <option value="0" selected >Todos</option>
+                        @foreach ($consulDepartaments as $departamentos)
+                        <option value={{ $departamentos->id_departamento }}>{{ $departamentos->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>

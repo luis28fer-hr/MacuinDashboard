@@ -162,7 +162,8 @@
                             </form>
 
                             <div class="btns-repo">
-                                <a href="" target="_blank" class="btn" title="Generar PDF"><i
+                                
+                                <a href="{{route('aux.tickets.reporte', $ticket->id_ticket)}}" target="_blank" class="btn" title="Generar PDF"><i
                                         class="fa-solid fa-file-pdf"></i></a>
                             </div>
                         </div>
