@@ -24,7 +24,9 @@
                             <p>ID: {{ $auxiliar->id }}</p>
                         </div>
                         <div class="auxiliares-bar-tickets">
-                            <p class="">60 %</p>
+                            @foreach ($auxiliar->cantidadTickets as $cantidad)
+                                <p class="">{{$cantidad->can}}</p>
+                            @endforeach
                         </div>
                         <div class="auxiliares-btns-tickets">
                             <a href="{{route('Tickets.actualizar', [$ticket->id_ticket,  $auxiliar->id])}}" title="Asignar" class="btn-confirmar"><i class="fa-solid fa-check"></i></a>

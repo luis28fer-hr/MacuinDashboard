@@ -7,7 +7,7 @@
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Editar Cliente {{$consul->id}}</h2>
+            <h2>Editar Cliente</h2>
             <i class="fa-solid fa-xmark"  onclick="modalEditarOcultarClie({{ $consul->id }})" ></i>
         </div>
         <div class="modal-body">

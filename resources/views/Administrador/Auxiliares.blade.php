@@ -84,7 +84,9 @@
                             <p>--------------------</p>
                         </div>
                         <div class="auxiliares-bar">
-                            <p class="">60 %</p>
+                            @foreach ($consul->cantidadTickets as $cantidad)
+                                <p class="">{{$cantidad->can}}</p>
+                            @endforeach
                         </div>
                         <div class="auxiliares-btns">
                             <a onclick="modalEditarMostrar({{ $consul->id }})" title="Editar" class="btn-edit"><i
