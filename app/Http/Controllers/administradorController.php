@@ -17,6 +17,7 @@ class administradorController extends Controller
         try {
 
             $img = $request->file('fotoPerfil')->store('public/img');
+
             $url = Storage::url($img);
 
             $idActivo = Auth::user()->id;

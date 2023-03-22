@@ -16,6 +16,7 @@ class ticketsController extends Controller
     {
 
         $consultaTickets = DB::select('SELECT * FROM tickets ORDER BY created_at DESC');
+
         foreach ($consultaTickets as $ticket) {
             //auxiliar
             $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
@@ -33,6 +34,10 @@ class ticketsController extends Controller
 
         $consultaAuxiliares = DB::select('select u.* from users as u,
         auxiliares as a where a.usuario_id = u.id and not u.id = 999999');
+
+        foreach ($consultaAuxiliares as $auxiliar) {
+            $auxiliar->cantidadTickets = DB::select("SELECT COUNT(t.id_ticket) as 'can' from tickets as t, auxiliares as a WHERE (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) AND (t.estatus = 'En proceso' OR t.estatus = 'Asignado')", [$auxiliar->id]);
+        }
 
         //departamentos
         $consulDepartaments = DB::table('departamentos')->get();
@@ -92,6 +97,10 @@ class ticketsController extends Controller
         //Consulta de los auxiliares
         $consultaAuxiliares = DB::select('select u.* from users as u,
         auxiliares as a where a.usuario_id = u.id and not u.id = 999999');
+
+        foreach ($consultaAuxiliares as $auxiliar) {
+            $auxiliar->cantidadTickets = DB::select("SELECT COUNT(t.id_ticket) as 'can' from tickets as t, auxiliares as a WHERE (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) AND (t.estatus = 'En proceso' OR t.estatus = 'Asignado')", [$auxiliar->id]);
+        }
 
         //Consulta de los departamentos
         $consulDepartaments = DB::table('departamentos')->get();

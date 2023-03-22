@@ -20,6 +20,7 @@ class loginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+
             $request->session()->regenerate();
 
             $id_activo = Auth::user()->id;
@@ -39,9 +40,15 @@ class loginController extends Controller
                 }
 
                 /* Verifica si es cliente */
+                $cli_activo = DB::table('clientes')->where('usuario_id', $id_activo)->first();
+                if($cli_activo!=null){
 
+                    return redirect('cliente/tickets')->with('activa_sesion', 'login');
+                }
+
+                //Si no es ninguno, se cierra la session y redirecciona al login
                 Auth::logout();
-                return 'Usted no es administrador y tampoco es Auxiliar, su interfaz esta en desarrollo';
+                return redirect('/');
             }
         }
 

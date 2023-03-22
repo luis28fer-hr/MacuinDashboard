@@ -21,6 +21,11 @@ class auxiliaresController extends Controller
         $consulAuxiliares = DB::select('select u.* from users as u,
         auxiliares as a where a.usuario_id = u.id and not u.id = 999999');
 
+        foreach ($consulAuxiliares as $auxiliar) {
+            $auxiliar->cantidadTickets = DB::select("SELECT COUNT(t.id_ticket) as 'can' from tickets as t, auxiliares as a WHERE (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) AND (t.estatus = 'En proceso' OR t.estatus = 'Asignado')", [$auxiliar->id]);
+        }
+
+        //return $consulAuxiliares;
         return view('Administrador/Auxiliares', compact('consulAuxiliares'));
     }
 

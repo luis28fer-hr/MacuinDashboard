@@ -3,6 +3,7 @@
 use App\Http\Controllers\administradorController;
 use App\Http\Controllers\auxiliarController;
 use App\Http\Controllers\auxiliaresController;
+use App\Http\Controllers\clienteController;
 use App\Http\Controllers\clientesController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\departamentosController;
@@ -69,3 +70,7 @@ Route::get('auxiliar/tickets/buscar', [auxiliarController::class, 'searchTickets
 
 Route::get('auxiliar/tickets/reporte/{id}', [auxiliarController::class, 'generatePDF'])->name('aux.tickets.reporte')->middleware('auth');
 Route::post('auxiliar/tickets/reporte', [auxiliarController::class, 'generatePDFfiltro'])->name('aux.tickets.reporte.filtro')->middleware('auth');
+
+
+//RUTAS PARA EL PERFIL DE CLIENTE
+Route::get('cliente/tickets', [clienteController::class, 'index'])->name('cli.tickets')->middleware('auth');
