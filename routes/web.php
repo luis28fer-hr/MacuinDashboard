@@ -74,3 +74,4 @@ Route::post('auxiliar/tickets/reporte', [auxiliarController::class, 'generatePDF
 
 //RUTAS PARA EL PERFIL DE CLIENTE
 Route::get('cliente/tickets', [clienteController::class, 'index'])->name('cli.tickets')->middleware('auth');
+Route::post('cliente/perfil', [clienteController::class, 'updatePerfil'])->name('cli.perfil')->middleware('auth');
