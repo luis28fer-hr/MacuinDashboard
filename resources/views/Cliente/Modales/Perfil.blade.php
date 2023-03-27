@@ -1,4 +1,4 @@
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="{{route('cli.perfil')}}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Modal para editar perfil -->
