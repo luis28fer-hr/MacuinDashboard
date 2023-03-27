@@ -11,4 +11,5 @@ class clienteController extends Controller
 
         return view('Cliente/Tickets');
     }
+
 }
