@@ -99,6 +99,12 @@
     border: 2px solid rgba(37, 138, 206, .2);
     background-color: rgba(154, 215, 255, 0.2);
   }
+
+  .modal-body div input:disabled{
+    color: #3b6e91;
+  }
+
+
   .modal-body div textarea{
     font-family: 'Montserrat', sans-serif;
     color: black;
@@ -181,6 +187,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: .5rem;
   }
 
 
@@ -230,4 +237,20 @@
   }
   .modal-footer ._salir:hover{
     background-color: #A93226;
+  }
+
+  .modal-footer ._cancelar{
+    padding: .5rem 1.5rem;
+    background-color: #E74C3C;
+  }
+  .modal-footer ._cancelar:hover{
+    background-color: #A93226;
+  }
+
+  .modal-footer ._volver{
+    padding: .5rem 1.5rem;
+    background-color: #A6ACAF;
+  }
+  .modal-footer ._volver:hover{
+    background-color: #949494;
   }

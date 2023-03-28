@@ -17,6 +17,7 @@ class clienteController extends Controller
 
         return view('Cliente/Tickets');
     }
+
     public function updatePerfil(perfilController $request)
     {
 
