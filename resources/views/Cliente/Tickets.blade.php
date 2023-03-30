@@ -21,6 +21,13 @@
             })</script> " !!}
     @endif
 
+    @if (session()->has('ticket_agregado'))
+    {!! "<script> Swal.fire({
+        icon: 'success',
+        title: 'Ticket Agregado!',
+        text: 'Cliente!',
+        })</script> " !!}
+@endif
     <main>
 
         <h1>Tickets</h1>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\newTicket;
 use Illuminate\Http\Request;
 use App\Http\Requests\perfilController;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,10 @@ class clienteController extends Controller
             return redirect('cliente/tickets')->with('error_email', 'error');
         }
     }
+
+    public function newTicket(newTicket $request)
+    {
+            return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');
 
     private function asignarDatos($consultaTickets)
     {

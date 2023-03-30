@@ -1,5 +1,5 @@
 <form action="{{route('perfil')}}" method="POST" enctype="multipart/form-data">
-@csrf
+@csrf  
 
     <!-- Modal para editar perfil -->
     <div id="myModal" class="modal">
