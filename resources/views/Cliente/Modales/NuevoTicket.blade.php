@@ -16,7 +16,7 @@
                     <select name="problema"  value="{{old('problema')}}">
                         <option selected disabled>Seleccione uno</option>
                         <option value="Falla de office" >Falla de office</option>
-                        <option value="Errores de software">Errores de software</option>
+                        <option value="Fallas en la red">Fallas en la red</option>
                         <option value="Errores de software">Errores de software</option>
                         <option value="Errores de hardware">Errores de hardware</option>
                         <option value="Mantenimientos preventivos">Mantenimientos preventivos</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div>
                     <p>Cliente:</p>
-                    <input type="text" class="inpdis" value="{{Auth::user()->name}}" disabled>
+                    <input type="text" class="inpdis" value="{{Auth::user()->name}} {{Auth::user()->apellido_p}} {{Auth::user()->apellido_m}}" disabled>
                 </div>
                 <div>
                     <p>Fecha:</p>

@@ -27,7 +27,24 @@
         title: 'Ticket Agregado!',
         text: 'Cliente!',
         })</script> " !!}
-@endif
+    @endif
+
+    @if (session()->has('noCancelado'))
+    {!! "<script> Swal.fire({
+        icon: 'warning',
+        title: 'Su Ticket Ya No Puede Ser Cancelado!',
+        text: 'Cliente!',
+        })</script> " !!}
+    @endif
+
+    @if (session()->has('cancelado'))
+    {!! "<script> Swal.fire({
+        icon: 'info',
+        title: 'Ticket Cancelado!',
+        text: 'Cliente!',
+        })</script> " !!}
+    @endif
+
     <main>
 
         <h1>Tickets</h1>
@@ -54,7 +71,8 @@
                                 </div>
                                 <div>
                                     <p>Estatus:</p>
-                                    <p @if ($ticket->estatus == 'Asignado') style="color: #3498DB; font-weight: 700; letter-spacing: 0.5px;" @endif
+                                    <p  @if ($ticket->estatus == 'En espera de ser asignado') style="color: #F070F0; font-weight: 700; letter-spacing: 0.5px;" @endif
+                                        @if ($ticket->estatus == 'Asignado') style="color: #3498DB; font-weight: 700; letter-spacing: 0.5px;" @endif
                                         @if ($ticket->estatus == 'En proceso') style="color: #f4d03f; font-weight: 700; letter-spacing: 0.5px;" @endif
                                         @if ($ticket->estatus == 'Completado') style="color: #5cc186; font-weight: 700; letter-spacing: 0.5px;" @endif
                                         @if ($ticket->estatus == 'No solucionado') style="color: #F39C12; font-weight: 700; letter-spacing: 0.5px;" @endif
