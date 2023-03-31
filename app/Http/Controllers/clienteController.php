@@ -54,7 +54,10 @@ class clienteController extends Controller
 
     public function newTicket(newTicket $request)
     {
-            return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');
+
+        return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');
+    }
+
 
     private function asignarDatos($consultaTickets)
     {

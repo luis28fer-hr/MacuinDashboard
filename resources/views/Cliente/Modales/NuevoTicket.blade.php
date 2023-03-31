@@ -1,7 +1,7 @@
 <form action="{{ route('cli.newticket') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-  
+
     <div id="newTicket" class="modal">
 
 
