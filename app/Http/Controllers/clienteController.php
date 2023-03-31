@@ -58,7 +58,7 @@ class clienteController extends Controller
         $idCliente= DB::select('select id_cliente from clientes
         where usuario_id = ?', [Auth::user()->id]);
         $cliAct = ($idCliente) ? $idCliente[0]->id_cliente : null;
-   
+
             DB::table('tickets')->insert([
                 "auxiliar_id"=>2001,
                 "cliente_id"=>$cliAct,
@@ -68,10 +68,9 @@ class clienteController extends Controller
                 "created_at"=>Carbon::now(),
                 "updated_at"=>Carbon::now()
             ]);
-    
-            return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');        
-            }
 
+            return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');
+            }
 
     private function asignarDatos($consultaTickets)
     {
@@ -90,3 +89,4 @@ class clienteController extends Controller
     }
 
 }
+

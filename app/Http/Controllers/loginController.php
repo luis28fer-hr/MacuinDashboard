@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class loginController extends Controller
 {
+
+
     public function index()
     {
 
