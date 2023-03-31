@@ -74,25 +74,25 @@
                         <div class="tickets-btns-aux">
 
                             <div class="btns-aux">
-                                <a onclick="verMensajesAdmin()" title="Ver comentarios del Administrador" class="btn"><i class="fa-solid fa-user-tie"></i></a>
-                                <a onclick="verMensajesAdmin()" title="Ver comentarios del Administrador" class="btn"><i class="fa-regular fa-message"></i></a>
+                                <a onclick="verMensajesAdmin({{ $ticket->id_ticket }})" title="Ver comentarios del Administrador" class="btn"><i class="fa-solid fa-user-tie"></i></a>
+                                <a onclick="verMensajesAdmin({{ $ticket->id_ticket }})" title="Ver comentarios del Administrador" class="btn"><i class="fa-regular fa-message"></i></a>
                             </div>
 
                             <div class="btns-cli">
-                                <a onclick="verMensajesAux()" title="Ver comentarios del Auxiliar" class="btn"><i class="fa-solid fa-users"></i></a>
-                                <a onclick="verMensajesAux()" title="Ver comentarios del Auxiliar" class="btn"><i class="fa-regular fa-message"></i></a>
+                                <a onclick="verMensajesAux({{ $ticket->id_ticket }})" title="Ver comentarios del Auxiliar" class="btn"><i class="fa-solid fa-users"></i></a>
+                                <a onclick="verMensajesAux({{ $ticket->id_ticket }})" title="Ver comentarios del Auxiliar" class="btn"><i class="fa-regular fa-message"></i></a>
 
                             </div>
 
                             <div class="btns-repo">
-                                <a onclick="cancelTicket()" class="btn" title="Cancelar Ticket"><i class="fa-solid fa-ban"></i></a>
+                                <a onclick="cancelTicket({{ $ticket->id_ticket }})" class="btn" title="Cancelar Ticket"><i class="fa-solid fa-ban"></i></a>
                             </div>
                         </div>
                     </div>
                 @include('Cliente/Modales/Cancelar')
                 @include('Cliente/Modales/MensajeAdmin')
                 @include('Cliente/Modales/MensajeCliente')
-                @endforeach    
+                @endforeach
 
             </div>
         </section>
