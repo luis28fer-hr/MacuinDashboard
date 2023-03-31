@@ -15,12 +15,12 @@
                     <p><span>* </span>Problema:</p>
                     <select name="problema"  value="{{old('problema')}}">
                         <option selected disabled>Seleccione uno</option>
-                        <option >Falla de office</option>
-                        <option >Errores de software</option>
-                        <option >Errores de software</option>
-                        <option >Errores de hardware</option>
-                        <option >Mantenimientos preventivos</option>
-                        <option >Otro</option>
+                        <option value="Falla de office" >Falla de office</option>
+                        <option value="Errores de software">Errores de software</option>
+                        <option value="Errores de software">Errores de software</option>
+                        <option value="Errores de hardware">Errores de hardware</option>
+                        <option value="Mantenimientos preventivos">Mantenimientos preventivos</option>
+                        <option value="Otro">Otro</option>
                     </select>
                     <span class="error">{{$errors->first('problema')}}</span>
                 </div>

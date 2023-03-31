@@ -3,7 +3,7 @@
 
     <!-- Modal para añadir un nuevo cliente -->
     <div id="myModal_NewCli" class="modal">
-
+  
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
