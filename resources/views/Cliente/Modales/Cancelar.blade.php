@@ -14,7 +14,11 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a onclick="Cerra_cancelTicket({{ $ticket->id_ticket }})" class="_volver">Regresar</a>
-                                    <a href="" class="_cancelar">Sí, de acuerdo</a>
+                                    <form action="{{route('cli.cancel', $ticket->id_ticket)}}" method="POST">
+                                        @csrf
+                                        {!!method_field('PUT')!!}
+                                        <button type="submit" class="_cancelar">Sí, de acuerdo</button>
+                                    </form>
                                 </div>
                             </div>
 

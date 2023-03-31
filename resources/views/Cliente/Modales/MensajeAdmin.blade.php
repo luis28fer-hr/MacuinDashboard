@@ -8,11 +8,11 @@
                 <i class="fa-solid fa-xmark" onclick="Cerrar_verMensajesAdmin({{ $ticket->id_ticket }})"></i>
             </div>
             <div class="modal-body-tickets">
-{{--                 @foreach ($ticket->comentarioAdminAux as $mensaje)
+                 @foreach ($ticket->comentarioAdminCli as $mensaje)
                     <div class="mensaje">
                         <p>{{$mensaje->comentario}}</p>
                     </div>
-                @endforeach --}}
+                @endforeach 
             </div>
         </div>
 
