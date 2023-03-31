@@ -133,35 +133,36 @@ function Cerrar_agregarTicket(){
 }
 
 
-function cancelTicket(){
-    var modal_cancel_ticket = document.getElementById("cancelTicket");
+function cancelTicket(id){
+    var modal_cancel_ticket = document.getElementById("cancelTicket-"+id);
     modal_cancel_ticket.style.display = "block"
 }
 
-function Cerra_cancelTicket(){
-    var modal_cancel_ticket = document.getElementById("cancelTicket");
+function Cerra_cancelTicket(id){
+    var modal_cancel_ticket = document.getElementById("cancelTicket-"+id);
     modal_cancel_ticket.style.display = "none"
 }
 
 
-function verMensajesAdmin(){
-    var modal_verMensajes_admin = document.getElementById("myModal_MensajeAux-");
+
+function verMensajesAdmin(id){
+    var modal_verMensajes_admin = document.getElementById("myModal_MensajeAux-"+id);
     modal_verMensajes_admin.style.display = "block"
 }
 
-function Cerrar_verMensajesAdmin(){
-    var modal_verMensajes_admin = document.getElementById("myModal_MensajeAux-");
+function Cerrar_verMensajesAdmin(id){
+    var modal_verMensajes_admin = document.getElementById("myModal_MensajeAux-"+id);
     modal_verMensajes_admin.style.display = "none"
 }
 
 
-function verMensajesAux(){
-    var modal_verMensajes_aux = document.getElementById("myModal_MensajeCli-");
+function verMensajesAux(id){
+    var modal_verMensajes_aux = document.getElementById("myModal_MensajeCli-"+id);
     modal_verMensajes_aux.style.display = "block"
 }
 
-function Cerrar_verMensajesAux(){
-    var modal_verMensajes_aux = document.getElementById("myModal_MensajeCli-");
+function Cerrar_verMensajesAux(id){
+    var modal_verMensajes_aux = document.getElementById("myModal_MensajeCli-"+id);
     modal_verMensajes_aux.style.display = "none"
 }
 

@@ -15,8 +15,12 @@ class clienteController extends Controller
 {
     public function index()
     {
+        // Tickets del cliente logueado
+        $consultaTickets = DB::select('select t.* from tickets as t, clientes as c where t.cliente_id = c.id_cliente and usuario_id = ? ORDER BY t.created_at DESC', [Auth::user()->id]);
 
-        return view('Cliente/Tickets');
+        $consultaTickets = $this->asignarDatos($consultaTickets);
+
+        return view('Cliente/Tickets', compact('consultaTickets'));
     }
 
     public function updatePerfil(perfilController $request)
@@ -47,11 +51,12 @@ class clienteController extends Controller
             return redirect('cliente/tickets')->with('error_email', 'error');
         }
     }
+
     public function newTicket(newTicket $request)
     {
+
         $idCliente= DB::select('select id_cliente from clientes
         where usuario_id = ?', [Auth::user()->id]);
-
         $cliAct = ($idCliente) ? $idCliente[0]->id_cliente : null;
    
             DB::table('tickets')->insert([
@@ -65,5 +70,23 @@ class clienteController extends Controller
             ]);
     
             return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');        
+            }
+
+
+    private function asignarDatos($consultaTickets)
+    {
+
+        foreach ($consultaTickets as $ticket) {
+            $ticket->auxiliar = DB::table('auxiliares')->select(['usuario_id'])->where('id_auxiliar', $ticket->auxiliar_id)->first();
+            $ticket->auxiliar->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id', $ticket->auxiliar->usuario_id)->first();
+            $ticket->cliente = DB::table('clientes')->select(['usuario_id', 'departamento_id'])->where('id_cliente', $ticket->cliente_id)->first();
+            $ticket->cliente->datos = DB::table('users')->select(['name', 'apellido_p', 'apellido_m'])->where('id',  $ticket->cliente->usuario_id)->first();
+            $ticket->cliente->departamento = DB::table('departamentos')->select(['nombre'])->where('id_departamento',  $ticket->cliente->departamento_id)->first();
+            $ticket->comentarioAdminAux = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 1 ORDER BY created_at DESC', [$ticket->id_ticket]);
+            $ticket->comentarioAdminCli = DB::select('select * from cometarioadministrador where ticket_id = ? and tipo = 2 ORDER BY created_at DESC', [$ticket->id_ticket]);
         }
+
+        return $consultaTickets;
+    }
+
 }
