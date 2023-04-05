@@ -26,35 +26,35 @@
         {!! "<script> Swal.fire({
             icon: 'success',
             title: '¡Estatus Actualizado!',
-            text: 'Administrador',
+            text: 'Auxiliar!',
             })</script> " !!}
     @endif
     @if (session()->has('MensajeEnviado'))
         {!! "<script> Swal.fire({
             icon: 'success',
             title: '¡Comentario enviado!',
-            text: 'Administrador',
+            text: 'Auxiliar!',
             })</script> " !!}
     @endif
     @if (session()->has('MensajeNoEnviado'))
         {!! "<script> Swal.fire({
             icon: 'warning',
             title: '¡Por favor escriba un comentario!',
-            text: 'Administrador',
+            text: 'Auxiliar!',
             })</script> " !!}
     @endif
     @if (session()->has('selectFiltro'))
         {!! "<script> Swal.fire({
             icon: 'info',
             title: '¡Por favor ingrese un campo de filtrado!',
-            text: 'Administrador',
+            text: 'Auxiliar!',
             })</script> " !!}
     @endif
     @if (session()->has('noExiste'))
         {!! "<script> Swal.fire({
             icon: 'info',
             title: '¡No existe ningun ticket con estas caracteristicas!',
-            text: 'Administrador',
+            text: 'Auxiliar!',
             })</script> " !!}
     @endif
 
@@ -62,9 +62,18 @@
         {!! "<script> Swal.fire({
                     icon: 'info',
                     title: '¡No existe ningun ticket con estas caracteristicas!',
-                    text: 'Administrador',
+                    text: 'Auxiliar!',
                     })</script> " !!}
     @endif
+
+    @if (session()->has('error_email'))
+    {!!"<script> Swal.fire({
+        icon: 'error',
+        title: '¡Por favor use otro correo!',
+        text: 'Auxiliar',
+        })</script> "!!}
+    @endif
+
     <main>
 
         <h1>Tickets</h1>

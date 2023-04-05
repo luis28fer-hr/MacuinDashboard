@@ -64,37 +64,13 @@
         <div class="grid-item">
             <span>Notificaciones</span>
             Tickets
+            @foreach ($ticketsHoy as $ticketHoy)
             <ul>
                 <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, voluptatem.
+                    <b>{{$ticketHoy->name}} {{$ticketHoy->apellido_p}}</b> ha solicitado un nuevo ticket hoy.
                 </li>
             </ul>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-            </ul>
-
+            @endforeach
         </div>
     </div>
 

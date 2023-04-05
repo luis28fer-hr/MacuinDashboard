@@ -57,8 +57,9 @@ class clienteController extends Controller
 
         $idCliente= DB::select('select id_cliente from clientes
         where usuario_id = ?', [Auth::user()->id]);
+
         $cliAct = ($idCliente) ? $idCliente[0]->id_cliente : null;
-   
+
         DB::table('tickets')->insert([
             "auxiliar_id"=>2001,
             "cliente_id"=>$cliAct,
@@ -69,7 +70,7 @@ class clienteController extends Controller
             "updated_at"=>Carbon::now()
         ]);
 
-        return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');        
+        return redirect('cliente/tickets')->with('ticket_agregado', 'cliente');
     }
 
     public function cancel($id_ticket)
@@ -85,7 +86,7 @@ class clienteController extends Controller
         if ($estatus === "Completado" OR $estatus === "No solucionado" OR $estatus === "Cancelado"){
 
             return redirect('cliente/tickets')->with('noCancelado', 'cliente');
-        } 
+        }
         else {
             // Actualizamos el estatus a Cancelado
             DB::table('tickets')->where('id_ticket', $id_ticket)->update([
@@ -121,3 +122,4 @@ class clienteController extends Controller
     }
 
 }
+

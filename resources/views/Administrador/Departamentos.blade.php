@@ -67,7 +67,6 @@
                         </div>
                         <div class="departamento-data">
                             <p>ID: {{ $consul->id_departamento }}</p>
-                            <p>{{ $consul->created_at }}</p>
                             <p class="descripcion">{{ $consul->descripcion }}</p>
                         </div>
                         <div class="departamento-btns">

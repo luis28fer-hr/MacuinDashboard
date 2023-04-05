@@ -112,7 +112,7 @@ class auxiliarController extends Controller
 
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $fecha]);
+            and a.usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $fecha]);
 
             if ($consultaTickets != null) {
                 $consultaTickets =  $this->asignarDatos($consultaTickets);
@@ -123,7 +123,7 @@ class auxiliarController extends Controller
         } elseif (empty($estatus) and empty($fecha)) { //Busqueda por Departamento
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-              where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c where c.departamento_id = ?)', [Auth::user()->id, $departamento]);
+              where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c where c.departamento_id = ?)', [Auth::user()->id, $departamento]);
 
             if ($consultaTickets != null) {
                 $consultaTickets =  $this->asignarDatos($consultaTickets);
@@ -136,7 +136,7 @@ class auxiliarController extends Controller
 
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and t.estatus = ?', [Auth::user()->id, $estatus]);
+            and a.usuario_id = ?) and t.estatus = ?', [Auth::user()->id, $estatus]);
 
 
 
@@ -149,7 +149,7 @@ class auxiliarController extends Controller
         } elseif (empty($fecha)) { //Busqueda por Estatus y Departamento
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-              where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?)and t.cliente_id in(select c.id_cliente from clientes as c
+              where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?)and t.cliente_id in(select c.id_cliente from clientes as c
               where c.departamento_id = ?) and t.estatus=?', [Auth::user()->id, $departamento, $estatus]);
 
             if ($consultaTickets != null) {
@@ -161,7 +161,7 @@ class auxiliarController extends Controller
         } elseif (empty($departamento)) { //Busqueda por Estatus y Fecha
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
+            and a.usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
 
 
             if ($consultaTickets != null) {
@@ -172,8 +172,8 @@ class auxiliarController extends Controller
             }
         } elseif (empty($estatus)) { //Busqueda por Departamento y Fecha
 
-            $consultaTickets = DB::select('select0 t.* from tickets as t, auxiliares as a
-            where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
+            $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
+            where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
             where c.departamento_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $departamento, $fecha]);
 
 
@@ -186,7 +186,7 @@ class auxiliarController extends Controller
         } else { //Busqueda por Estatus, Departamento y Fecha
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-            where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
+            where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
             where c.departamento_id = ?) and date(t.created_at) = ? and t.estatus =?', [Auth::user()->id, $departamento, $fecha, $estatus]);
 
             if ($consultaTickets != null) {
@@ -250,7 +250,7 @@ class auxiliarController extends Controller
         if ($estatus != 0 and $departamento == 0 and $fecha == null) { //Verifica que estatus tenga valor diferente a todos
 
             $consultaTickets = DB::select('select * from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and t.estatus = ?', [Auth::user()->id, $estatus]);
+            and a.usuario_id = ?) and t.estatus = ?', [Auth::user()->id, $estatus]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
 
@@ -265,7 +265,7 @@ class auxiliarController extends Controller
         if ($estatus != 0 and $departamento != 0 and $fecha == null) { //Verifica que estatus y departamento tengan un valor diferente a todos
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
+            and a.usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
 
@@ -281,7 +281,7 @@ class auxiliarController extends Controller
         if ($estatus != 0 and $departamento != 0 and $fecha != null) { //Verifica que estatus, departamento y fecha tenga valor difernte a todos y null
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-            where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
+            where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
             where c.departamento_id = ?) and date(t.created_at) = ? and t.estatus =?', [Auth::user()->id, $departamento, $fecha, $estatus]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
@@ -297,7 +297,7 @@ class auxiliarController extends Controller
         if ($estatus == 0 and $departamento != 0 and $fecha == null) { //Verifica que departamento sea el unico en pdf
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-            where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c where c.departamento_id = ?)', [Auth::user()->id, $departamento]);
+            where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c where c.departamento_id = ?)', [Auth::user()->id, $departamento]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
 
@@ -311,8 +311,8 @@ class auxiliarController extends Controller
 
         if ($estatus == 0 and $departamento != 0 and $fecha != null) { //Verifica que departamento y fecha
 
-            $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a
-            where (t.auxiliar_id = a.id_auxiliar and usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
+            $consultaTickets = DB::select('SELECT t.* from tickets as t, auxiliares as a
+            where (t.auxiliar_id = a.id_auxiliar and a.usuario_id = ?) and t.cliente_id in(select c.id_cliente from clientes as c
             where c.departamento_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $departamento, $fecha]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
@@ -328,7 +328,7 @@ class auxiliarController extends Controller
         if ($estatus == 0 and $departamento == 0 and $fecha != null) { //Verifica fecha
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $fecha]);
+            and a.usuario_id = ?) and date(t.created_at) = ?', [Auth::user()->id, $fecha]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
 
@@ -343,7 +343,7 @@ class auxiliarController extends Controller
         if ($estatus != 0 and $departamento == 0 and $fecha != null) { //Verifica fecha y estatus
 
             $consultaTickets = DB::select('select t.* from tickets as t, auxiliares as a where (t.auxiliar_id = a.id_auxiliar
-            and usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
+            and a.usuario_id = ?) and date(t.created_at) = ? and t.estatus=?', [Auth::user()->id, $fecha, $estatus]);
 
             $consultaTickets =  $this->asignarDatos($consultaTickets);
 
