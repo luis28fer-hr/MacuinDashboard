@@ -73,7 +73,7 @@
                         </div>
                         <div class="clientes-data">
                             <p>ID: {{ $consul->id }}</p>
-                            <p>{{ $consul->email }}</p>
+                            <p><b>{{ $consul->email }}</b></p>
                             <p>Tel: {{ $consul->num_telefono }}</p>
                             <p>--------------------</p>
                         </div>

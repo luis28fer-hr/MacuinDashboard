@@ -57,6 +57,7 @@ class clienteController extends Controller
 
         $idCliente= DB::select('select id_cliente from clientes
         where usuario_id = ?', [Auth::user()->id]);
+
         $cliAct = ($idCliente) ? $idCliente[0]->id_cliente : null;
 
         DB::table('tickets')->insert([

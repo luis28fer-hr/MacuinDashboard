@@ -50,12 +50,6 @@
             <a id="myBtn_NewAux" title="Agregar Nuevo Auxiliar"><i class="fa-regular fa-square-plus"> </i> Nuevo</a>
             @include('Administrador/Modales/NuevoAuxiliar')
             <div class="filtros">
-                <div>
-                    <select name="" id="">
-                        <option value="" selected>Carga de trabajo</option>
-                        <option value="">10%</option>
-                    </select>
-                </div>
                 <form action="{{ route('Auxiliares.buscar') }}">
                     <div>
                         <input type="text" placeholder="Buscar por Nombre" name="searchName">
@@ -79,13 +73,13 @@
                         </div>
                         <div class="auxiliares-data">
                             <p>ID: {{ $consul->id }}</p>
-                            <p>{{ $consul->email }}</p>
+                            <p><b>{{ $consul->email }}</b></p>
                             <p>Tel: {{ $consul->num_telefono }}</p>
                             <p>--------------------</p>
                         </div>
                         <div class="auxiliares-bar">
                             @foreach ($consul->cantidadTickets as $cantidad)
-                                <p class="">{{$cantidad->can}}</p>
+                                <p class="">{{$cantidad->can}} Tareas</p>
                             @endforeach
                         </div>
                         <div class="auxiliares-btns">
