@@ -49,17 +49,23 @@ class ticketsController extends Controller
     {
         //ID AUXLIAR = id del usuario que se eleigio (ID de usuario NO DE LA TABLA AUXILIARES)
 
-        //consultar el ID de la tabla auxiliares para despues insertarlo en el ticket
-        $consultaAuxiliar = DB::table('auxiliares')->select('id_auxiliar')->where('usuario_id', $aux_id)->get();
-        $id_Aux = ($consultaAuxiliar) ? $consultaAuxiliar[0]->id_auxiliar : null;
+        $ticket = DB::table('tickets')->where('id_ticket', $id_ticket)->first();
+        if ($ticket->estatus != "Cancelado") {
+            //consultar el ID de la tabla auxiliares para despues insertarlo en el ticket
+            $consultaAuxiliar = DB::table('auxiliares')->select('id_auxiliar')->where('usuario_id', $aux_id)->get();
+            $id_Aux = ($consultaAuxiliar) ? $consultaAuxiliar[0]->id_auxiliar : null;
 
-        DB::table('tickets')->where('id_ticket', $id_ticket)->update([
-            "auxiliar_id" => $id_Aux,
-            "estatus" => 'Asignado',
-            "updated_at" => Carbon::now()
-        ]);
+            DB::table('tickets')->where('id_ticket', $id_ticket)->update([
+                "auxiliar_id" => $id_Aux,
+                "estatus" => 'Asignado',
+                "updated_at" => Carbon::now()
+            ]);
 
-        return redirect('tickets')->with('Actualizado', 'Ticket');
+            return redirect('tickets')->with('Actualizado', 'Ticket');
+        }
+        else{
+            return redirect('tickets')->with('TicketCancelado', 'Ticket');
+        }
     }
 
     public function enviarMensajeAdminAux(comentario $request, $id_ticket)

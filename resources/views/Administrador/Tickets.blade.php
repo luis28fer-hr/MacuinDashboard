@@ -47,6 +47,15 @@
                     })</script> " !!}
     @endif
 
+    @if (session()->has('TicketCancelado'))
+    {!! "<script> Swal.fire({
+                icon: 'warning',
+                title: '¡EL ticket ya fue cancelado por el cliente!',
+                text: 'Imposible asignar Auxiliar',
+                })</script> " !!}
+    @endif
+
+
     <main>
 
         <h1>Tickets</h1>
