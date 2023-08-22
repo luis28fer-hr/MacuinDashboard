@@ -55,7 +55,7 @@
 
 .clientes-container{
     display: grid;
-    grid-template-columns: repeat(4, 16rem);
+    grid-template-columns: repeat(4, 1fr);
     align-items: flex-start;
     justify-content: center;
     padding: .4rem 0;
